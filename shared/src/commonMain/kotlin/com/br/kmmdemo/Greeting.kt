@@ -1,9 +1,8 @@
 package com.br.kmmdemo
 
-class Greeting {
-    private val platform: Platform = getPlatform()
+class Greeting(private val platform: Platform) {
 
-    fun greet(): String {
+    fun greeting(): String {
         return "Hello, ${platform.name}!"
     }
 }
