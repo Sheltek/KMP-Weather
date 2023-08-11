@@ -11,56 +11,53 @@ allprojects {
     }
 }
 
-val ktorVersion = "2.3.2"
-val coroutineCoreVersion = "1.7.3"
-val koinVersion = "3.2.0"
-val koinComposeVersion = "3.4.2"
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
+    targetHierarchy.default()
 
     android {
-        kotlinOptions {
-            jvmTarget = "1.8"
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "1.8"
+            }
+        }
+    }
+
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "domain"
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(project(mapOf("path" to ":domain")))
                 //put your multiplatform dependencies here
 
-                implementation("io.ktor:ktor-client-core:$ktorVersion")
-                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-                implementation("io.insert-koin:koin-core:${koinVersion}")
-            }
-        }
-        val androidMain by getting {
-            dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineCoreVersion")
-                implementation("io.ktor:ktor-client-android:$ktorVersion")
-                implementation("io.insert-koin:koin-android:${koinVersion}")
-                implementation("io.insert-koin:koin-androidx-compose:${koinComposeVersion}")
-            }
-        }
-        val iosMain by getting {
-            // ...
-            dependencies {
-                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.content.negotiation)
+                implementation(libs.ktor.serialization.kotlinx.json)
+                implementation(libs.koin.core)
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
-                implementation("io.insert-koin:koin-test:${koinVersion}")
+                implementation(libs.koin.test)
             }
         }
     }
+
 }
 
 android {
-    namespace = "com.br.kmmdemo"
+    namespace = "com.br.kmmdemo.domain"
     compileSdk = 33
     defaultConfig {
         minSdk = 30
