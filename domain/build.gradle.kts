@@ -37,7 +37,6 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(mapOf("path" to ":domain")))
                 //put your multiplatform dependencies here
 
                 implementation(libs.ktor.client.core)
