@@ -1,7 +1,7 @@
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
-    kotlin("plugin.serialization") version "1.8.21"
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 allprojects {
@@ -37,7 +37,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(mapOf("path" to ":domain")))
-                //put your multiplatform dependencies here
+                // Put your multiplatform dependencies here
 
                 implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.content.negotiation)
@@ -54,14 +54,13 @@ kotlin {
             }
         }
         val iosMain by getting {
-            // ...
             dependencies {
                 implementation(libs.ktor.client.darwin)
             }
         }
         val commonTest by getting {
             dependencies {
-                implementation(kotlin("test"))
+//                implementation(kotlin("test"))
                 implementation(libs.koin.test)
             }
         }
