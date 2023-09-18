@@ -7,8 +7,8 @@ interface BaseUseCase<Request : BaseRequest, Response : BaseResponse> : KoinComp
     open class BaseRequest
     open class BaseResponse
 
-    suspend fun invoke(request: Request? = null): Result<Response>
+    suspend operator fun invoke(request: Request? = null): Result<Response>
 
-    suspend fun Request?.assertNotNull(block: suspend (Request) -> Result<Response>) =
+    suspend infix fun Request?.assertNotNull(block: suspend (Request) -> Result<Response>) =
         this?.let { block(it) } ?: Result.failure(IllegalArgumentException("Request required"))
 }

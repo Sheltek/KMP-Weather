@@ -11,6 +11,8 @@ interface LoginUseCase: BaseUseCase<Request, Response> {
     ) : BaseRequest()
 
     data class Response(
-        val message: String
+        val profile: String
     ) : BaseResponse()
+
+    class InvalidUserName : IllegalArgumentException("User name is invalid")
 }
