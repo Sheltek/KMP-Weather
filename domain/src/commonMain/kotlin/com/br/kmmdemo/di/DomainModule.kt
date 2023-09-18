@@ -1,8 +1,11 @@
 package com.br.kmmdemo.di
 
-import org.koin.core.module.dsl.singleOf
+import com.br.kmmdemo.usecases.loginusecase.LoginInteractor
+import com.br.kmmdemo.usecases.loginusecase.LoginUseCase
 import org.koin.dsl.module
 
 val domainModule = module {
-//    singleOf(::Platform)
+    // Use Cases
+    single<LoginUseCase> { LoginInteractor() }
+
 }
