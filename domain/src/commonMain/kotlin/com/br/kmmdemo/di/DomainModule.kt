@@ -1,5 +1,7 @@
 package com.br.kmmdemo.di
 
+import com.br.kmmdemo.network.TomorrowIoService
+import com.br.kmmdemo.network.TomorrowIoServiceImpl
 import com.br.kmmdemo.repositories.WeatherImplementation
 import com.br.kmmdemo.repositories.WeatherRepository
 import com.br.kmmdemo.usecases.loginusecase.LoginInteractor
@@ -12,4 +14,7 @@ val domainModule = module {
 
     // Repositories
     single<WeatherRepository> { WeatherImplementation() }
+
+    // Services
+    single<TomorrowIoService> { TomorrowIoServiceImpl() }
 }
