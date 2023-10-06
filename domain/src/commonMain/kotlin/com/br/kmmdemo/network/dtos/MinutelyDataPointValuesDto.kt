@@ -4,24 +4,24 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MinutelyDataPointValuesDto(
-    val cloudBase: Float?,
-    val cloudCeiling: Float?,
-    val cloudCover: Int?,
-    val dewPoint: Float?,
+    val cloudBase: Double?,
+    val cloudCeiling: Double?,
+    val cloudCover: Double?,
+    val dewPoint: Double?,
     val freezingRainIntensity: Int?,
-    val humidity: Int?,
+    val humidity: Double?,
     val precipitationProbability: Int?,
-    val pressureSurfaceLevel: Float?,
+    val pressureSurfaceLevel: Double?,
     val rainIntensity: Int?,
     val sleetIntensity: Int?,
     val snowIntensity: Int?,
-    val temperature: Float?,
-    val temperatureApparent: Float?,
+    val temperature: Double?,
+    val temperatureApparent: Double?,
     val uvHealthConcern: Int?,
     val uvIndex: Int?,
-    val visibility: Int?,
+    val visibility: Double?,
     val weatherCode: Int?,
-    val windDirection: Float?,
-    val windGust: Float?,
-    val windSpeed: Float?
+    val windDirection: Double?,
+    val windGust: Double?,
+    val windSpeed: Double?
 )

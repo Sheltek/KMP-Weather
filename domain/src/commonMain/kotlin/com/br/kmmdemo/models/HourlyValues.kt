@@ -1,9 +1,10 @@
-package com.br.kmmdemo.network.dtos
+package com.br.kmmdemo.models
 
+import com.br.kmmdemo.models.domainmodelinterface.DomainModel
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class HourlyDataPointValuesDto(
+data class HourlyValues(
     val cloudBase: Double?,
     val cloudCeiling: Double?,
     val cloudCover: Double?,
@@ -34,4 +35,4 @@ data class HourlyDataPointValuesDto(
     val windDirection: Double?,
     val windGust: Double?,
     val windSpeed: Double?
-)
+): DomainModel
