@@ -48,4 +48,5 @@ dependencies {
     implementation(libs.compose.material)
     implementation(libs.activity.compose)
     implementation(libs.koin.android)
+    implementation(project(":domain"))
 }

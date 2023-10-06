@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class MinutelyDto(
     val time: String?,
-    val values: List<MinutelyDataPointValuesDto?>?,
+    val minutelyValues: List<MinutelyDataPointValuesDto?>?,
 )
