@@ -1,9 +1,10 @@
 package com.br.kmmdemo.network.dtos
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class ForecastDto(
-    val timelines: TimelinesDto?,
-    val locationDto: LocationDto?
-)
+    val timelines: TimelinesDto? = null,
+    @SerialName("location") val locationDto: LocationDto? = null
+): Dto

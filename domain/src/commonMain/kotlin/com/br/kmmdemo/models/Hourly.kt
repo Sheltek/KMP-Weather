@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Hourly(
     val time: String?,
-    val hourlyValues: List<HourlyValues?>?
+    val hourlyValues: HourlyValues?
 ) : DomainModel

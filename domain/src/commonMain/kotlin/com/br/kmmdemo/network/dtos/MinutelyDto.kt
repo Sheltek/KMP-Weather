@@ -1,9 +1,10 @@
 package com.br.kmmdemo.network.dtos
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class MinutelyDto(
     val time: String?,
-    val minutelyValues: List<MinutelyDataPointValuesDto?>?,
-)
+    @SerialName("values") val minutelyValues: MinutelyDataPointValuesDto?,
+): Dto

@@ -6,6 +6,6 @@ import com.br.kmmdemo.network.dtos.HourlyDto
 fun HourlyDto?.toHourlyModel(): Hourly {
     return Hourly(
         time = this?.time,
-        hourlyValues = this?.hourlyValues?.map { it?.toHourlyValuesModel() }
+        hourlyValues = this?.hourlyValues?.toHourlyValuesModel()
     )
 }

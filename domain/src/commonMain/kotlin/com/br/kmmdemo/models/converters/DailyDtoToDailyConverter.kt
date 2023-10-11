@@ -6,6 +6,6 @@ import com.br.kmmdemo.network.dtos.DailyDto
 fun DailyDto?.toDailyModel(): Daily {
     return Daily(
         time = this?.time,
-        dailyValues = this?.dailyValues?.map { it?.toDailyValuesModel() }
+        dailyValues = this?.dailyValues?.toDailyValuesModel()
     )
 }

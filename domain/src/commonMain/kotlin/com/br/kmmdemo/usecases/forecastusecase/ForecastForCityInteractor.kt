@@ -9,18 +9,11 @@ import com.br.kmmdemo.usecases.forecastusecase.ForecastForCityUseCase.Response
 
 class ForecastForCityInteractor: ForecastForCityUseCase {
     private val weatherRepo: WeatherRepository by inject()
-    override suspend fun invoke(request: Request?) =
-        if (request != null) {
-            if (request.city.isBlank()) throw InvalidCityName()
-            val result = weatherRepo.getForecastForCity(request.city)
-            Result.success(Response(result.getOrNull().toForecastModel()))
-        } else {
-            throw IllegalArgumentException("Request required")
-        }
+    override suspend fun invoke(request: Request?): Result<Response> =
 
-//        request assertNotNull { forecastRequest ->
-//            if (forecastRequest.city.isBlank()) throw InvalidCityName()
-//            val result = weatherRepo.getForecastForCity(forecastRequest.city)
-//            Result.success(Response(result.getOrNull().toForecastModel()))
-//        }
+        request.assertNotNull { forecastRequest ->
+            if (forecastRequest.city.isBlank()) throw InvalidCityName()
+            val result = weatherRepo.getForecastForCity(forecastRequest.city)
+            Result.success(Response(result.getOrNull().toForecastModel()))
+        }
 }

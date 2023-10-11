@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Minutely(
     val time: String?,
-    val minutelyValues: List<MinutelyValues?>?,
+    val minutelyValues: MinutelyValues?,
 ): DomainModel
