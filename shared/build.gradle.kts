@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.jetbrainsCompose)
 }
 
 allprojects {
@@ -15,12 +16,13 @@ allprojects {
 kotlin {
     targetHierarchy.default()
 
-    android {
+    androidTarget {
         compilations.all {
             kotlinOptions {
                 jvmTarget = "1.8"
             }
         }
+
     }
 
     listOf(
@@ -39,6 +41,14 @@ kotlin {
                 implementation(project(mapOf("path" to ":domain")))
                 // Put your multiplatform dependencies here
 
+                // Jetpack Compose
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                implementation(compose.components.resources)
+
+                // KTOR Networking and Serialization
                 implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.content.negotiation)
                 implementation(libs.ktor.serialization.kotlinx.json)
@@ -51,6 +61,7 @@ kotlin {
                 implementation(libs.ktor.client.android)
                 implementation(libs.koin.android)
                 implementation(libs.koin.androidx.compose)
+//                implementation(libs.activity)
             }
         }
         val iosMain by getting {
@@ -69,7 +80,7 @@ kotlin {
 
 android {
     namespace = "com.br.kmmdemo"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
         minSdk = 30
     }
