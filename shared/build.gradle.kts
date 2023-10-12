@@ -16,14 +16,8 @@ allprojects {
 kotlin {
     targetHierarchy.default()
 
-    androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-
-    }
+    androidTarget()
+    jvmToolchain(17)
 
     listOf(
         iosX64(),
@@ -43,6 +37,7 @@ kotlin {
 
                 // Jetpack Compose
                 implementation(compose.runtime)
+                implementation(compose.ui)
                 implementation(compose.foundation)
                 implementation(compose.material3)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)

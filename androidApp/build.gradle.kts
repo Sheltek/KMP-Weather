@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.jetbrainsCompose)
-//    alias(libs.plugins.kotlinAndroid)
 }
 
 kotlin {
@@ -13,6 +12,7 @@ kotlin {
                 implementation(project(":shared"))
                 implementation(libs.activity.compose)
                 implementation(libs.koin.android)
+                implementation(libs.multidex)
             }
         }
     }

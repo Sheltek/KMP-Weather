@@ -16,13 +16,8 @@ allprojects {
 kotlin {
     targetHierarchy.default()
 
-    android {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
+    androidTarget()
+    jvmToolchain(17)
 
     listOf(
         iosX64(),
@@ -52,13 +47,12 @@ kotlin {
             }
         }
     }
-
 }
 
 android {
     namespace = "com.br.kmmdemo.domain"
-    compileSdk = 33
+    compileSdk = (findProperty("android.compileSdk") as String).toInt()
     defaultConfig {
-        minSdk = 30
+        minSdk = (findProperty("android.minSdk") as String).toInt()
     }
 }
