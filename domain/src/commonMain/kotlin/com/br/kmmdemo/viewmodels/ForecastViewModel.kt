@@ -20,10 +20,8 @@ class ForecastViewModel : KoinComponent {
 
     fun fetchForecast() {
         CoroutineScope(dispatcher).launch {
-            val fetchedForecast = forecastUseCase.invoke(
-                ForecastForCityUseCase.Request("Dallas")
-            )
-            forecast.emit(fetchedForecast.getOrNull()?.forecast)
+            forecast.value =
+                forecastUseCase(ForecastForCityUseCase.Request("Dallas")).getOrNull()?.forecast
         }
     }
 }
