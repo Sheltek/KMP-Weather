@@ -9,24 +9,22 @@ import io.ktor.serialization.kotlinx.json.json
 import io.ktor.util.appendIfNameAbsent
 import kotlinx.serialization.json.Json
 
-class KtorClient {
-    val client: HttpClient = HttpClient {
-        install(ContentNegotiation) {
-            json(Json {
-                prettyPrint = true
-                isLenient = true
-                ignoreUnknownKeys = true
-                encodeDefaults = true
-            })
-        }
+fun ktorClient(): HttpClient = HttpClient {
+    install(ContentNegotiation) {
+        json(Json {
+            prettyPrint = true
+            isLenient = true
+            ignoreUnknownKeys = true
+            encodeDefaults = true
+        })
+    }
 
-        defaultRequest {
-            url {
-                protocol = URLProtocol.HTTPS
-                host = Routes.BASE_HOST
-                headers {
-                    appendIfNameAbsent("apikey", Routes.API_KEY)
-                }
+    defaultRequest {
+        url {
+            protocol = URLProtocol.HTTPS
+            host = Routes.BASE_HOST
+            headers {
+                appendIfNameAbsent("apikey", Routes.API_KEY)
             }
         }
     }
