@@ -11,7 +11,7 @@ class ForecastForCityInteractor: ForecastForCityUseCase {
     private val weatherRepo: WeatherRepository by inject()
     override suspend fun invoke(request: Request?): Result<Response> =
 
-        request.assertNotNull { forecastRequest ->
+        request assertNotNull { forecastRequest ->
             if (forecastRequest.city.isBlank()) throw InvalidCityName()
             val result = weatherRepo.getForecastForCity(forecastRequest.city)
             Result.success(Response(result.getOrNull().toForecastModel()))

@@ -1,6 +1,5 @@
-package com.br.kmmdemo
+package com.br.kmmdemo.network
 
-import com.br.kmmdemo.network.Routes
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
@@ -9,9 +8,8 @@ import io.ktor.http.URLProtocol
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.util.appendIfNameAbsent
 import kotlinx.serialization.json.Json
-import org.koin.core.component.KoinComponent
 
-class KtorClient: KoinComponent {
+class KtorClient {
     val client: HttpClient = HttpClient {
         install(ContentNegotiation) {
             json(Json {
