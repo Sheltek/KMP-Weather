@@ -1,7 +1,6 @@
 package com.br.kmmdemo.viewmodels
 
 import com.br.kmmdemo.models.Forecast
-import com.br.kmmdemo.usecases.forecastusecase.ForecastForCityInteractor
 import com.br.kmmdemo.usecases.forecastusecase.ForecastForCityUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +13,7 @@ class ForecastViewModel : KoinComponent {
     // TODO NEED TO LOOK INTO VIEW MODEL OPTION
 
     val dispatcher = Dispatchers.Default
-    private val forecastUseCase: ForecastForCityInteractor by inject()
+    private val forecastUseCase: ForecastForCityUseCase by inject()
 
     val forecast: MutableStateFlow<Forecast?> = MutableStateFlow(null)
 
