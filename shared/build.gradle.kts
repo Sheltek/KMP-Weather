@@ -39,9 +39,15 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.ui)
                 implementation(compose.foundation)
+                implementation(compose.animation)
                 implementation(compose.material3)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+
+                // PreCompose - https://github.com/Tlaster/PreCompose
+                api(libs.precompose)
+                api(libs.precompose.viewmodel)
+                api(libs.precompose.koin)
 
                 // KTOR Networking and Serialization
                 implementation(libs.ktor.client.core)
@@ -56,6 +62,10 @@ kotlin {
                 implementation(libs.ktor.client.android)
                 implementation(libs.koin.android)
                 implementation(libs.koin.androidx.compose)
+
+                // Preview Utils need to be implemented in platform code as they use platform renderers
+                implementation(compose.preview)
+                implementation(compose.uiTooling)
             }
         }
         val iosMain by getting {
