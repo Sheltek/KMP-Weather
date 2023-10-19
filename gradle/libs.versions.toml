@@ -7,13 +7,13 @@ kotlin = "1.9.10"
 ktorVersion = "2.3.2"
 compose = "1.5.1"
 activity = "1.8.0"
-multidex = "2.0.1"
+precompose = "1.5.4"
+uiToolingPreviewAndroid = "1.5.4"
 #core-ktx = "1.12.0"
 #junit = "4.13.2"
 #androidx-test-ext-junit = "1.1.5"
 #espresso-core = "3.5.1"
 #appcompat = "1.6.1"
-#material = "1.9.0"
 
 [libraries]
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinComposeVersion" }
@@ -27,6 +27,10 @@ ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorVer
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktorVersion" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorVersion" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
+precompose = { module = "moe.tlaster:precompose", version.ref = "precompose" }
+precompose-koin = { module = "moe.tlaster:precompose-koin", version.ref = "precompose" }
+precompose-viewmodel = { module = "moe.tlaster:precompose-viewmodel", version.ref = "precompose" }
+ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version.ref = "uiToolingPreviewAndroid" }
 #core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 #junit = { group = "junit", name = "junit", version.ref = "junit" }
 #androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
