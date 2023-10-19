@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.jetbrainsCompose)
 }
 
 allprojects {
@@ -15,13 +16,8 @@ allprojects {
 kotlin {
     targetHierarchy.default()
 
-    android {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
+    androidTarget()
+    jvmToolchain(17)
 
     listOf(
         iosX64(),
@@ -39,6 +35,15 @@ kotlin {
                 implementation(project(mapOf("path" to ":domain")))
                 // Put your multiplatform dependencies here
 
+                // Jetpack Compose
+                implementation(compose.runtime)
+                implementation(compose.ui)
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                implementation(compose.components.resources)
+
+                // KTOR Networking and Serialization
                 implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.content.negotiation)
                 implementation(libs.ktor.serialization.kotlinx.json)
@@ -69,7 +74,7 @@ kotlin {
 
 android {
     namespace = "com.br.kmmdemo"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
         minSdk = 30
     }
