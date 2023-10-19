@@ -1,7 +1,5 @@
 package com.br.kmmdemo
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -13,18 +11,15 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import moe.tlaster.precompose.navigation.NavHost
 import moe.tlaster.precompose.navigation.Navigator
 import moe.tlaster.precompose.navigation.rememberNavigator
+import moe.tlaster.precompose.navigation.transition.NavTransition
 
 @Composable
 fun App(darkTheme: Boolean = false) {
@@ -35,33 +30,18 @@ fun App(darkTheme: Boolean = false) {
         bottomBar = { BottomBar(navigator) },
     ) {
         KMMTheme(darkTheme = darkTheme) {
-            // TODO - NavHost
-//            NavHost(
-//                // Assign the navigator to the NavHost
-//                navigator = navigator,
-//                // Navigation transition for the scenes in this NavHost, this is optional
-//                navTransition = NavTransition(),
-//                // The start destination
-//                initialRoute = "/home",
-//            )
-            HomeScreen(it)
+            NavHost(
+                // Assign the navigator to the NavHost
+                navigator = navigator,
+                // Navigation transition for the scenes in this NavHost, this is optional
+                navTransition = NavTransition(),
+                // The start destination
+                initialRoute = "/home",
+                modifier = Modifier.padding(it)
+            ) {
+                navGraph()
+            }
         }
-    }
-}
-
-@Composable
-private fun HomeScreen(it: PaddingValues) {
-    Surface(
-        color = Color.Blue,
-        modifier = Modifier.padding(it).fillMaxWidth().fillMaxHeight()
-    ) {
-        Text(
-            "KMP Demo",
-            color = Color.Cyan,
-            fontSize = 24.sp,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(top = 24.dp),
-        )
     }
 }
 
@@ -71,15 +51,13 @@ fun BottomBar(navigator: Navigator) {
         NavigationBarItem(
             selected = false,
             label = { Text("Home") },
-//            onClick = { navigator.navigate("ASD")},
-            onClick = { },
+            onClick = { navigator.navigate("/home")},
             icon = { Icon(imageVector = Icons.Filled.Home, contentDescription = "")  }
         )
         NavigationBarItem(
             selected = false,
             label = { Text("Map") },
-//            onClick = { navigator.navigate("ASD")},
-            onClick = { },
+            onClick = { navigator.navigate("/map")},
             icon = { Icon(imageVector = Icons.Filled.LocationOn, contentDescription = "")  }
         )
     }
