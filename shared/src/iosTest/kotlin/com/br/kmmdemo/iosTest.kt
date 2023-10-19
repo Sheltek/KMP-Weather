@@ -7,6 +7,12 @@ class IosGreetingTest {
 
     @Test
     fun testExample() {
-        assertTrue(Greeting().greet().contains("iOS"), "Check iOS is mentioned")
+        val testFormat = "This is a decimal: %d"
+
+        val helper = StringHelper(testFormat)
+
+        val value = helper(1)
+
+        assertTrue(value == "This is a decimal: 1",   "Fail")
     }
 }

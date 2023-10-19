@@ -12,7 +12,6 @@ kotlin {
                 implementation(project(":shared"))
                 implementation(libs.activity.compose)
                 implementation(libs.koin.android)
-                implementation(libs.multidex)
             }
         }
     }
