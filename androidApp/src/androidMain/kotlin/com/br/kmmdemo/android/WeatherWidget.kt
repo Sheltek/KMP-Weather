@@ -105,7 +105,9 @@ object WeatherWidget : GlanceAppWidget(), KoinComponent {
 @Composable
 fun ThreeDayForecast(cityPosition: Int, state: ThreeHourForecastState) {
     Column(
-        modifier = GlanceModifier.background(GlanceTheme.colors.background).padding(8.dp)
+        modifier = GlanceModifier
+            .background(GlanceTheme.colors.background)
+            .padding(8.dp)
     ) {
         Row {
             DailyWeatherIcon(state.todayDailyValue)
@@ -256,7 +258,6 @@ fun HourlyWeatherIcon(hourlyValues: HourlyValues?) {
 class WeatherWidgetReceiver : GlanceAppWidgetReceiver() {
     override val glanceAppWidget: GlanceAppWidget
         get() = WeatherWidget
-
 }
 
 object ChangeCityCallback : ActionCallback {
