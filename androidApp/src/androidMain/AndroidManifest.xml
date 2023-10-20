@@ -4,6 +4,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <permission
+        android:name="your_pakage_name.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
 
     <application
         android:name=".KmmDemoApplication"
@@ -34,6 +37,6 @@
         <!-- Google Maps API Key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="${MAPS_API_KEY}" />
+            android:value="AIzaSyARbETM-bn9_HSTezs1Kkg72H5jvTGj1NE" />
     </application>
 </manifest> 
