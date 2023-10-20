@@ -1,11 +1,11 @@
 package com.br.kmmdemo.android
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import com.br.kmmdemo.main.MainView
+import moe.tlaster.precompose.lifecycle.PreComposeActivity
+import moe.tlaster.precompose.lifecycle.setContent
 
-class MainActivity : ComponentActivity() {
+class MainActivity : PreComposeActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
