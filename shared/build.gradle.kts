@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.google.secrets)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.ksp)
 }
 
 allprojects {
@@ -61,7 +64,16 @@ kotlin {
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.ktor.client.android)
                 implementation(libs.koin.android)
+                implementation(compose.preview)
+                implementation(compose.uiTooling)
                 implementation(libs.koin.androidx.compose)
+
+                // Utility
+                implementation(libs.google.maps)
+                implementation(libs.google.maps.utils)
+                implementation(libs.google.places)
+                implementation(libs.play.services.maps)
+//                implementation(libs.play.services.coroutines)
 
                 // Preview Utils need to be implemented in platform code as they use platform renderers
                 implementation(compose.preview)
