@@ -12,6 +12,13 @@ kotlin {
                 implementation(project(":shared"))
                 implementation(libs.activity.compose)
                 implementation(libs.koin.android)
+
+
+                // Utility
+                implementation(libs.google.maps)
+                implementation(libs.google.maps.utils)
+                implementation(libs.google.places)
+                implementation(libs.play.services.maps)
             }
         }
     }
@@ -50,9 +57,6 @@ android {
     }
     kotlin {
         jvmToolchain(17)
-    }
-    buildFeatures {
-        compose = true
     }
 }
 

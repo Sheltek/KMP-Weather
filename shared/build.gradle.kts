@@ -73,7 +73,6 @@ kotlin {
                 implementation(libs.google.maps.utils)
                 implementation(libs.google.places)
                 implementation(libs.play.services.maps)
-//                implementation(libs.play.services.coroutines)
 
                 // Preview Utils need to be implemented in platform code as they use platform renderers
                 implementation(compose.preview)
