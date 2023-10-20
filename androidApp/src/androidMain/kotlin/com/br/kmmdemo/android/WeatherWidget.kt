@@ -71,12 +71,11 @@ object WeatherWidget : GlanceAppWidget(), KoinComponent {
                 forecastForCityUseCase.invoke(ForecastForCityUseCase.Request(widgetLocations[cityPosition]))
                     .onSuccess { response ->
                         threeHourForecastState.value = ThreeHourForecastState(
-                            currentTemp = response.forecast?.timelines?.hourly?.first()?.hourlyValues?.temperature ?: 0.0,
-                            todayHigh = response.forecast?.timelines?.daily?.first()?.dailyValues?.temperatureApparentMax ?: 0.0,
-                            todayLow = response.forecast?.timelines?.daily?.first()?.dailyValues?.temperatureApparentMin ?: 0.0,
-                            futureHour1Average = response.forecast?.timelines?.hourly?.get(1)?.hourlyValues?.temperature ?: 0.0,
-                            futureHour2Average = response.forecast?.timelines?.hourly?.get(1)?.hourlyValues?.temperature ?: 0.0,
-                            futureHour3Average = response.forecast?.timelines?.hourly?.get(1)?.hourlyValues?.temperature ?: 0.0,
+                            currentHourlyValues = response.forecast?.timelines?.hourly?.first()?.hourlyValues,
+                            todayDailyValue = response.forecast?.timelines?.daily?.first()?.dailyValues,
+                            futureHourlyValues1 = response.forecast?.timelines?.hourly?.get(1)?.hourlyValues,
+                            futureHourlyValues2 = response.forecast?.timelines?.hourly?.get(2)?.hourlyValues,
+                            futureHourlyValues3 = response.forecast?.timelines?.hourly?.get(3)?.hourlyValues,
                         )
                     }
             }
@@ -109,23 +108,27 @@ fun ThreeDayForecast(cityPosition: Int, state: ThreeHourForecastState) {
         modifier = GlanceModifier.background(GlanceTheme.colors.background).padding(8.dp)
     ) {
         Row {
-
-            LargeWeatherIcon(state.todayDailyValue)
+            DailyWeatherIcon(state.todayDailyValue)
 
             Spacer(modifier = GlanceModifier.padding(horizontal = 4.dp))
+
             Row(
                 modifier = GlanceModifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.End
             ) {
-
-                Text(
-                    text = WeatherWidget.widgetLocations[cityPosition],
-                    style = TextStyle(
-                        color = GlanceTheme.colors.onBackground,
-                        fontSize = TextUnit(18f, TextUnitType.Sp),
-                        fontWeight = FontWeight.Bold
+                Column(
+                    horizontalAlignment = Alignment.End
+                ) {
+                    Text(
+                        text = WeatherWidget.widgetLocations[cityPosition],
+                        style = TextStyle(
+                            color = GlanceTheme.colors.onBackground,
+                            fontSize = TextUnit(22f, TextUnitType.Sp),
+                            fontWeight = FontWeight.Bold
+                        )
                     )
-                )
+                    CurrentWeatherDescription(state.todayDailyValue)
+                }
             }
         }
 
@@ -136,7 +139,7 @@ fun ThreeDayForecast(cityPosition: Int, state: ThreeHourForecastState) {
                 Text(
                     text = (state.currentHourlyValues?.temperature ?: 0.0).toFahrenheit(),
                     style = TextStyle(
-                        color = GlanceTheme.colors.secondary,
+                        color = GlanceTheme.colors.primary,
                         fontSize = TextUnit(32f, TextUnitType.Sp),
                         fontWeight = FontWeight.Bold
                     )
@@ -185,12 +188,12 @@ private fun FutureHourTemperature(hoursAhead: Long, hourlyValues: HourlyValues?)
             text = hourlyValues?.temperature.toFahrenheit(),
             style = TextStyle(
                 color = GlanceTheme.colors.onBackground,
-                fontSize = TextUnit(12f, TextUnitType.Sp),
+                fontSize = TextUnit(14f, TextUnitType.Sp),
             )
         )
-        Spacer(modifier = GlanceModifier.padding(vertical = 2.dp))
-        SmallWeatherIcon(hourlyValues)
-        Spacer(modifier = GlanceModifier.padding(vertical = 2.dp))
+        Spacer(modifier = GlanceModifier.padding(vertical = 1.dp))
+        HourlyWeatherIcon(hourlyValues)
+        Spacer(modifier = GlanceModifier.padding(vertical = 1.dp))
         Text(
             text = getHourOfDayInAmPmFormat(hoursAhead),
             style = TextStyle(
@@ -202,24 +205,22 @@ private fun FutureHourTemperature(hoursAhead: Long, hourlyValues: HourlyValues?)
 }
 
 @Composable
-fun SmallWeatherIcon(hourlyValues: HourlyValues?) {
-    Image(
-        provider = when {
-            (hourlyValues?.precipitationProbability ?: 0.0) >= 50.0 -> ImageProvider(R.drawable.rain)
-            (hourlyValues?.cloudCover ?: 0.0) >= 25.0 -> ImageProvider(R.drawable.cloudy)
-            else -> ImageProvider(R.drawable.sunny)
+fun CurrentWeatherDescription(dailyValues: DailyValues?) {
+    Text(
+        text = when {
+            (dailyValues?.precipitationProbabilityAvg ?: 0.0) >= 50.0 -> "Rainy"
+            (dailyValues?.cloudCoverAvg ?: 0.0) >= 25.0 -> "Cloudy"
+            else -> "Sunny"
         },
-        contentDescription = "",
-        colorFilter = ColorFilter.tint(GlanceTheme.colors.secondary),
-        modifier = GlanceModifier.size(
-            width = 18.dp,
-            height = 18.dp
+        style = TextStyle(
+            color = GlanceTheme.colors.onBackground,
+            fontSize = TextUnit(10f, TextUnitType.Sp),
         )
     )
 }
 
 @Composable
-fun LargeWeatherIcon(dailyValues: DailyValues?) {
+fun DailyWeatherIcon(dailyValues: DailyValues?) {
     Image(
         provider = when {
             (dailyValues?.precipitationProbabilityAvg ?: 0.0) >= 50.0 -> ImageProvider(R.drawable.rain)
@@ -227,10 +228,27 @@ fun LargeWeatherIcon(dailyValues: DailyValues?) {
             else -> ImageProvider(R.drawable.sunny)
         },
         contentDescription = "",
-        colorFilter = ColorFilter.tint(GlanceTheme.colors.secondary),
+        colorFilter = ColorFilter.tint(GlanceTheme.colors.tertiary),
         modifier = GlanceModifier.size(
             width = 48.dp,
             height = 48.dp
+        )
+    )
+}
+
+@Composable
+fun HourlyWeatherIcon(hourlyValues: HourlyValues?) {
+    Image(
+        provider = when {
+            (hourlyValues?.precipitationProbability ?: 0.0) >= 50.0 -> ImageProvider(R.drawable.rain)
+            (hourlyValues?.cloudCover ?: 0.0) >= 25.0 -> ImageProvider(R.drawable.cloudy)
+            else -> ImageProvider(R.drawable.sunny)
+        },
+        contentDescription = "",
+        colorFilter = ColorFilter.tint(GlanceTheme.colors.tertiary),
+        modifier = GlanceModifier.size(
+            width = 18.dp,
+            height = 18.dp
         )
     )
 }
@@ -246,7 +264,7 @@ object ChangeCityCallback : ActionCallback {
         updateAppWidgetState(context, glanceId) { mutablePreferences ->
             val cityPosition = mutablePreferences[WeatherWidget.cityKey]
             if (cityPosition != null) {
-                if (cityPosition < 6) { // 6 cities in the list.
+                if (cityPosition < 5) { // 6 cities in the list.
                     mutablePreferences[WeatherWidget.cityKey] = cityPosition + 1
                 } else {
                     mutablePreferences[WeatherWidget.cityKey] = 0
