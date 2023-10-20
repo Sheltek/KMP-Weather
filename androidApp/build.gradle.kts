@@ -19,6 +19,9 @@ kotlin {
                 implementation(libs.google.maps.utils)
                 implementation(libs.google.places)
                 implementation(libs.play.services.maps)
+                implementation(libs.glance)
+                implementation(libs.glance.appwidget)
+                implementation(libs.glance.material3)
             }
         }
     }
@@ -58,5 +61,8 @@ android {
     kotlin {
         jvmToolchain(17)
     }
+}
+dependencies {
+    implementation(project(":domain"))
 }
 
