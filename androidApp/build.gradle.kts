@@ -1,23 +1,48 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.jetbrainsCompose)
+}
+
+kotlin {
+    androidTarget()
+    sourceSets {
+        val androidMain by getting {
+            dependencies {
+                implementation(project(":shared"))
+                implementation(libs.activity.compose)
+                implementation(libs.koin.android)
+
+
+                // Utility
+                implementation(libs.google.maps)
+                implementation(libs.google.maps.utils)
+                implementation(libs.google.places)
+                implementation(libs.play.services.maps)
+                implementation(libs.glance)
+                implementation(libs.glance.appwidget)
+                implementation(libs.glance.material3)
+            }
+        }
+    }
 }
 
 android {
     namespace = "com.br.kmmdemo.android"
-    compileSdk = 33
+    compileSdk = (findProperty("android.compileSdk") as String).toInt()
+
+    sourceSets["main"].apply {
+        res.srcDirs("src/androidMain/res", "src/commonMain/resources")
+        manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    }
+
     defaultConfig {
         applicationId = "com.br.kmmdemo.android"
-        minSdk = 30
-        targetSdk = 33
+        minSdk = (findProperty("android.minSdk") as String).toInt()
+        targetSdk = (findProperty("android.targetSdk") as String).toInt()
         versionCode = 1
         versionName = "1.0"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.7"
+        manifestPlaceholders["MAPS_API_KEY"] = "MAPS_API_KEY"
     }
     packaging {
         resources {
@@ -30,20 +55,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+    kotlin {
+        jvmToolchain(17)
     }
+}
+dependencies {
+    implementation(project(":domain"))
 }
 
-dependencies {
-    implementation(project(":shared"))
-    implementation("androidx.compose.ui:ui:1.4.3")
-    implementation("androidx.compose.ui:ui-tooling:1.4.3")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.4.3")
-    implementation("androidx.compose.foundation:foundation:1.4.3")
-    implementation("androidx.compose.material:material:1.4.3")
-    implementation("androidx.activity:activity-compose:1.7.1")
-}
