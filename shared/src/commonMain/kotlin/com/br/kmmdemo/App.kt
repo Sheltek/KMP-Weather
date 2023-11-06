@@ -51,13 +51,13 @@ fun BottomBar(navigator: Navigator) {
         NavigationBarItem(
             selected = false,
             label = { Text("Home") },
-            onClick = { navigator.navigate("/home")},
+            onClick = { navigator.navigate("/home") },
             icon = { Icon(imageVector = Icons.Filled.Home, contentDescription = "")  }
         )
         NavigationBarItem(
             selected = false,
             label = { Text("Map") },
-            onClick = { navigator.navigate("/map")},
+            onClick = { navigator.navigate("/map") },
             icon = { Icon(imageVector = Icons.Filled.LocationOn, contentDescription = "")  }
         )
     }
