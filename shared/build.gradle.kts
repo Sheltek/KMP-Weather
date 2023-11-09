@@ -99,4 +99,14 @@ android {
     defaultConfig {
         minSdk = 30
     }
+
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.4"
+    }
+}
+dependencies {
+    implementation(libs.ui.tooling.preview.android)
 }
