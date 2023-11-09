@@ -1,6 +1,7 @@
 package com.br.kmmdemo
 
 import moe.tlaster.precompose.koin.koinViewModel
+import androidx.compose.runtime.Composable
 import moe.tlaster.precompose.navigation.RouteBuilder
 import moe.tlaster.precompose.navigation.transition.NavTransition
 import moe.tlaster.precompose.viewmodel.ViewModel
@@ -16,6 +17,9 @@ fun RouteBuilder.navGraph() {
         HomeScreen()
     }
     scene("/map", navTransition = NavTransition()) {
-        MapScreen()
+        WeatherMapScreen()
     }
 }
+
+@Composable
+expect fun WeatherMapScreen()
