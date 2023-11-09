@@ -64,8 +64,6 @@ kotlin {
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.ktor.client.android)
                 implementation(libs.koin.android)
-                implementation(compose.preview)
-                implementation(compose.uiTooling)
                 implementation(libs.koin.androidx.compose)
 
                 // Utility
@@ -100,6 +98,7 @@ android {
         minSdk = 30
     }
 
+    // Needed for Preview Pane in IDE
     buildFeatures {
         compose = true
     }
@@ -107,6 +106,4 @@ android {
         kotlinCompilerExtensionVersion = "1.5.4"
     }
 }
-dependencies {
-    implementation(libs.ui.tooling.preview.android)
-}
+
