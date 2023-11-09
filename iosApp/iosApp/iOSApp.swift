@@ -2,14 +2,12 @@ import SwiftUI
 import shared
 
 @main
-struct iOSApp: App {
+class KmmApp {
     init() {
         HelperKt.doInitKoin()
     }
 
-	var body: some Scene {
-		WindowGroup {
-			ContentView()
-		}
-	}
+    static func main() {
+        MainiosKt.main_ios()
+    }
 }
