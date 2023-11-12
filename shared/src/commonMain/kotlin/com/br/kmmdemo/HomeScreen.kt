@@ -12,6 +12,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.br.kmmdemo.resources.SharedRes
+import dev.icerock.moko.resources.compose.fontFamilyResource
 import dev.icerock.moko.resources.compose.stringResource
 
 
@@ -25,6 +26,7 @@ fun HomeScreen() {
             stringResource(SharedRes.strings.appName),
             color = Color.Cyan,
             fontSize = 24.sp,
+            fontFamily = fontFamilyResource(SharedRes.fonts.Montserrat.medium),
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(top = 24.dp),
         )

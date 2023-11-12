@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.br.kmmdemo.resources.SharedRes
+import dev.icerock.moko.resources.compose.fontFamilyResource
 import dev.icerock.moko.resources.compose.stringResource
 import moe.tlaster.precompose.navigation.NavHost
 import moe.tlaster.precompose.navigation.Navigator
@@ -52,15 +53,25 @@ fun BottomBar(navigator: Navigator) {
     NavigationBar(Modifier.fillMaxWidth().height(72.dp)) {
         NavigationBarItem(
             selected = false,
-            label = { Text(stringResource(SharedRes.strings.home)) },
+            label = {
+                Text(
+                    text = stringResource(SharedRes.strings.home),
+                    fontFamily = fontFamilyResource(SharedRes.fonts.Montserrat.medium)
+                )
+            },
             onClick = { navigator.navigate("/home") },
-            icon = { Icon(imageVector = Icons.Filled.Home, contentDescription = "")  }
+            icon = { Icon(imageVector = Icons.Filled.Home, contentDescription = "") }
         )
         NavigationBarItem(
             selected = false,
-            label = { Text(stringResource(SharedRes.strings.map)) },
+            label = {
+                Text(
+                    text = stringResource(SharedRes.strings.map),
+                    fontFamily = fontFamilyResource(SharedRes.fonts.Montserrat.medium)
+                )
+            },
             onClick = { navigator.navigate("/map") },
-            icon = { Icon(imageVector = Icons.Filled.LocationOn, contentDescription = "")  }
+            icon = { Icon(imageVector = Icons.Filled.LocationOn, contentDescription = "") }
         )
     }
 }
@@ -69,6 +80,6 @@ fun BottomBar(navigator: Navigator) {
 @Composable
 private fun TopBar() {
     TopAppBar(
-        title = { Text(stringResource(SharedRes.strings.appName))}
+        title = { Text(stringResource(SharedRes.strings.appName)) }
     )
 }
