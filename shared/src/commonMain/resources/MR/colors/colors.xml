@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- format: #RRGGBB[AA] or 0xRRGGBB[AA] or RRGGBB[AA] where [AA] - optional -->
+    <color name="primary">
+        <light>0xFF6200EE</light>
+        <dark>0xFFBB86FC</dark>
+    </color>
+    <color name="inversePrimary">
+        <light>0xFF3700B3</light>
+        <dark>0xFF3700B3</dark>
+    </color>
+    <color name="secondary">
+        <light>0xFF03DAC5</light>
+        <dark>0xFF03DAC5</dark>
+    </color>
+
+    <color name="colorReferenceExample">
+        <light>@color/primary</light>
+        <dark>@color/secondary</dark>
+    </color>
+</resources>

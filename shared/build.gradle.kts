@@ -31,6 +31,7 @@ kotlin {
         it.binaries.framework {
             baseName = "shared"
             binaryOption("bundleId", "com.br.kmmdemo.shared")
+            export(libs.moko.resources)
         }
     }
 
