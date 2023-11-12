@@ -13,9 +13,4 @@
         <light>0xFF03DAC5</light>
         <dark>0xFF03DAC5</dark>
     </color>
-
-    <color name="colorReferenceExample">
-        <light>@color/primary</light>
-        <dark>@color/secondary</dark>
-    </color>
 </resources>
