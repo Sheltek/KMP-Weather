@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.google.secrets)
     alias(libs.plugins.google.services)
+    alias(libs.plugins.multiplatformResources)
     alias(libs.plugins.ksp)
 }
 
@@ -29,6 +30,7 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+            binaryOption("bundleId", "com.br.kmmdemo.shared")
         }
     }
 
@@ -51,6 +53,8 @@ kotlin {
                 api(libs.precompose)
                 api(libs.precompose.viewmodel)
                 api(libs.precompose.koin)
+                api(libs.moko.resources)
+                api(libs.moko.resources.compose)
 
                 // KTOR Networking and Serialization
                 implementation(libs.ktor.client.core)
@@ -60,6 +64,7 @@ kotlin {
             }
         }
         val androidMain by getting {
+            dependsOn(commonMain)
             dependencies {
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.ktor.client.android)
@@ -75,20 +80,33 @@ kotlin {
                 // Preview Utils need to be implemented in platform code as they use platform renderers
                 implementation(compose.preview)
                 implementation(compose.uiTooling)
+
+                api(libs.moko.resources)
+                api(libs.moko.resources.compose)
             }
         }
         val iosMain by getting {
+            dependsOn(commonMain)
             dependencies {
                 implementation(libs.ktor.client.darwin)
+                api(libs.moko.resources)
+                api(libs.moko.resources.compose)
             }
         }
         val commonTest by getting {
+            dependsOn(commonMain)
             dependencies {
 //                implementation(kotlin("test"))
                 implementation(libs.koin.test)
+                implementation(libs.moko.resources.test)
             }
         }
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "com.br.kmmdemo.resources"
+    multiplatformResourcesClassName = "SharedRes"
 }
 
 android {
@@ -106,4 +124,3 @@ android {
         kotlinCompilerExtensionVersion = "1.5.4"
     }
 }
-

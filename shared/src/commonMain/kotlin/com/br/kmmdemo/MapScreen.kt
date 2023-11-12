@@ -11,6 +11,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.br.kmmdemo.resources.SharedRes
+import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun MapScreen() {
@@ -19,7 +21,7 @@ fun MapScreen() {
         modifier = Modifier.fillMaxWidth().fillMaxHeight()
     ) {
         Text(
-            "MAP",
+            stringResource(SharedRes.strings.map),
             color = Color.Green,
             fontSize = 24.sp,
             textAlign = TextAlign.Center,

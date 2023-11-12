@@ -11,6 +11,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.br.kmmdemo.resources.SharedRes
+import dev.icerock.moko.resources.compose.stringResource
+
 
 @Composable
 fun HomeScreen() {
@@ -19,7 +22,7 @@ fun HomeScreen() {
         modifier = Modifier.fillMaxWidth().fillMaxHeight()
     ) {
         Text(
-            "KMP Demo",
+            stringResource(SharedRes.strings.appName),
             color = Color.Cyan,
             fontSize = 24.sp,
             textAlign = TextAlign.Center,
