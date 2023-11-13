@@ -15,7 +15,7 @@ buildscript {
     repositories {
         gradlePluginPortal()
     }
-    // TODO may need to move this. doesn't generate on gradle sync unless this file changed
+
     dependencies {
         // manual generate with ./gradlew generateMRcommonMain
         classpath(libs.mokoResourceGenerator)
