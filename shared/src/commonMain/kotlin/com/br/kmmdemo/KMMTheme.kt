@@ -13,9 +13,11 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.br.kmmdemo.resources.SharedRes
-import dev.icerock.moko.resources.compose.colorResource
-import dev.icerock.moko.resources.desc.color.asColorDesc
+
+val violet = Color(0xFF6200EE)
+val lightPurple = Color(0xFFBB86FC)
+val blue = Color(0xFF3700B3)
+val vivid_cyan = Color(0xFF03DAC5)
 
 @Composable
 fun KMMTheme(
@@ -25,15 +27,15 @@ fun KMMTheme(
 ) {
     val colors = if (darkTheme) {
         darkColorScheme(
-            primary = colorResource(SharedRes.colors.primary),
-            inversePrimary = colorResource(SharedRes.colors.inversePrimary),
-            secondary = colorResource(SharedRes.colors.secondary)
+            primary = lightPurple,
+            inversePrimary = blue,
+            secondary = vivid_cyan
         )
     } else {
         lightColorScheme(
-            primary = colorResource(SharedRes.colors.primary),
-            inversePrimary = colorResource(SharedRes.colors.inversePrimary),
-            secondary = colorResource(SharedRes.colors.secondary)
+            primary = violet,
+            inversePrimary = blue,
+            secondary = vivid_cyan
         )
     }
     val typography = Typography(
