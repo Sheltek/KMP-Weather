@@ -81,17 +81,12 @@ kotlin {
                 // Preview Utils need to be implemented in platform code as they use platform renderers
                 implementation(compose.preview)
                 implementation(compose.uiTooling)
-
-                api(libs.moko.resources)
-                api(libs.moko.resources.compose)
             }
         }
         val iosMain by getting {
             dependsOn(commonMain)
             dependencies {
                 implementation(libs.ktor.client.darwin)
-                api(libs.moko.resources)
-                api(libs.moko.resources.compose)
             }
         }
         val commonTest by getting {
