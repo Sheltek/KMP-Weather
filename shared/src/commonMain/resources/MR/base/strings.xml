@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="appName">KMP Demo</string>
+    <string name="map">MAP</string>
+    <string name="home">Home</string>
+    <string name="test">Test</string>
+    <string name="new_york_city">New York City</string>
+    <string name="addison">Addison</string>
+    <string name="los_angeles">Los Angeles</string>
+    <string name="chicago">Chicago</string>
+    <string name="houston">Houston</string>
+    <string name="philadelphia">Philadelphia</string>
+</resources>

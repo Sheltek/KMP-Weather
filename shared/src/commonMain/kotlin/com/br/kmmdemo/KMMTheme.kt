@@ -14,6 +14,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+val violet = Color(0xFF6200EE)
+val lightPurple = Color(0xFFBB86FC)
+val blue = Color(0xFF3700B3)
+val vivid_cyan = Color(0xFF03DAC5)
+
 @Composable
 fun KMMTheme(
 //    darkTheme: Boolean = isSystemInDarkTheme(),
@@ -22,15 +27,15 @@ fun KMMTheme(
 ) {
     val colors = if (darkTheme) {
         darkColorScheme(
-            primary = Color(0xFFBB86FC),
-            inversePrimary = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
+            primary = lightPurple,
+            inversePrimary = blue,
+            secondary = vivid_cyan
         )
     } else {
         lightColorScheme(
-            primary = Color(0xFF6200EE),
-            inversePrimary = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
+            primary = violet,
+            inversePrimary = blue,
+            secondary = vivid_cyan
         )
     }
     val typography = Typography(
