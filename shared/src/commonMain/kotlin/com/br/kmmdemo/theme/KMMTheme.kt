@@ -53,7 +53,7 @@ fun KMMTheme(
     } else {
         kmpLightColors
     }
-    val typography = kmpTypography
+    val typography = getKmpTypography()
     val shapes = Shapes(
         small = RoundedCornerShape(4.dp),
         medium = RoundedCornerShape(4.dp),

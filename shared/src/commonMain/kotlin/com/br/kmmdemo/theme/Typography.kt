@@ -1,15 +1,18 @@
 package com.br.kmmdemo.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.br.kmmdemo.resources.SharedRes
+import dev.icerock.moko.resources.compose.fontFamilyResource
 
-// FONT FAMILY CAN ONLY BE SET AT THE COMPOSABLE WHEN USING MOKO RESOURCES AT THIS TIME
-
-val kmpTypography = Typography(
+@Composable
+fun getKmpTypography() = Typography(
     displayLarge = TextStyle(
+        fontFamily = fontFamilyResource(SharedRes.fonts.Montserrat.medium),
         fontSize = 20.sp,
         fontWeight = FontWeight.Medium,
         fontStyle = FontStyle.Normal,
