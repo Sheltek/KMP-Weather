@@ -6,5 +6,5 @@ expect class Platform() {
     val name: String
 
     @Composable
-    fun screenSize(): Int =
+    fun screenSize(): Int
 }

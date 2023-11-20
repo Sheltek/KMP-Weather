@@ -1,6 +1,6 @@
 @file:Suppress("ConstructorParameterNaming", "MatchingDeclarationName", "LongParameterList")
 
-package com.bottlerocketstudios.compose.resources
+package com.br.kmmdemo.theme
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp

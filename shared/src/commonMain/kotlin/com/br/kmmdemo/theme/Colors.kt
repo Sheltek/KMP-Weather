@@ -1,4 +1,4 @@
-package com.bottlerocketstudios.compose.resources
+package com.br.kmmdemo.theme
 
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
