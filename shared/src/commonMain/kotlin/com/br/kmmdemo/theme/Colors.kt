@@ -16,6 +16,7 @@ val purple = Color(0xFF48319D)
 val darkBlue = Color(0xFF1F1D47)
 val brightViolet = Color(0xFFC427FB)
 val palePurple = Color(0xFFE0D9FF)
+val lightBlue = Color(0xFF40CBD8)
 
 val kmpLightColors = lightColorScheme(
     primary = purple,
@@ -29,6 +30,7 @@ val kmpLightColors = lightColorScheme(
     onTertiary = grey_30_Opacity,
     onBackground = white,
     onSurface = white,
+    onSurfaceVariant = lightBlue,
 )
 
 val kmpDarkColors = darkColorScheme(
@@ -43,4 +45,5 @@ val kmpDarkColors = darkColorScheme(
     onTertiary = bluishGrey_30_Opacity,
     onBackground = white,
     onSurface = white,
+    onSurfaceVariant = lightBlue,
 )

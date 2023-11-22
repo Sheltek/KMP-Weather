@@ -10,4 +10,7 @@
     <string name="chicago">Chicago</string>
     <string name="houston">Houston</string>
     <string name="philadelphia">Philadelphia</string>
+
+    <!-- Content Descriptions -->
+    <string name="weatherIcon">Weather Icon</string>
 </resources>
