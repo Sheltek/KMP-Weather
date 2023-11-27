@@ -6,6 +6,6 @@ data class DailyForecastState(
     val day: String? = null,
     val precipProbability: String? = null,
     val temperature: String? = null,
-    val weatherIcon: ImageResource,
+    val weatherIcon: WeatherEnum,
     val isToday: Boolean = false,
 )

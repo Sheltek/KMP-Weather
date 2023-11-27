@@ -42,8 +42,8 @@ fun DailyForecastChip(state: DailyForecastState) {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     content = {
                         Image(
-                            modifier = Modifier.size(Dimens.grid_4),
-                            painter = painterResource(weatherIcon),
+                            modifier = Modifier.size(Dimens.grid_4_5),
+                            painter = painterResource(weatherIcon.icon),
                             contentDescription = stringResource(SharedRes.strings.weatherIcon),
                             contentScale = ContentScale.Crop
                         )
