@@ -1,5 +1,6 @@
 package com.br.kmmdemo.theme
 
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
@@ -13,6 +14,8 @@ val bluishGrey_60_Opacity = Color(0x99EBEBF5)
 val bluishGrey_30_Opacity = Color(0x4DEBEBF5)
 val bluishGrey_18_Opacity = Color(0x2EEBEBF5)
 val purple = Color(0xFF48319D)
+val lightPurple = Color(0xFF5936B4)
+val darkPurple = Color(0xFF362A84)
 val darkBlue = Color(0xFF1F1D47)
 val brightViolet = Color(0xFFC427FB)
 val palePurple = Color(0xFFE0D9FF)
