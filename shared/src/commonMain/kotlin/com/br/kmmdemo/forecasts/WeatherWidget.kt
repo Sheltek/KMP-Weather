@@ -74,7 +74,7 @@ fun WeatherWidget(state: WeatherWidgetState) {
                     modifier = Modifier.padding(end = Dimens.grid_2_5),
                     content = {
                         Image(
-                            modifier = Modifier.size(140.dp), //TODO: extract Dimension
+                            modifier = Modifier.size(140.dp),
                             painter = painterResource(weatherIcon.icon),
                             contentDescription = weatherIcon.weather,
                             contentScale = ContentScale.Crop

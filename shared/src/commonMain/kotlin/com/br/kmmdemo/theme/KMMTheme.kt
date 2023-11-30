@@ -24,7 +24,7 @@ fun ProvideColors(
 private val LocalAppColors = staticCompositionLocalOf {
     lightColorScheme()
 }
-private const val SMALL_SCREEN_WIDTH_DP = 360
+const val SMALL_SCREEN_WIDTH_DP = 360
 
 @Composable
 fun ProvideDimens(
@@ -42,12 +42,9 @@ private val LocalAppDimens = staticCompositionLocalOf {
 @Composable
 fun KMMTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    width: Int,
+    dimensions: Dimensions = sw360Dimensions,
     content: @Composable () -> Unit,
 ) {
-    val dimensions =
-        if (width <= SMALL_SCREEN_WIDTH_DP) smallDimensions else sw360Dimensions
-
     val colors = if (darkTheme) {
         kmpDarkColors
     } else {

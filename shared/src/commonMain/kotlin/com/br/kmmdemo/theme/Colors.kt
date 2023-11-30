@@ -1,6 +1,5 @@
 package com.br.kmmdemo.theme
 
-import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
@@ -13,27 +12,33 @@ val grey_18_Opacity = Color(0x2E3C3C43)
 val bluishGrey_60_Opacity = Color(0x99EBEBF5)
 val bluishGrey_30_Opacity = Color(0x4DEBEBF5)
 val bluishGrey_18_Opacity = Color(0x2EEBEBF5)
-val purple = Color(0xFF48319D)
+val purple = Color(0xFF343069)
+val selectedPurple = Color(0xFF48319D)
 val lightPurple = Color(0xFF5936B4)
 val darkPurple = Color(0xFF362A84)
 val darkBlue = Color(0xFF1F1D47)
 val brightViolet = Color(0xFFC427FB)
 val palePurple = Color(0xFFE0D9FF)
 val lightBlue = Color(0xFF40CBD8)
+val outline = Color(0xFF6C4ACE)
+val outlineVariant = Color(0xFF5747A5)
 
 val kmpLightColors = lightColorScheme(
     primary = purple,
     secondary = darkBlue,
     tertiary = palePurple,
     background = palePurple,
-    outline = white,
+    outline = outline,
+    outlineVariant = outlineVariant,
     surface = purple,
+    surfaceVariant = selectedPurple,
     onPrimary = white,
     onSecondary = grey_60_Opacity,
     onTertiary = grey_30_Opacity,
     onBackground = white,
     onSurface = white,
-    onSurfaceVariant = lightBlue,
+    onSurfaceVariant = white,
+    inverseOnSurface = lightBlue
 )
 
 val kmpDarkColors = darkColorScheme(
@@ -41,12 +46,15 @@ val kmpDarkColors = darkColorScheme(
     secondary = darkBlue,
     tertiary = brightViolet,
     background = purple,
-    outline = white,
+    outline = outline,
+    outlineVariant = outlineVariant,
     surface = purple,
+    surfaceVariant = selectedPurple,
     onPrimary = white,
     onSecondary = bluishGrey_60_Opacity,
     onTertiary = bluishGrey_30_Opacity,
     onBackground = white,
     onSurface = white,
-    onSurfaceVariant = lightBlue,
+    onSurfaceVariant = white,
+    inverseOnSurface = lightBlue
 )

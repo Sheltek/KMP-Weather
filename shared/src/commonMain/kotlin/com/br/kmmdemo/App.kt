@@ -17,7 +17,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.br.kmmdemo.resources.SharedRes
+import com.br.kmmdemo.theme.Dimensions
 import com.br.kmmdemo.theme.KMMTheme
+import com.br.kmmdemo.theme.sw360Dimensions
 import dev.icerock.moko.resources.compose.fontFamilyResource
 import dev.icerock.moko.resources.compose.stringResource
 import moe.tlaster.precompose.navigation.NavHost
@@ -26,14 +28,14 @@ import moe.tlaster.precompose.navigation.rememberNavigator
 import moe.tlaster.precompose.navigation.transition.NavTransition
 
 @Composable
-fun App(darkTheme: Boolean = false, width: Int) {
+fun App(darkTheme: Boolean = false, dimensions: Dimensions = sw360Dimensions) {
     val navigator = rememberNavigator()
 
     Scaffold(
         topBar = { TopBar() },
         bottomBar = { BottomBar(navigator) },
     ) {
-        KMMTheme(darkTheme = darkTheme, width) {
+        KMMTheme(darkTheme = darkTheme, dimensions) {
             NavHost(
                 // Assign the navigator to the NavHost
                 navigator = navigator,
