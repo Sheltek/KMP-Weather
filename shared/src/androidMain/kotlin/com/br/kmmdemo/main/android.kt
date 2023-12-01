@@ -5,7 +5,4 @@ import com.br.kmmdemo.App
 import com.br.kmmdemo.WeatherMapScreen
 
 @Composable
-fun MainView(width: Int) = App(false, width)
-
-@Composable
 fun WeatherMapView() = WeatherMapScreen()

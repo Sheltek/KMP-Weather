@@ -112,3 +112,5 @@ fun getKmpTypography() = Typography(
         letterSpacing = 0.066.sp
     )
 )
+
+fun TextStyle.semiBold() = copy(fontWeight = FontWeight.SemiBold)

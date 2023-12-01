@@ -10,4 +10,29 @@
     <string name="chicago">Chicago</string>
     <string name="houston">Houston</string>
     <string name="philadelphia">Philadelphia</string>
+
+    <!-- Weather Enum Icon Descriptions -->
+    <string name="fog">Fog</string>
+    <string name="rain">Rain</string>
+    <string name="snow">Snow</string>
+    <string name="thunderstorms">Thunderstorms</string>
+    <string name="hail">Hail</string>
+    <string name="lightening">Lightening</string>
+    <string name="clear_skies">Clear Skies</string>
+    <string name="partly_cloudy">Partly Cloudy</string>
+    <string name="cloudy">Cloudy</string>
+    <string name="heavy_rain">Heavy Rain</string>
+    <string name="light_rain">Light Rain</string>
+    <string name="sunny">Sunny</string>
+    <string name="windy">Windy</string>
+
+    <!-- Content Descriptions -->
+    <string name="weatherIcon">Weather Icon</string>
+
+    <!-- Errors -->
+    <string name="tempError">--°</string>
+    <string name="highLowTempError">H: --°  L: --°</string>
+    <string name="locationError">Location Unavailable</string>
+    <string name="dayTimeError">---</string>
+    <string name="precipError">--%</string>
 </resources>
