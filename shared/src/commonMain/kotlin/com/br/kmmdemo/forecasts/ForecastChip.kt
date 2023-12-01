@@ -19,7 +19,7 @@ import com.br.kmmdemo.theme.Dimens
 @Composable
 fun ForecastChip(
     state: ForecastState,
-    content: @Composable ColumnScope.() -> Unit,
+    content: @Composable ColumnScope.(ForecastState) -> Unit,
 ) = with(state) {
     Surface(
         modifier = Modifier.width(60.dp).height(146.dp),
@@ -35,7 +35,7 @@ fun ForecastChip(
             modifier = Modifier.padding(horizontal = Dimens.grid_1, vertical = Dimens.grid_2),
             verticalArrangement = Arrangement.spacedBy(Dimens.grid_1, Alignment.CenterVertically),
             horizontalAlignment = Alignment.CenterHorizontally,
-            content = content,
+            content = { content(state) },
         )
     }
 }

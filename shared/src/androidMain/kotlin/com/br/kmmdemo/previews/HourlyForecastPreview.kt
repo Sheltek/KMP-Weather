@@ -17,17 +17,31 @@ val hourlyForecast = ForecastState(
 
 @Composable
 @Preview
-fun PreviewNowHourlyForecast() {
+fun `Preview Now Hourly Forecast`() {
     KMMTheme {
-        val forecast = hourlyForecast.copy(isNow = true)
-        ForecastChip(state = forecast) { HourlyForecastChip(state = forecast) }
+        ForecastChip(state = hourlyForecast.copy(isNow = true)) { state ->
+            HourlyForecastChip(state)
+        }
     }
 }
 
 @Composable
 @Preview
-fun PreviewHourlyForecast() {
+fun `Preview Hourly Forecast`() {
     KMMTheme {
-        ForecastChip(state = hourlyForecast) { HourlyForecastChip(state = hourlyForecast) }
+        ForecastChip(state = hourlyForecast) { state ->
+            HourlyForecastChip(state)
+        }
+    }
+}
+
+@Composable
+@Preview
+fun `Preview Hourly Forecast ERROR`() {
+    val errorForecast = ForecastState(weatherIcon = WeatherEnum.WINDY)
+    KMMTheme {
+        ForecastChip(state = errorForecast) { state ->
+            HourlyForecastChip(state)
+        }
     }
 }

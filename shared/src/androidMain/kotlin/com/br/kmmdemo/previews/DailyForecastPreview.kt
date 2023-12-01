@@ -17,17 +17,28 @@ private val dailyForecast = ForecastState(
 
 @Composable
 @Preview
-fun `Preview Today Daily Forecast`() {
-    val forecast = dailyForecast.copy(isNow = true)
+fun `Preview Today Daily Forecast`() =
     KMMTheme {
-        ForecastChip(state = forecast) { DailyForecastChip(forecast) }
+        ForecastChip(state = dailyForecast.copy(isNow = true)) { state ->
+            DailyForecastChip(state)
+        }
     }
-}
-
 
 @Composable
 @Preview
 fun `Preview Daily Forecast`() =
     KMMTheme {
-        ForecastChip(state = dailyForecast) { DailyForecastChip(state = dailyForecast)}
+        ForecastChip(state = dailyForecast) { state ->
+            DailyForecastChip(state)
+        }
+    }
+
+@Composable
+@Preview
+fun `Preview Daily Forecast ERROR`() =
+    KMMTheme {
+        val errorForecast = ForecastState(weatherIcon = WeatherEnum.HAIL)
+        ForecastChip(state = errorForecast) { state ->
+            DailyForecastChip(state)
+        }
     }

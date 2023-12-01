@@ -19,7 +19,10 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun DailyForecastChip(state: ForecastState) {
     with(state) {
-        Text(dayTime ?: "", style = MaterialTheme.typography.bodySmall.semiBold())
+        Text(
+            dayTime ?: stringResource(SharedRes.strings.dayTimeError),
+            style = MaterialTheme.typography.bodySmall.semiBold()
+        )
 
         Column(
             verticalArrangement = Arrangement.spacedBy(Dimens.grid_0_25),
@@ -31,12 +34,15 @@ fun DailyForecastChip(state: ForecastState) {
                     contentDescription = stringResource(SharedRes.strings.weatherIcon),
                 )
                 Text(
-                    precipProbability ?: "",
+                    precipProbability ?: stringResource(SharedRes.strings.precipError),
                     color = Colors.inverseOnSurface,
                     style = MaterialTheme.typography.labelLarge.semiBold()
                 )
             })
 
-        Text(temperature ?: "", style = MaterialTheme.typography.titleSmall)
+        Text(
+            temperature ?: stringResource(SharedRes.strings.tempError),
+            style = MaterialTheme.typography.titleSmall
+        )
     }
 }

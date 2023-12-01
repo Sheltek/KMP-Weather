@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import com.br.kmmdemo.resources.SharedRes
 import com.br.kmmdemo.theme.Colors
 import com.br.kmmdemo.theme.Dimens
-import com.br.kmmdemo.theme.getKmpTypography
 import com.br.kmmdemo.theme.semiBold
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
@@ -20,7 +19,10 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun HourlyForecastChip(state: ForecastState) {
     with(state) {
-        Text(dayTime ?: "", style = MaterialTheme.typography.bodySmall.semiBold())
+        Text(
+            dayTime ?: stringResource(SharedRes.strings.dayTimeError),
+            style = MaterialTheme.typography.bodySmall.semiBold()
+        )
 
         Column(
             verticalArrangement = Arrangement.spacedBy(Dimens.grid_0_25),
@@ -32,12 +34,15 @@ fun HourlyForecastChip(state: ForecastState) {
                     contentDescription = stringResource(SharedRes.strings.weatherIcon),
                 )
                 Text(
-                    precipProbability ?: "",
+                    precipProbability ?: stringResource(SharedRes.strings.precipError),
                     color = Colors.inverseOnSurface,
-                    style = getKmpTypography().labelLarge.semiBold(),
+                    style = MaterialTheme.typography.labelLarge.semiBold(),
                 )
             })
 
-        Text(temperature ?: "", style = MaterialTheme.typography.titleSmall)
+        Text(
+            temperature ?: stringResource(SharedRes.strings.tempError),
+            style = MaterialTheme.typography.titleSmall
+        )
     }
 }
