@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.br.kmmdemo.resources.SharedRes
 import com.br.kmmdemo.theme.Colors
@@ -37,7 +38,7 @@ fun AirQualityWidget(risk: AirQualityEnum) {
         color = Colors.primaryContainer,
         shape = RoundedCornerShape(Dimens.grid_3),
         border = BorderStroke(
-            width = Dimens.grid_0_1,
+            width = 1.dp,
             color = Colors.outlineVariant,
         )
     ) {
@@ -59,7 +60,7 @@ fun AirQualityWidget(risk: AirQualityEnum) {
             KMMDemoSlider(initValue = risk.level, valueRange = 0f..0.6f)
 
             Divider(
-                thickness = Dimens.grid_0_1,
+                thickness = 1.dp,
                 color = Colors.onTertiary.copy(alpha = 0.1f)
             )
 
