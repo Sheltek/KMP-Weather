@@ -3,9 +3,9 @@ package com.br.kmmdemo.previews
 import ForecastChip
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.br.kmmdemo.forecasts.ForecastState
-import com.br.kmmdemo.forecasts.HourlyForecastChip
-import com.br.kmmdemo.forecasts.WeatherEnum
+import com.br.kmmdemo.ui.forecasts.ForecastState
+import com.br.kmmdemo.ui.forecasts.HourlyForecastChip
+import com.br.kmmdemo.ui.forecasts.WeatherEnum
 import com.br.kmmdemo.theme.KMMTheme
 
 val hourlyForecast = ForecastState(

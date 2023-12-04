@@ -1,4 +1,4 @@
-package com.br.kmmdemo.forecasts
+package com.br.kmmdemo.ui.forecasts
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

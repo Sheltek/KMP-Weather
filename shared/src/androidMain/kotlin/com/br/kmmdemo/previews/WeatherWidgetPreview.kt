@@ -1,8 +1,8 @@
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.br.kmmdemo.forecasts.WeatherEnum
-import com.br.kmmdemo.forecasts.WeatherWidgetState
+import com.br.kmmdemo.ui.forecasts.WeatherEnum
+import com.br.kmmdemo.ui.forecasts.WeatherWidgetState
 import com.br.kmmdemo.theme.KMMTheme
 
 @Composable

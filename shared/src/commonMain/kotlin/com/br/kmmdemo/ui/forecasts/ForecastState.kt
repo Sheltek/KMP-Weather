@@ -1,4 +1,4 @@
-package com.br.kmmdemo.forecasts
+package com.br.kmmdemo.ui.forecasts
 
 data class ForecastState(
     val dayTime: String? = null,

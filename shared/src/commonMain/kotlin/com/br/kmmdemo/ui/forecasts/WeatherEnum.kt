@@ -1,4 +1,4 @@
-package com.br.kmmdemo.forecasts
+package com.br.kmmdemo.ui.forecasts
 
 import com.br.kmmdemo.resources.SharedRes
 import dev.icerock.moko.resources.ImageResource

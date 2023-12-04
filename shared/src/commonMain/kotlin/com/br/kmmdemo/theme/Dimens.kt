@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
  */
 
 class Dimensions(
+    val grid_0_1: Dp,
     val grid_0_25: Dp,
     val grid_0_5: Dp,
     val grid_0_75: Dp,
@@ -49,6 +50,7 @@ class Dimensions(
 )
 
 val smallDimensions = Dimensions(
+    grid_0_1 = 1.dp,
     grid_0_25 = 1.5f.dp,
     grid_0_5 = 3.dp,
     grid_0_75 = (4.5).dp,
@@ -79,6 +81,7 @@ val smallDimensions = Dimensions(
 )
 
 val sw360Dimensions = Dimensions(
+    grid_0_1 = 1.dp,
     grid_0_25 = 2.dp,
     grid_0_5 = 4.dp,
     grid_0_75 = 6.dp,

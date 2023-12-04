@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import com.br.kmmdemo.resources.SharedRes
 import dev.icerock.moko.resources.compose.fontFamilyResource
@@ -114,3 +115,5 @@ fun getKmpTypography() = Typography(
 )
 
 fun TextStyle.semiBold() = copy(fontWeight = FontWeight.SemiBold)
+fun TextStyle.bold() = copy(fontWeight = FontWeight.Bold)
+fun TextStyle.letterSpacing(spacing: TextUnit) = copy(letterSpacing = spacing)
