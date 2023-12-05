@@ -12,9 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.br.kmmdemo.forecasts.ForecastState
 import com.br.kmmdemo.theme.Colors
 import com.br.kmmdemo.theme.Dimens
+import com.br.kmmdemo.ui.forecasts.ForecastState
 
 @Composable
 fun ForecastChip(

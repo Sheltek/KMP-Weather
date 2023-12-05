@@ -9,7 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
-import com.br.kmmdemo.forecasts.WeatherEnum
+import com.br.kmmdemo.ui.forecasts.WeatherEnum
 import com.br.kmmdemo.resources.SharedRes
 import com.br.kmmdemo.theme.Dimens
 import dev.icerock.moko.resources.compose.painterResource

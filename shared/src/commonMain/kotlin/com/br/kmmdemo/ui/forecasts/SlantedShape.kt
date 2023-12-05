@@ -1,4 +1,4 @@
-package com.br.kmmdemo.forecasts
+package com.br.kmmdemo.ui.forecasts
 
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Outline

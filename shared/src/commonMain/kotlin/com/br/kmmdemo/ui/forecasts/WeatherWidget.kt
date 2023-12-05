@@ -19,12 +19,12 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.br.kmmdemo.forecasts.SlantedShape
-import com.br.kmmdemo.forecasts.WeatherWidgetState
 import com.br.kmmdemo.resources.SharedRes
 import com.br.kmmdemo.theme.Colors
 import com.br.kmmdemo.theme.Dimens
 import com.br.kmmdemo.theme.Gradients
+import com.br.kmmdemo.ui.forecasts.SlantedShape
+import com.br.kmmdemo.ui.forecasts.WeatherWidgetState
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 

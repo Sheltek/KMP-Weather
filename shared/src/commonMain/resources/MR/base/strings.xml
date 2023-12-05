@@ -26,8 +26,21 @@
     <string name="sunny">Sunny</string>
     <string name="windy">Windy</string>
 
+    <!-- Weather Details Components -->
+    <string name="air_quality">AIR QUALITY</string>
+    <string name="aqi_1">1-No Health Risk</string>
+    <string name="aqi_2">2-Low Health Risk</string>
+    <string name="aqi_3">3-Moderate Health Risk</string>
+    <string name="aqi_4">4-High Health Risk</string>
+    <string name="aqi_5">5-Very High Health Risk</string>
+    <string name="aqi_6">6-Emergency Health Risk</string>
+    <string name="unknown_aqi">Risk Level Unknown</string>
+    <string name="see_more">See more</string>
+
     <!-- Content Descriptions -->
     <string name="weatherIcon">Weather Icon</string>
+    <string name="chevron_right">Next arrow</string>
+    <string name="air_quality_icon">Air quality icon</string>
 
     <!-- Errors -->
     <string name="tempError">--°</string>
