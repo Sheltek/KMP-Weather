@@ -37,6 +37,28 @@
     <string name="unknown_aqi">Risk Level Unknown</string>
     <string name="see_more">See more</string>
 
+    <string name="uv_index_label">UV INDEX</string>
+    <string name="uv_index_low">Low</string>
+    <string name="uv_index_mod">Moderate</string>
+    <string name="uv_index_high">High</string>
+    <string name="uv_index_very_high">Very High</string>
+    <string name="uv_index_extreme">Extreme</string>
+    <string name="unknown_uv">Unknown</string>
+    <string name="uv_index_1">1</string>
+    <string name="uv_index_2">2</string>
+    <string name="uv_index_3">3</string>
+    <string name="uv_index_4">4</string>
+    <string name="uv_index_5">5</string>
+    <string name="uv_index_unknown">--</string>
+
+    <string name="sunrise">SUNRISE</string>
+    <string name="wind">WIND</string>
+    <string name="rainfall">RAINFALL</string>
+    <string name="feels_like">FEELS LIKE</string>
+    <string name="humidity">HUMIDITY</string>
+    <string name="visibility">VISIBILITY</string>
+    <string name="pressure">PRESSURE</string>
+
     <!-- Content Descriptions -->
     <string name="weatherIcon">Weather Icon</string>
     <string name="chevron_right">Next arrow</string>

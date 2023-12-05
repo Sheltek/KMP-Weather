@@ -25,6 +25,7 @@ import com.br.kmmdemo.theme.Dimens
 import com.br.kmmdemo.theme.bold
 import com.br.kmmdemo.theme.letterSpacing
 import com.br.kmmdemo.ui.shared.KMMDemoSlider
+import com.br.kmmdemo.ui.weatherDetails.DETAILS_WIDGET_SIZE
 import com.br.kmmdemo.ui.weatherDetails.DetailsWidgetLabel
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
@@ -34,7 +35,7 @@ fun AirQualityWidget(risk: AirQualityEnum) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .height(DETAILS_WIDGET_HEIGHT),
+            .height(DETAILS_WIDGET_SIZE),
         color = Colors.primaryContainer,
         shape = RoundedCornerShape(Dimens.grid_3),
         border = BorderStroke(
