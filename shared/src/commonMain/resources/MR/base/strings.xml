@@ -27,6 +27,8 @@
     <string name="windy">Windy</string>
 
     <!-- Weather Details Components -->
+    <string name="input_degrees">%s°</string>
+    <string name="input_percentage">%s%%</string>
     <string name="air_quality">AIR QUALITY</string>
     <string name="aqi_1">1-No Health Risk</string>
     <string name="aqi_2">2-Low Health Risk</string>
@@ -53,7 +55,10 @@
 
     <string name="sunrise">SUNRISE</string>
     <string name="wind">WIND</string>
+
     <string name="rainfall">RAINFALL</string>
+    <string name="in_last_hour">in last hour</string>
+    <string name="input_expected_rainfall">%s expected in next 24h</string>
 
     <string name="feels_like">FEELS LIKE</string>
     <string name="feels_like_similar">Similar to the actual temperature</string>
@@ -62,7 +67,12 @@
     <string name="feels_like_unknown">Unknown 'Feels Like' temperature</string>
 
     <string name="humidity">HUMIDITY</string>
+    <string name="humidity_dew_description">The dew point is %s right now</string>
+
     <string name="visibility">VISIBILITY</string>
+    <string name="visibility_miles">Clear day visibility average 10 mi</string>
+    <string name="visibility_km">Clear day visibility average 16 km</string>
+
     <string name="pressure">PRESSURE</string>
 
     <!-- Content Descriptions -->
@@ -72,8 +82,10 @@
 
     <!-- Errors -->
     <string name="tempError">--°</string>
+    <string name="number_error">--</string>
     <string name="highLowTempError">H: --°  L: --°</string>
     <string name="locationError">Location Unavailable</string>
-    <string name="dayTimeError">---</string>
-    <string name="precipError">--%</string>
+    <string name="empty_digits_error">---</string>
+    <string name="percentageError">--%</string>
+    <string name="unknown_number">unknown</string>
 </resources>

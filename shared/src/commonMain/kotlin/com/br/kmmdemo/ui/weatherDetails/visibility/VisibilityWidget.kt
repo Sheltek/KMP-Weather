@@ -9,31 +9,29 @@ import com.br.kmmdemo.theme.Dimens
 import com.br.kmmdemo.theme.letterSpacing
 import com.br.kmmdemo.ui.weatherDetails.DetailsWidgetLabel
 import com.br.kmmdemo.ui.weatherDetails.WeatherDetailsSurface
-import com.br.kmmdemo.ui.weatherDetails.feelsLike.FeelsLikeState
+import com.br.kmmdemo.ui.weatherDetails.visibility.VisibilityState
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
-fun FeelsLikeWidget(feelsLike: FeelsLikeState) {
+fun VisibilityWidget(visibilityState: VisibilityState) {
+    val averageVisibility = if (visibilityState.useMetric) SharedRes.strings.visibility_km else SharedRes.strings.visibility_miles
     WeatherDetailsSurface(
         content = {
             DetailsWidgetLabel(
-                icon = SharedRes.images.feels_like_icon,
-                iconDesc = SharedRes.strings.feels_like,
-                label = SharedRes.strings.feels_like,
+                icon = SharedRes.images.visibility_icon,
+                iconDesc = SharedRes.strings.visibility,
+                label = SharedRes.strings.visibility,
             )
 
             Text(
-                stringResource(
-                    SharedRes.strings.input_degrees,
-                    feelsLike.temperatureApparent?.toInt()
-                        ?: stringResource(SharedRes.strings.number_error)
-                ),
+                visibilityState.currentVisibility
+                    ?: stringResource(SharedRes.strings.empty_digits_error),
                 modifier = Modifier.padding(top = Dimens.grid_2),
                 style = MaterialTheme.typography.titleLarge.letterSpacing(0.96.sp)
             )
 
             Text(
-                stringResource(feelsLike.description),
+                stringResource(averageVisibility),
                 modifier = Modifier.padding(top = Dimens.grid_3),
                 style = MaterialTheme.typography.labelLarge
             )

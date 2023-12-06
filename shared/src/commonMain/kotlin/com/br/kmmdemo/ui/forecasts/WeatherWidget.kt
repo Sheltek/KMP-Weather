@@ -52,7 +52,7 @@ fun WeatherWidget(state: WeatherWidgetState) {
                         modifier = Modifier.padding(top = Dimens.grid_3_75, start = Dimens.grid_2_5),
                         content = {
                             Text(
-                                text = tempCurrent ?: stringResource(SharedRes.strings.dayTimeError),
+                                text = tempCurrent ?: stringResource(SharedRes.strings.empty_digits_error),
                                 style = MaterialTheme.typography.displayLarge.copy(fontSize = 64.sp),
                             )
                             Text(
