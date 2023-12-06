@@ -54,7 +54,13 @@
     <string name="sunrise">SUNRISE</string>
     <string name="wind">WIND</string>
     <string name="rainfall">RAINFALL</string>
+
     <string name="feels_like">FEELS LIKE</string>
+    <string name="feels_like_similar">Similar to the actual temperature</string>
+    <string name="feels_like_higher">Higher than the actual temperature</string>
+    <string name="feels_like_lower">Lower than the actual temperature</string>
+    <string name="feels_like_unknown">Unknown 'Feels Like' temperature</string>
+
     <string name="humidity">HUMIDITY</string>
     <string name="visibility">VISIBILITY</string>
     <string name="pressure">PRESSURE</string>
