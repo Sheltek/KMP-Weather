@@ -16,26 +16,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.Dp
 import com.br.kmmdemo.theme.Dimens
 import com.br.kmmdemo.theme.Gradients
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun KMMDemoSlider(
-    topPadding: Dp = Dimens.grid_2,
+    boxModifier: Modifier = Modifier
+        .padding(vertical = Dimens.grid_2)
+        .clip(RoundedCornerShape(Dimens.grid_3))
+        .fillMaxWidth()
+        .height(Dimens.grid_0_5)
+        .background(Brush.horizontalGradient(Gradients.sliderTrackGradient)),
     initValue: Float,
     valueRange: ClosedFloatingPointRange<Float>,
     onValueChange: (Float) -> Unit = {},
-    ) {
-    Box(
-        modifier = Modifier
-            .padding(vertical = topPadding)
-            .clip(RoundedCornerShape(Dimens.grid_3))
-            .fillMaxWidth()
-            .height(Dimens.grid_0_5)
-            .background(Brush.horizontalGradient(Gradients.sliderTrackGradient))
-    ) {
+) {
+    Box(modifier = boxModifier) {
         Slider(
             value = initValue,
             valueRange = valueRange,
