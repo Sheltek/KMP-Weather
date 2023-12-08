@@ -20,7 +20,7 @@ import dev.icerock.moko.resources.compose.stringResource
 fun HourlyForecastChip(state: ForecastState) {
     with(state) {
         Text(
-            dayTime ?: stringResource(SharedRes.strings.dayTimeError),
+            dayTime ?: stringResource(SharedRes.strings.empty_digits_error),
             style = MaterialTheme.typography.bodySmall.semiBold()
         )
 
@@ -34,7 +34,7 @@ fun HourlyForecastChip(state: ForecastState) {
                     contentDescription = stringResource(SharedRes.strings.weatherIcon),
                 )
                 Text(
-                    precipProbability ?: stringResource(SharedRes.strings.precipError),
+                    precipProbability ?: stringResource(SharedRes.strings.percentageError),
                     color = Colors.inverseOnSurface,
                     style = MaterialTheme.typography.labelLarge.semiBold(),
                 )
