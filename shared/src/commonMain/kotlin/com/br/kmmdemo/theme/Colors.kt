@@ -6,6 +6,7 @@ import androidx.compose.ui.graphics.Color
 
 val black = Color(0xFF000000)
 val white = Color(0xFFFFFFFF)
+val transparent = Color(0x00FFFFFF)
 val grey_60_Opacity = Color(0x993C3C43)
 val grey_30_Opacity = Color(0x4D3C3C43)
 val grey_18_Opacity = Color(0x2E3C3C43)
