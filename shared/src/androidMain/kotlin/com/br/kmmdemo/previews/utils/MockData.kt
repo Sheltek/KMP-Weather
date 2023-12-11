@@ -10,13 +10,14 @@ object MockData {
     private val weekdays = listOf("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
     private val hours = (1..12).map { "$it AM" }.toMutableList()
     fun getMockWeeklyForecast(): List<ForecastState> {
+        val nowIndex = Random.nextInt(from = 0, until = weekdays.lastIndex)
         return weekdays.map {
             ForecastState(
                 dayTime = it,
                 precipProbability = getMockPrecipProbability(),
                 temperature = getMockTemp(),
                 weatherIcon = getMockRandomIcon(),
-                isNow = weekdays.first().equals(it, true)
+                isNow = weekdays.indexOf(it) == nowIndex
             )
         }.toList()
     }
