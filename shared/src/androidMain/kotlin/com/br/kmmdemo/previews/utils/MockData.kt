@@ -5,8 +5,6 @@ import com.br.kmmdemo.ui.forecasts.WeatherEnum
 import kotlin.random.Random
 
 object MockData {
-    private const val NOW_LABEL = "Now"
-
     private val weekdays = listOf("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
     private val hours = (1..12).map { "$it AM" }.toMutableList()
     fun getMockWeeklyForecast(): List<ForecastState> {
@@ -23,18 +21,14 @@ object MockData {
     }
 
     fun getMockHourlyForecast(): List<ForecastState> {
-        val hourLabels = hours.apply {
-            val nowIndex = Random.nextInt(from = 0, until = lastIndex)
-            this[nowIndex] = NOW_LABEL
-        }
-
-        return hourLabels.map {
+        val nowIndex = Random.nextInt(from = 0, until = hours.lastIndex)
+        return hours.map {
             ForecastState(
                 dayTime = it,
                 precipProbability = getMockPrecipProbability(),
                 temperature = getMockTemp(),
                 weatherIcon = getMockRandomIcon(),
-                isNow = it.equals(NOW_LABEL, true)
+                isNow = hours.indexOf(it) == nowIndex
             )
         }.toList()
     }
