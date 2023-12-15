@@ -3,10 +3,10 @@ package com.br.kmmdemo.previews
 import ForecastChip
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.br.kmmdemo.theme.KMMTheme
 import com.br.kmmdemo.ui.forecasts.ForecastState
 import com.br.kmmdemo.ui.forecasts.HourlyForecastChip
 import com.br.kmmdemo.ui.forecasts.WeatherEnum
-import com.br.kmmdemo.theme.KMMTheme
 
 val hourlyForecast = ForecastState(
     dayTime = "12 PM",
@@ -17,7 +17,7 @@ val hourlyForecast = ForecastState(
 
 @Composable
 @Preview
-fun `Preview Now Hourly Forecast`() {
+fun PreviewNowHourlyForecast() {
     KMMTheme {
         ForecastChip(state = hourlyForecast.copy(isNow = true)) { state ->
             HourlyForecastChip(state)
@@ -27,7 +27,7 @@ fun `Preview Now Hourly Forecast`() {
 
 @Composable
 @Preview
-fun `Preview Hourly Forecast`() {
+fun PreviewHourlyForecast() {
     KMMTheme {
         ForecastChip(state = hourlyForecast) { state ->
             HourlyForecastChip(state)
@@ -37,7 +37,7 @@ fun `Preview Hourly Forecast`() {
 
 @Composable
 @Preview
-fun `Preview Hourly Forecast ERROR`() {
+fun PreviewHourlyForecastERROR() {
     val errorForecast = ForecastState(weatherIcon = WeatherEnum.WINDY)
     KMMTheme {
         ForecastChip(state = errorForecast) { state ->

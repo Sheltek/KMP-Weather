@@ -14,13 +14,15 @@ import com.br.kmmdemo.ui.weatherDetails.humidity.HumidityState
 import com.br.kmmdemo.ui.weatherDetails.humidity.HumidityWidget
 import com.br.kmmdemo.ui.weatherDetails.rainFall.RainFallState
 import com.br.kmmdemo.ui.weatherDetails.rainFall.RainFallWidget
+import com.br.kmmdemo.ui.weatherDetails.sunrise_sunset.SunriseSunsetState
+import com.br.kmmdemo.ui.weatherDetails.sunrise_sunset.SunriseSunsetWidget
 import com.br.kmmdemo.ui.weatherDetails.uvIndex.UVIndexEnum
 import com.br.kmmdemo.ui.weatherDetails.uvIndex.UvIndexWidget
 import com.br.kmmdemo.ui.weatherDetails.visibility.VisibilityState
 
 @Composable
 @Preview
-fun `Air Quality Preview`() {
+fun AirQualityPreview() {
     KMMTheme {
         Column {
             AirQualityWidget(AirQualityEnum.YELLOW)
@@ -32,7 +34,7 @@ fun `Air Quality Preview`() {
 
 @Composable
 @Preview
-fun `UV Index Preview`() {
+fun UVIndexPreview() {
     KMMTheme {
         Row {
             UvIndexWidget(UVIndexEnum.MODERATE)
@@ -43,7 +45,7 @@ fun `UV Index Preview`() {
 
 @Composable
 @Preview
-fun `Feels Like Preview`() {
+fun FeelsLikePreview() {
     KMMTheme {
         Row {
             FeelsLikeWidget(FeelsLikeState(75.0, 65.0))
@@ -54,7 +56,7 @@ fun `Feels Like Preview`() {
 
 @Composable
 @Preview
-fun `Humidity Preview`() {
+fun HumidityPreview() {
     KMMTheme {
         Row {
             HumidityWidget(HumidityState(90.0, 17.0))
@@ -65,7 +67,7 @@ fun `Humidity Preview`() {
 
 @Composable
 @Preview
-fun `Rain Fall Preview`() {
+fun RainFallPreview() {
     KMMTheme {
         Row {
             RainFallWidget(RainFallState("1.8 mm", "1.2 mm"))
@@ -76,11 +78,31 @@ fun `Rain Fall Preview`() {
 
 @Composable
 @Preview
-fun `Visibility Preview`() {
+fun VisibilityPreview() {
     KMMTheme {
         Row {
             VisibilityWidget(VisibilityState("8 km", true))
             VisibilityWidget(VisibilityState())
+        }
+    }
+}
+
+@Composable
+@Preview
+fun SunriseSunsetPreview() {
+    KMMTheme {
+        Column {
+            Row {
+                SunriseSunsetWidget(SunriseSunsetState(localTime = "13:00", sunriseTime = "4:58", sunsetTime = "17:35"))
+                SunriseSunsetWidget(SunriseSunsetState(localTime = "14:20", sunriseTime = "5:25", sunsetTime = "18:02"))
+            }
+            Row {
+                SunriseSunsetWidget(SunriseSunsetState(localTime = "14:45", sunriseTime = "6:14", sunsetTime = "18:15"))
+                SunriseSunsetWidget(SunriseSunsetState(localTime = "20:23", sunriseTime = "7:23", sunsetTime = "19:04"))
+            }
+            Row {
+                SunriseSunsetWidget(SunriseSunsetState(localTime = null, sunriseTime = null, sunsetTime = null))
+            }
         }
     }
 }

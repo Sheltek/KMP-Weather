@@ -1,13 +1,13 @@
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.br.kmmdemo.theme.KMMTheme
 import com.br.kmmdemo.ui.forecasts.WeatherEnum
 import com.br.kmmdemo.ui.forecasts.WeatherWidgetState
-import com.br.kmmdemo.theme.KMMTheme
 
 @Composable
 @Preview
-fun `Preview Weather Widget`() {
+fun PreviewWeatherWidget() {
     KMMTheme {
         WeatherWidget(
             state = WeatherWidgetState(
@@ -22,7 +22,7 @@ fun `Preview Weather Widget`() {
 
 @Composable
 @Preview
-fun `Preview Weather Widget ERROR`() {
+fun PreviewWeatherWidgetERROR() {
     KMMTheme {
         WeatherWidget(
             state = WeatherWidgetState(

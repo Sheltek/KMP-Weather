@@ -8,7 +8,7 @@ import com.br.kmmdemo.ui.forecasts.WeeklyChipList
 
 @Composable
 @Preview
-fun `Weekly Chip List Preview`() {
+fun WeeklyChipListPreview() {
     KMMTheme {
         WeeklyChipList(dailyStates = MockData.getMockWeeklyForecast())
     }

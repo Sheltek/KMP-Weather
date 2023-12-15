@@ -14,9 +14,17 @@ import com.br.kmmdemo.theme.Colors
 import com.br.kmmdemo.theme.Dimens
 
 @Composable
-fun WeatherDetailsSurface(content: @Composable ColumnScope.() -> Unit) {
+fun WeatherDetailsSurface(
+    modifier: Modifier = Modifier.size(DETAILS_WIDGET_SIZE),
+    columnModifier: Modifier = Modifier.padding(
+        start = Dimens.grid_2_5,
+        end = Dimens.grid_2_5,
+        top = Dimens.grid_2_5,
+    ),
+    content: @Composable ColumnScope.() -> Unit
+) {
     Surface(
-        modifier = Modifier.size(DETAILS_WIDGET_SIZE),
+        modifier = modifier,
         color = Colors.primaryContainer,
         shape = RoundedCornerShape(Dimens.grid_3),
         border = BorderStroke(
@@ -25,11 +33,7 @@ fun WeatherDetailsSurface(content: @Composable ColumnScope.() -> Unit) {
         ),
         content = {
             Column(
-                modifier = Modifier.padding(
-                    start = Dimens.grid_2_5,
-                    end = Dimens.grid_2_5,
-                    top = Dimens.grid_2_5,
-                ),
+                modifier = columnModifier,
                 content = content
             )
         })
