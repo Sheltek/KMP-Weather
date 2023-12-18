@@ -66,6 +66,7 @@ google-maps = { group = "com.google.maps.android", name = "maps-compose", versio
 google-maps-utils = { group = "com.google.maps.android", name = "maps-compose-utils", version.ref = "googleMapsVersion" }
 google-places = { group = "com.google.android.libraries.places", name = "places", version.ref = "googlePlacesVersion" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version = "1.5.4" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

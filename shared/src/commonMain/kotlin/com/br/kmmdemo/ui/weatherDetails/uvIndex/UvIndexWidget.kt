@@ -37,7 +37,6 @@ fun UvIndexWidget(uvIndex: UVIndexEnum) {
             )
 
             KMMDemoSlider(
-                topPadding = Dimens.grid_3,
                 initValue = uvIndex.sliderValue,
                 valueRange = 0f..0.5f,
             )
