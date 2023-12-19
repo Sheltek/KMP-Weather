@@ -54,6 +54,9 @@
     <string name="uv_index_unknown">--</string>
 
     <string name="sunrise">SUNRISE</string>
+    <string name="input_sunrise">%s AM</string>
+    <string name="input_sunset">Sunset: %s PM</string>
+
     <string name="wind">WIND</string>
 
     <string name="rainfall">RAINFALL</string>

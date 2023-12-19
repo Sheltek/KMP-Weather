@@ -28,6 +28,8 @@ val darkPurple = Color(0xFF362A84)
 val sliderBlue = Color(0xFF3858B2)
 val sliderPink = Color(0xFFAA59E2)
 val sliderPurple = Color(0xFFE64495)
+val sunriseWhite = Color(0xFF8AA1CB)
+val sunriseBlue = Color(0xFF07275B)
 
 val kmpLightColors = lightColorScheme(
     primary = purple,
@@ -72,12 +74,15 @@ val kmpDarkColors = darkColorScheme(
 data class GradientColors(
     val weatherWidgetGradient: List<Color>,
     val sliderTrackGradient: List<Color>,
+    val sunriseGradient: List<Color>
 )
 
 fun KMMGradientColors(
     weatherWidgetGradient: List<Color> = listOf(lightPurple, darkPurple),
-    sliderTrackGradient: List<Color> = listOf(sliderBlue, sliderPink, sliderPurple)
+    sliderTrackGradient: List<Color> = listOf(sliderBlue, sliderPink, sliderPurple),
+    sunriseGradient: List<Color> = listOf(sunriseBlue, sunriseWhite, sunriseBlue),
 ): GradientColors = GradientColors(
     weatherWidgetGradient = weatherWidgetGradient,
     sliderTrackGradient = sliderTrackGradient,
+    sunriseGradient = sunriseGradient
 )
