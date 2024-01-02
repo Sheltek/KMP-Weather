@@ -14,13 +14,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.br.kmmdemo.theme.Dimens
 import com.br.kmmdemo.theme.Gradients
+import com.br.kmmdemo.theme.largeCardCorner
 import com.br.kmmdemo.theme.outline
 import com.br.kmmdemo.utils.gradientCardModifier
 
 @Composable
 fun GradientCard(content: @Composable () -> Unit) {
     OutlinedCard(
-        shape = RoundedCornerShape(36.dp),
+        shape = RoundedCornerShape(largeCardCorner),
         modifier = Modifier.gradientCardModifier(
             sideGradientColors = Gradients.sideEclipseGradient,
             topGradientColors = Gradients.topEclipseGradient,

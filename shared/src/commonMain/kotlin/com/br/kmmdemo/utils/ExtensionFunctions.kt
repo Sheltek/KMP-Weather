@@ -17,8 +17,7 @@ import androidx.compose.ui.unit.dp
 fun Modifier.gradientCardModifier(
     sideGradientColors: List<Color>,
     topGradientColors: List<Pair<Float, Color>>
-) = Modifier
-    .fillMaxWidth()
+) = fillMaxWidth()
     .drawWithContent {
         drawContent()
         drawRoundRect(
