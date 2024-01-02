@@ -4,8 +4,8 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -18,14 +18,17 @@ import com.br.kmmdemo.utils.gradientCardModifier
 
 @Composable
 fun GradientCard(content: @Composable () -> Unit) {
-    Card(
-        shape = RoundedCornerShape(15),
-        colors = CardDefaults.cardColors(
-            containerColor = Color.Transparent
-        ),
+    OutlinedCard(
+        shape = RoundedCornerShape(Dimens.grid_6),
         modifier = Modifier.gradientCardModifier(
             sideGradientColors = Gradients.sideEclipseGradient,
             topGradientColors = Gradients.topEclipseGradient,
+        ),
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = Color.Transparent,
+            contentColor = Color.Transparent,
+            disabledContainerColor = Color.Transparent,
+            disabledContentColor = Color.Transparent
         ),
         border = BorderStroke(
             2.dp, Brush.verticalGradient(

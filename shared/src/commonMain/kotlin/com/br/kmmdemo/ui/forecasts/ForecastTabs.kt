@@ -1,5 +1,6 @@
 package com.br.kmmdemo.ui.forecasts
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -47,6 +48,7 @@ fun ForecastTabs(forecasts: List<ForecastTabState>) {
                 .fillMaxWidth()
                 .wrapContentHeight()
                 .padding(vertical = 24.dp)
+                .background(Color.Transparent)
         ) {
             forecasts[tabIndex].content()
         }
