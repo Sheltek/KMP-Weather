@@ -16,6 +16,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.br.kmmdemo.theme.Colors
 
 @Composable
 fun ForecastTabs(forecasts: List<ForecastTabState>) {
@@ -30,7 +31,12 @@ fun ForecastTabs(forecasts: List<ForecastTabState>) {
         ) {
             tabs.forEachIndexed { index, title ->
                 Tab(
-                    text = { Text(title) },
+                    text = {
+                        Text(
+                            text = title,
+                            color = Colors.onPrimary
+                        )
+                    },
                     selected = tabIndex == index,
                     onClick = { tabIndex = index }
                 )
