@@ -8,6 +8,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -19,12 +20,12 @@ import com.br.kmmdemo.utils.gradientCardModifier
 @Composable
 fun GradientCard(content: @Composable () -> Unit) {
     OutlinedCard(
-        shape = RoundedCornerShape(Dimens.grid_6),
+        shape = RoundedCornerShape(36.dp),
         modifier = Modifier.gradientCardModifier(
             sideGradientColors = Gradients.sideEclipseGradient,
             topGradientColors = Gradients.topEclipseGradient,
-        ),
-        colors = CardDefaults.elevatedCardColors(
+        ).shadow(2.dp),
+        colors = CardDefaults.outlinedCardColors(
             containerColor = Color.Transparent,
             contentColor = Color.Transparent,
             disabledContainerColor = Color.Transparent,
@@ -36,9 +37,6 @@ fun GradientCard(content: @Composable () -> Unit) {
                 startY = 0f,
                 endY = Dimens.grid_24.value
             )
-        ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 5.dp
         )
     ) {
         Box(
