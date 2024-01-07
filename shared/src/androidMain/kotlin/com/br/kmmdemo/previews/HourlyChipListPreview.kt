@@ -8,7 +8,7 @@ import com.br.kmmdemo.ui.forecasts.HourlyChipList
 
 @Composable
 @Preview
-fun `Hourly Chip List Preview`() {
+fun HourlyChipListPreview() {
     KMMTheme {
         HourlyChipList(dailyStates = MockData.getMockHourlyForecast())
     }

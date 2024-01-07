@@ -9,15 +9,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
-import com.br.kmmdemo.ui.forecasts.WeatherEnum
 import com.br.kmmdemo.resources.SharedRes
 import com.br.kmmdemo.theme.Dimens
+import com.br.kmmdemo.ui.forecasts.WeatherEnum
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 @Preview
-fun `Day Weather Icons Preview`() {
+fun DayWeatherIconsPreview() {
     val icons = listOf(
         WeatherEnum.SUNNY,
         WeatherEnum.DAY_PARTLY_CLOUDY,
@@ -42,7 +42,7 @@ fun `Day Weather Icons Preview`() {
 
 @Composable
 @Preview
-fun `Night Weather Icons Preview`() {
+fun NightWeatherIconsPreview() {
     val icons = listOf(
         WeatherEnum.NIGHT_CLEAR,
         WeatherEnum.NIGHT_CLOUDY,
@@ -67,7 +67,7 @@ fun `Night Weather Icons Preview`() {
 
 @Composable
 @Preview
-fun `Other Weather Icons Preview`() {
+fun OtherWeatherIconsPreview() {
     val icons = listOf(
         WeatherEnum.WINDY,
         WeatherEnum.OVERCAST_CLOUDY,
