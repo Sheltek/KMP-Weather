@@ -1,5 +1,6 @@
 package com.br.kmmdemo.previews
 
+import BarometricPressureWidget
 import FeelsLikeWidget
 import VisibilityWidget
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import com.br.kmmdemo.ui.weatherDetails.airQuality.AirQualityWidget
 import com.br.kmmdemo.ui.weatherDetails.feelsLike.FeelsLikeState
 import com.br.kmmdemo.ui.weatherDetails.humidity.HumidityState
 import com.br.kmmdemo.ui.weatherDetails.humidity.HumidityWidget
+import com.br.kmmdemo.ui.weatherDetails.pressure.BarometricPressureState
 import com.br.kmmdemo.ui.weatherDetails.rainFall.RainFallState
 import com.br.kmmdemo.ui.weatherDetails.rainFall.RainFallWidget
 import com.br.kmmdemo.ui.weatherDetails.sunrise_sunset.SunriseSunsetState
@@ -107,6 +109,29 @@ fun SunriseSunsetPreview() {
                 SunriseSunsetWidget(SunriseSunsetState(localTime = null, sunriseTime = null, sunsetTime = null))
             }
         }
+
+    }
+}
+
+@Composable
+@Preview
+fun BarometricPressurePreview() {
+    KMMTheme {
+        Column {
+            Row {
+                BarometricPressureWidget(state = BarometricPressureState(pressure = 0.2F))
+                BarometricPressureWidget(state = BarometricPressureState(pressure = 0.4F))
+            }
+            Row {
+                BarometricPressureWidget(state = BarometricPressureState(pressure = 0.6F))
+                BarometricPressureWidget(state = BarometricPressureState(pressure = 0.8F))
+            }
+            Row {
+                BarometricPressureWidget(state = BarometricPressureState(pressure = 1F))
+                BarometricPressureWidget(state = BarometricPressureState(pressure = 0.0F))
+            }
+        }
+
     }
 }
 

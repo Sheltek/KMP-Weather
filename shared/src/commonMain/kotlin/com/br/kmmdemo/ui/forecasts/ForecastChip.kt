@@ -1,5 +1,6 @@
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -29,7 +30,7 @@ fun ForecastChip(
         border = BorderStroke(
             width = 1.dp,
             color = if (isNow) Colors.outline else Colors.outlineVariant,
-        )
+        ),
     ) {
         Column(
             modifier = Modifier.padding(horizontal = Dimens.grid_1, vertical = Dimens.grid_2),
