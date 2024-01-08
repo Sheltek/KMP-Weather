@@ -25,9 +25,16 @@ const val SOUTH = "S"
 const val EAST = "E"
 const val WEST = "W"
 
+// Constants for repeated values
+const val GAUGE_WIDTH = 20F
+const val RADIANS_OFFSET = -90
+const val ARROW_LENGTH = 20F
+const val ARROW_WIDTH = 15F
+const val NEEDLE_LINE_LENGTH = 70F
+
 fun DrawScope.drawCompassGauge(
     gaugeColor: Color,
-    gaugeWidth: Float = 20F
+    gaugeWidth: Float = GAUGE_WIDTH
 ) {
     val radius = size.width / 2
     val topLeftOffset = Offset(size.width / 2 - radius, size.height / 2 - radius)
@@ -77,7 +84,7 @@ fun DrawScope.drawCardinalLines(lineColor: Color) {
 
 fun DrawScope.drawNorthArrow() {
     val radius = size.width / 2
-    val windDirectionRadians = (- 90) * (PI / 180)
+    val windDirectionRadians = RADIANS_OFFSET * (PI / 180)
     val northArrow = Path().drawNeedleArrowHead(
         startPoint = Offset(center.x, center.y - radius),
         windDirectionRadians = windDirectionRadians,
@@ -147,18 +154,17 @@ fun DrawScope.drawWindSpeedText(
 }
 
 fun DrawScope.drawCompassNeedle(
-    gaugeWidth: Float = 20F,
+    gaugeWidth: Float = GAUGE_WIDTH,
     windDirection: WindDirection = WindDirection.N,
     density: Density,
 ) {
-    val needleLineLength = 70F
     val radius = size.width / 2
     val circleRadiusPx = with(density) { 10.dp.toPx() }
     val needleStrokeWidthPx = with(density) { 2.dp.toPx() }
 
     // Wind direction in radians. Degrees adjusted by subtracting 90
     // degrees to align correctly with the gauge that has been rotated for `Phase`
-    val windDirectionRadians = (windDirection.degrees - 90) * (PI / 180)
+    val windDirectionRadians = (windDirection.degrees + RADIANS_OFFSET) * (PI / 180)
 
     // Calculate start and end points for arrow needle
     val needlePointStart = center + Offset(
@@ -167,8 +173,8 @@ fun DrawScope.drawCompassNeedle(
     )
 
     val needlePointEnd = center + Offset(
-        x = (radius - needleLineLength) * cos(windDirectionRadians).toFloat(),
-        y = (radius - needleLineLength) * sin(windDirectionRadians).toFloat()
+        x = (radius - NEEDLE_LINE_LENGTH) * cos(windDirectionRadians).toFloat(),
+        y = (radius - NEEDLE_LINE_LENGTH) * sin(windDirectionRadians).toFloat()
     )
 
     // Calculate start and end points for circle needle
@@ -178,8 +184,8 @@ fun DrawScope.drawCompassNeedle(
     )
 
     val needleCircleEnd = center - Offset(
-        x = (radius - needleLineLength) * cos(windDirectionRadians).toFloat(),
-        y = (radius - needleLineLength) * sin(windDirectionRadians).toFloat()
+        x = (radius - NEEDLE_LINE_LENGTH) * cos(windDirectionRadians).toFloat(),
+        y = (radius - NEEDLE_LINE_LENGTH) * sin(windDirectionRadians).toFloat()
     )
 
     // Draw needle lines -- Point for line with arrow, Circle for line with circle
@@ -216,8 +222,8 @@ fun DrawScope.drawCompassNeedle(
 fun Path.drawNeedleArrowHead(
     startPoint: Offset,
     windDirectionRadians: Double,
-    arrowLength: Float = 20F,
-    arrowWidth: Float = 15F
+    arrowLength: Float = ARROW_LENGTH,
+    arrowWidth: Float = ARROW_WIDTH
 ): Path = Path().apply {
     moveTo(startPoint.x, startPoint.y)
     lineTo(

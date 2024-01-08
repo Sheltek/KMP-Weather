@@ -3,6 +3,7 @@ package com.br.kmmdemo.ui.weatherDetails.wind
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
@@ -11,7 +12,6 @@ import com.br.kmmdemo.resources.SharedRes
 import com.br.kmmdemo.theme.Colors
 import com.br.kmmdemo.theme.Dimens
 import com.br.kmmdemo.theme.bold
-import com.br.kmmdemo.theme.getKmpTypography
 import com.br.kmmdemo.ui.weatherDetails.DetailsWidgetLabel
 import com.br.kmmdemo.ui.weatherDetails.WeatherDetailsSurface
 import com.br.kmmdemo.utils.drawCardinalLabels
@@ -25,9 +25,9 @@ import dev.icerock.moko.resources.compose.stringResource
 @Composable
 fun WindWidget(state: WindState) {
     val themeTertiary = Colors.onTertiary
-    val cardinalStyle = getKmpTypography().labelLarge.copy(color = Colors.onPrimary).bold()
-    val windSpeedStyle = getKmpTypography().titleSmall.copy(color = Colors.onPrimary).bold()
-    val perHourStyle = getKmpTypography().bodySmall.copy(color = Colors.onPrimary).bold()
+    val cardinalStyle = MaterialTheme.typography.labelLarge.copy(color = Colors.onPrimary).bold()
+    val windSpeedStyle = MaterialTheme.typography.titleSmall.copy(color = Colors.onPrimary).bold()
+    val perHourStyle = MaterialTheme.typography.bodySmall.copy(color = Colors.onPrimary).bold()
     val perHourString = stringResource(
         if (state.isMetric) SharedRes.strings.wind_kmh else SharedRes.strings.wind_mph
     )
