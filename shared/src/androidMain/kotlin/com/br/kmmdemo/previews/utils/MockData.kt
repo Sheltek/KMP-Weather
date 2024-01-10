@@ -2,6 +2,7 @@ package com.br.kmmdemo.previews.utils
 
 import com.br.kmmdemo.ui.forecasts.ForecastState
 import com.br.kmmdemo.ui.forecasts.WeatherEnum
+import com.br.kmmdemo.ui.home.HomeState
 import kotlin.random.Random
 
 object MockData {
@@ -43,6 +44,18 @@ object MockData {
 
     fun getMockRandomIcon(): WeatherEnum {
         return WeatherEnum.values().random()
+    }
+
+    fun getMockHomeState(isError: Boolean = false): HomeState {
+        if (isError) return HomeState()
+
+        return HomeState(
+            location = "Montreal",
+            currentTemp = "19",
+            weatherDescription = "Mostly Clear",
+            tempHigh = "24",
+            tempLow = "18",
+        )
     }
 
 }
