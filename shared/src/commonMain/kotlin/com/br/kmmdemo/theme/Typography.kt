@@ -114,6 +114,8 @@ fun getKmpTypography() = Typography(
     )
 )
 
+fun TextStyle.light() = copy(fontWeight = FontWeight.Light)
 fun TextStyle.semiBold() = copy(fontWeight = FontWeight.SemiBold)
 fun TextStyle.bold() = copy(fontWeight = FontWeight.Bold)
 fun TextStyle.letterSpacing(spacing: TextUnit) = copy(letterSpacing = spacing)
+fun TextStyle.size(size: TextUnit) = copy(fontSize = size)

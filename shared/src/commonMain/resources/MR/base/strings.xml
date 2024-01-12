@@ -10,6 +10,7 @@
     <string name="chicago">Chicago</string>
     <string name="houston">Houston</string>
     <string name="philadelphia">Philadelphia</string>
+    <string name="temp_high_low">H:%1s°   L:%2s°</string>
 
     <!-- Weather Enum Icon Descriptions -->
     <string name="fog">Fog</string>
@@ -81,15 +82,22 @@
     <string name="pressure">PRESSURE</string>
 
     <!-- Content Descriptions -->
+    <string name="home_bg">Home background</string>
     <string name="weatherIcon">Weather Icon</string>
     <string name="chevron_right">Next arrow</string>
     <string name="air_quality_icon">Air quality icon</string>
+    <string name="nav_bar_bg">Navigation bar background</string>
+    <string name="nav_bar_button_bg">Navigation bar button background</string>
+    <string name="nav_bar_button">Navigation bar button</string>
+    <string name="nav_bar_pin_button">Navigation bar location pin button</string>
+    <string name="nav_bar_list_button">Navigation bar list button</string>
 
     <!-- Errors -->
     <string name="tempError">--°</string>
     <string name="number_error">--</string>
     <string name="highLowTempError">H: --°  L: --°</string>
     <string name="locationError">Location Unavailable</string>
+    <string name="description_error">Current Weather Unavailable</string>
     <string name="empty_digits_error">---</string>
     <string name="percentageError">--%</string>
     <string name="unknown_number">unknown</string>
