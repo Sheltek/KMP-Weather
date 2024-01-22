@@ -32,6 +32,9 @@ val eclipsePurpleLight = Color(0xFF8A72CA)
 val eclipsePurple = Color(0xFF5936B4)
 val sunriseWhite = Color(0xFF8AA1CB)
 val sunriseBlue = Color(0xFF07275B)
+val indicatorDarkPurple = Color(0xFF592d85)
+val indicatorLightPurple = Color(0xFF8e57e2)
+
 val kmpLightColors = lightColorScheme(
     primary = purple,
     primaryContainer = containerPurple,
@@ -77,7 +80,8 @@ data class GradientColors(
     val sliderTrackGradient: List<Color>,
     val sideEclipseGradient: List<Color>,
     val topEclipseGradient: List<Pair<Float, Color>>,
-    val sunriseGradient: List<Color>
+    val sunriseGradient: List<Color>,
+    val indicatorGradient: List<Color>
 )
 
 fun KMMGradientColors(
@@ -95,10 +99,12 @@ fun KMMGradientColors(
         1.0f to Color.Transparent
     ),
     sunriseGradient: List<Color> = listOf(sunriseBlue, sunriseWhite, sunriseBlue),
+    indicatorGradient: List<Color> = listOf(indicatorDarkPurple, indicatorLightPurple, indicatorDarkPurple)
 ): GradientColors = GradientColors(
     weatherWidgetGradient = weatherWidgetGradient,
     sliderTrackGradient = sliderTrackGradient,
     sideEclipseGradient = sideEclipseGradient,
     topEclipseGradient = topEclipseGradient,
-    sunriseGradient = sunriseGradient
+    sunriseGradient = sunriseGradient,
+    indicatorGradient = indicatorGradient,
 )

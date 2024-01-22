@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.br.kmmdemo.previews.utils.MockData
 import com.br.kmmdemo.theme.KMMTheme
+import com.br.kmmdemo.ui.home.HomeBottomSheet
 import com.br.kmmdemo.ui.home.HomeCurrentWeather
 import com.br.kmmdemo.ui.home.HomeScreen
 import com.br.kmmdemo.ui.home.NavBar
@@ -12,7 +13,17 @@ import com.br.kmmdemo.ui.home.NavBar
 @Composable
 @Preview(showSystemUi = true)
 fun HomeScreenPreview() {
-    HomeScreen(MockData.getMockHomeState())
+    KMMTheme {
+        HomeScreen(MockData.getMockHomeState())
+    }
+}
+
+@Preview
+@Composable
+private fun BottomSheetPreview() {
+    KMMTheme {
+        HomeBottomSheet(state = MockData.getMockHomeState())
+    }
 }
 
 @Composable
