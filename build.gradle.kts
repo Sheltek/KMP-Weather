@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.multiplatformResources) apply false
     alias(libs.plugins.jetbrainsCompose) apply false
     alias(libs.plugins.google.services) apply false
+    alias(libs.plugins.jetbrainsKotlinAndroid) apply false
 }
 
 buildscript {
