@@ -15,15 +15,13 @@ fun ForecastTabsPreview() {
     KMMTheme {
         ForecastTabs(listOf(
             ForecastTabState(
-                itemTitle = "Hourly Forecast"
-            ) {
-                HourlyChipList(dailyStates = MockData.getMockHourlyForecast())
-            },
+                itemTitle = "Hourly Forecast",
+                content = { HourlyChipList(MockData.getMockHourlyForecast()) }
+            ),
             ForecastTabState(
-                itemTitle = "Weekly Forecast"
-            ) {
-                WeeklyChipList(dailyStates = MockData.getMockWeeklyForecast())
-            }
+                itemTitle = "Weekly Forecast",
+                content = { WeeklyChipList(MockData.getMockWeeklyForecast()) }
+            )
         ))
     }
 }

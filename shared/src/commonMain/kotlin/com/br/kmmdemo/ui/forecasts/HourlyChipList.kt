@@ -3,6 +3,7 @@ package com.br.kmmdemo.ui.forecasts
 import ForecastChip
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -12,15 +13,16 @@ import androidx.compose.ui.Modifier
 import com.br.kmmdemo.theme.Dimens
 
 @Composable
-fun HourlyChipList(dailyStates: List<ForecastState>) {
+fun HourlyChipList(forecasts: List<ForecastState>) {
     LazyRow(
         modifier = Modifier
+            .padding(start = Dimens.grid_1_75)
             .wrapContentHeight()
             .fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(Dimens.grid_3),
+        horizontalArrangement = Arrangement.spacedBy(Dimens.grid_2_5),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        items(dailyStates) { dailyForecast ->
+        items(forecasts) { dailyForecast ->
             ForecastChip(state = dailyForecast) { state ->
                 HourlyForecastChip(state)
             }

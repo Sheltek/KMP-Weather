@@ -10,6 +10,6 @@ import com.br.kmmdemo.ui.forecasts.HourlyChipList
 @Preview
 fun HourlyChipListPreview() {
     KMMTheme {
-        HourlyChipList(dailyStates = MockData.getMockHourlyForecast())
+        HourlyChipList(MockData.getMockHourlyForecast())
     }
 }

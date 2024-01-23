@@ -10,6 +10,6 @@ import com.br.kmmdemo.ui.forecasts.WeeklyChipList
 @Preview
 fun WeeklyChipListPreview() {
     KMMTheme {
-        WeeklyChipList(dailyStates = MockData.getMockWeeklyForecast())
+        WeeklyChipList(MockData.getMockWeeklyForecast())
     }
 }

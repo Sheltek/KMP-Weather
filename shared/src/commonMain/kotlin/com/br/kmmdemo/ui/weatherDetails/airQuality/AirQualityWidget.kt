@@ -31,9 +31,10 @@ import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
-fun AirQualityWidget(risk: AirQualityEnum) {
+fun AirQualityWidget(risk: AirQualityEnum = AirQualityEnum.UNKNOWN) {
     Surface(
         modifier = Modifier
+            .padding(horizontal = Dimens.grid_0_5)
             .fillMaxWidth()
             .height(DETAILS_WIDGET_SIZE),
         color = Colors.primaryContainer,
@@ -69,7 +70,9 @@ fun AirQualityWidget(risk: AirQualityEnum) {
                 modifier = Modifier
                     .padding(top = Dimens.grid_2)
                     .fillMaxWidth()
-                    .clickable(onClick = {}), // TODO: Add `See More` destination
+                    .clickable(onClick = {
+                        // TODO: Add `See More` destination
+                    }),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.Top,
                 content = {

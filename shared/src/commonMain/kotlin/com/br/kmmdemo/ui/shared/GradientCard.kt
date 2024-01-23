@@ -43,10 +43,10 @@ fun GradientCard(content: @Composable () -> Unit) {
         Box(
             modifier = Modifier
                 .padding(
-                    top = Dimens.grid_6,
+                    top = Dimens.grid_1_75,
                     bottom = Dimens.grid_16,
-                    start = Dimens.grid_1_25,
-                    end = Dimens.grid_0_5
+                    start = Dimens.grid_0_25,
+                    end = Dimens.grid_0_25
                 )
         ) {
             content()

@@ -1,6 +1,6 @@
 package com.br.kmmdemo.utils
 
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithContent
@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 fun Modifier.gradientCardModifier(
     sideGradientColors: List<Color>,
     topGradientColors: List<Pair<Float, Color>>
-) = fillMaxWidth()
+) = fillMaxSize()
     .drawWithContent {
         drawContent()
         drawRoundRect(

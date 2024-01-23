@@ -26,8 +26,6 @@ fun HomeScreen(state: HomeState) {
             )
 
             HomeCurrentWeather(state)
-
-            NavBar()
         }
     )
 }
