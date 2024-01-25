@@ -65,6 +65,9 @@ kotlin {
 
                 // Logger
                 implementation(libs.kermit.logger)
+
+                // Launchpad
+                implementation(libs.kmp.launchpad.compose)
             }
         }
         val androidMain by getting {
