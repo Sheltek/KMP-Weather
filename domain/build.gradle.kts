@@ -51,8 +51,8 @@ kotlin {
 
 android {
     namespace = "com.br.kmmdemo.domain"
-    compileSdk = (findProperty("android.compileSdk") as String).toInt()
+    compileSdk = libs.versions.compile.sdk.get().toInt()
     defaultConfig {
-        minSdk = (findProperty("android.minSdk") as String).toInt()
+        minSdk = libs.versions.min.sdk.get().toInt()
     }
 }

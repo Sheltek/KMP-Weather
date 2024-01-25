@@ -58,39 +58,8 @@ kotlin {
                 api(libs.moko.resources)
                 api(libs.moko.resources.compose)
 
-                // KTOR Networking and Serialization
-                implementation(libs.ktor.client.core)
-                implementation(libs.ktor.client.content.negotiation)
-                implementation(libs.ktor.serialization.kotlinx.json)
-                implementation(libs.koin.core)
-
                 // Logger
                 implementation(libs.kermit.logger)
-            }
-        }
-        val androidMain by getting {
-            dependsOn(commonMain)
-            dependencies {
-                implementation(libs.kotlinx.coroutines.core)
-                implementation(libs.ktor.client.android)
-                implementation(libs.koin.android)
-                implementation(libs.koin.androidx.compose)
-
-                // Utility
-                implementation(libs.google.maps)
-                implementation(libs.google.maps.utils)
-                implementation(libs.google.places)
-                implementation(libs.play.services.maps)
-
-                // Preview Utils need to be implemented in platform code as they use platform renderers
-                implementation(compose.preview)
-                implementation(compose.uiTooling)
-            }
-        }
-        val iosMain by getting {
-            dependsOn(commonMain)
-            dependencies {
-                implementation(libs.ktor.client.darwin)
             }
         }
         val commonTest by getting {
@@ -110,9 +79,9 @@ multiplatformResources {
 
 android {
     namespace = "com.br.kmmdemo"
-    compileSdk = 34
+    compileSdk = libs.versions.compile.sdk.get().toInt()
     defaultConfig {
-        minSdk = 30
+        minSdk = libs.versions.min.sdk.get().toInt()
     }
 
     // Needed for Preview Pane in IDE

@@ -37,6 +37,10 @@ material = "1.11.0"
 #espresso-core = "3.5.1"
 #appcompat = "1.6.1"
 
+compile-sdk = "34"
+target-sdk = "34"
+min-sdk = "30"
+
 [libraries]
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinComposeVersion" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinVersion" }

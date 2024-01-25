@@ -110,9 +110,9 @@ multiplatformResources {
 
 android {
     namespace = "com.br.kmmdemo"
-    compileSdk = 34
+    compileSdk = libs.versions.compile.sdk.get().toInt()
     defaultConfig {
-        minSdk = 30
+        minSdk = libs.versions.min.sdk.get().toInt()
     }
 
     // Needed for Preview Pane in IDE
