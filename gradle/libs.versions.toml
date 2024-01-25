@@ -5,10 +5,14 @@ coroutineCoreVersion = "1.7.3"
 koinVersion = "3.5.0"
 kotlin = "1.9.10"
 ktorVersion = "2.3.2"
+kmp-ignite = "0.0.1"
+kmp-launchpad-compose = "0.0.2"
+kmp-launchpad-domain = "0.0.2"
+kmp-launchpad-utils = "0.0.1"
 compose = "1.5.1"
 activity = "1.8.0"
 glance = "1.0.0"
-precompose = "1.5.4"
+precompose = "1.5.10"
 uiToolingPreviewAndroid = "1.5.4"
 firebaseBomVerson = "32.3.1"
 googleSecretsVersion = "2.0.1"
@@ -31,41 +35,45 @@ kermitLogger = "1.0.0"
 #appcompat = "1.6.1"
 
 [libraries]
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBomVerson" }
+glance = { group = "androidx.glance", name = "glance", version.ref = "glance" }
+glance-appwidget = { group = "androidx.glance", name = "glance-appwidget", version.ref = "glance" }
+glance-material3 = { group = "androidx.glance", name = "glance-material3", version.ref = "glance" }
+google-maps = { group = "com.google.maps.android", name = "maps-compose", version.ref = "googleMapsVersion" }
+google-maps-utils = { group = "com.google.maps.android", name = "maps-compose-utils", version.ref = "googleMapsVersion" }
+google-places = { group = "com.google.android.libraries.places", name = "places", version.ref = "googlePlacesVersion" }
+kermit-logger = { group = "co.touchlab", name = "kermit", version.ref = "kermitLogger" }
+kmp-ignite-data = { group = "com.github.bottlerocketstudios", name = "kmp-ignite-data", version.ref = "kmp-ignite" }
+kmp-ignite-domain = { group = "com.github.bottlerocketstudios", name = "kmp-ignite-domain", version.ref = "kmp-ignite" }
+kmp-launchpad-compose = { group = "com.github.bottlerocketstudios", name = "kmp-launchpad-compose", version.ref = "kmp-launchpad-compose" }
+kmp-launchpad-domain = { group = "com.github.bottlerocketstudios", name = "kmp-launchpad-utils-domain", version.ref = "kmp-launchpad-domain" }
+kmp-launchpad-utils = { group = "com.github.bottlerocketstudios", name = "kmp-launchpad-utils", version.ref = "kmp-launchpad-utils" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinComposeVersion" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinVersion" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinVersion" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koinVersion" }
-ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktorVersion" }
+kotlinGradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutineCoreVersion" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktorVersion" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktorVersion" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorVersion" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktorVersion" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorVersion" }
-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
-glance = { group = "androidx.glance", name = "glance", version.ref = "glance" }
-glance-appwidget = { group = "androidx.glance", name = "glance-appwidget", version.ref = "glance" }
-glance-material3 = { group = "androidx.glance", name = "glance-material3", version.ref = "glance" }
-firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBomVerson" }
-precompose = { module = "moe.tlaster:precompose", version.ref = "precompose" }
-precompose-koin = { module = "moe.tlaster:precompose-koin", version.ref = "precompose" }
-precompose-viewmodel = { module = "moe.tlaster:precompose-viewmodel", version.ref = "precompose" }
-ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version.ref = "uiToolingPreviewAndroid" }
 moko-resources = { group = "dev.icerock.moko", name = "resources", version.ref = "mokoResources" }
 moko-resources-compose = { group = "dev.icerock.moko", name = "resources-compose", version.ref = "mokoResources" }
 moko-resources-test = { group = "dev.icerock.moko", name = "resources-test", version.ref = "mokoResources" }
 mokoResourceGenerator = { group = "dev.icerock.moko", name = "resources-generator", version.ref = "mokoResources" }
-kotlinGradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
-kermit-logger = { group = "co.touchlab", name = "kermit", version.ref = "kermitLogger" }
+play-services-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "playServicesCoroutinesVersion" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+precompose = { module = "moe.tlaster:precompose", version.ref = "precompose" }
+precompose-koin = { module = "moe.tlaster:precompose-koin", version.ref = "precompose" }
+precompose-viewmodel = { module = "moe.tlaster:precompose-viewmodel", version.ref = "precompose" }
+ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version.ref = "uiToolingPreviewAndroid" }
 #core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 #junit = { group = "junit", name = "junit", version.ref = "junit" }
 #androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 #espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
-
-play-services-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "playServicesCoroutinesVersion" }
-google-maps = { group = "com.google.maps.android", name = "maps-compose", version.ref = "googleMapsVersion" }
-google-maps-utils = { group = "com.google.maps.android", name = "maps-compose-utils", version.ref = "googleMapsVersion" }
-google-places = { group = "com.google.android.libraries.places", name = "places", version.ref = "googlePlacesVersion" }
-play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

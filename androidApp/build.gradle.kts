@@ -10,9 +10,28 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(project(":shared"))
+                implementation(project(":domain"))
                 implementation(libs.activity.compose)
                 implementation(libs.koin.android)
 
+                api(compose.foundation)
+                api(compose.animation)
+                api(libs.precompose)
+                api(libs.precompose.viewmodel)
+                api(libs.precompose.koin)
+                api(libs.moko.resources)
+                api(libs.moko.resources.compose)
+
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                implementation(compose.materialIconsExtended)
+                implementation(compose.runtime)
+                implementation(compose.ui)
+
+                // KMP
+                implementation(libs.kmp.launchpad.compose)
+                implementation(libs.kmp.launchpad.domain)
+                implementation(libs.kmp.launchpad.utils)
 
                 // Utility
                 implementation(libs.google.maps)
@@ -62,7 +81,3 @@ android {
         jvmToolchain(17)
     }
 }
-dependencies {
-    implementation(project(":domain"))
-}
-

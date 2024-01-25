@@ -1,6 +1,6 @@
 package com.br.kmmdemo.network
 
-object Routes {
+object NetworkRoutes {
     const val BASE_URL = "https://api.tomorrow.io/v4/weather"
     const val BASE_HOST = "api.tomorrow.io/v4/weather"
     const val FORECAST = "${BASE_URL}/forecast"
