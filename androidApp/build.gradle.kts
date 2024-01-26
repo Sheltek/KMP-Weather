@@ -10,9 +10,10 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(project(":shared"))
+                implementation(project(":domain"))
+                implementation(project(":compose"))
                 implementation(libs.activity.compose)
                 implementation(libs.koin.android)
-
 
                 // Utility
                 implementation(libs.google.maps)
@@ -29,7 +30,7 @@ kotlin {
 
 android {
     namespace = "com.br.kmmdemo.android"
-    compileSdk = (findProperty("android.compileSdk") as String).toInt()
+    compileSdk = libs.versions.compile.sdk.get().toInt()
 
     sourceSets["main"].apply {
         res.srcDirs("src/androidMain/res", "src/commonMain/resources")
@@ -38,7 +39,7 @@ android {
 
     defaultConfig {
         applicationId = "com.br.kmmdemo.android"
-        minSdk = (findProperty("android.minSdk") as String).toInt()
+        minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = (findProperty("android.targetSdk") as String).toInt()
         versionCode = 1
         versionName = "1.0"
@@ -62,7 +63,3 @@ android {
         jvmToolchain(17)
     }
 }
-dependencies {
-    implementation(project(":domain"))
-}
-
