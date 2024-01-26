@@ -39,6 +39,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(mapOf("path" to ":domain")))
+                implementation(project(mapOf("path" to ":shared")))
                 // Put your multiplatform dependencies here
 
                 // Jetpack Compose
@@ -57,48 +58,13 @@ kotlin {
                 api(libs.moko.resources)
                 api(libs.moko.resources.compose)
 
-                // KTOR Networking and Serialization
-                implementation(libs.ktor.client.core)
-                implementation(libs.ktor.client.content.negotiation)
-                implementation(libs.ktor.serialization.kotlinx.json)
-                implementation(libs.koin.core)
-
                 // Logger
                 implementation(libs.kermit.logger)
-
-                // Launchpad
-                implementation(libs.kmp.launchpad.compose)
-            }
-        }
-        val androidMain by getting {
-            dependsOn(commonMain)
-            dependencies {
-                implementation(libs.kotlinx.coroutines.core)
-                implementation(libs.ktor.client.android)
-                implementation(libs.koin.android)
-                implementation(libs.koin.androidx.compose)
-
-                // Utility
-                implementation(libs.google.maps)
-                implementation(libs.google.maps.utils)
-                implementation(libs.google.places)
-                implementation(libs.play.services.maps)
-
-                // Preview Utils need to be implemented in platform code as they use platform renderers
-                implementation(compose.preview)
-                implementation(compose.uiTooling)
-            }
-        }
-        val iosMain by getting {
-            dependsOn(commonMain)
-            dependencies {
-                implementation(libs.ktor.client.darwin)
             }
         }
         val commonTest by getting {
             dependsOn(commonMain)
             dependencies {
-//                implementation(kotlin("test"))
                 implementation(libs.koin.test)
                 implementation(libs.moko.resources.test)
             }
