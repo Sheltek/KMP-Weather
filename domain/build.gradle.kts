@@ -4,17 +4,8 @@ plugins {
     alias(libs.plugins.kotlinSerialization)
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-
-@OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-    targetHierarchy.default()
+    applyDefaultHierarchyTemplate()
 
     androidTarget()
     jvmToolchain(17)
@@ -23,8 +14,8 @@ kotlin {
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
             baseName = "domain"
         }
     }
@@ -49,9 +40,11 @@ kotlin {
 }
 
 android {
-    namespace = "com.br.kmmdemo.domain"
-    compileSdk = libs.versions.compile.sdk.get().toInt()
-    defaultConfig {
-        minSdk = libs.versions.min.sdk.get().toInt()
+    with(libs.versions) {
+        namespace = "${application.id.get()}.domain"
+        compileSdk = compile.sdk.get().toInt()
+        defaultConfig {
+            minSdk = min.sdk.get().toInt()
+        }
     }
 }

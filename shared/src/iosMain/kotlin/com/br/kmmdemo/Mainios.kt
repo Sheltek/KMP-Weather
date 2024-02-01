@@ -1,4 +1,4 @@
-import com.br.kmmdemo.App
+import com.br.kmmdemo.ui.app.KMPDemoApp
 import kotlinx.cinterop.BetaInteropApi
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.autoreleasepool
@@ -45,7 +45,7 @@ class SkikoAppDelegate : UIResponder, UIApplicationDelegateProtocol {
     override fun application(application: UIApplication, didFinishLaunchingWithOptions: Map<Any?, *>?): Boolean {
         window = UIWindow(frame = UIScreen.mainScreen.bounds).apply {
             rootViewController = PreComposeApplication {
-                App(false, bounds.size)
+                KMPDemoApp(false, bounds.size)
             }
             makeKeyAndVisible()
         }

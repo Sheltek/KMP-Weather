@@ -10,12 +10,9 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.glance.Button
-import androidx.glance.ColorFilter
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
 import androidx.glance.GlanceTheme
-import androidx.glance.Image
-import androidx.glance.ImageProvider
 import androidx.glance.action.ActionParameters
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.GlanceAppWidgetReceiver
@@ -33,7 +30,6 @@ import androidx.glance.layout.fillMaxSize
 import androidx.glance.layout.fillMaxWidth
 import androidx.glance.layout.height
 import androidx.glance.layout.padding
-import androidx.glance.layout.size
 import androidx.glance.text.FontWeight
 import androidx.glance.text.Text
 import androidx.glance.text.TextStyle
@@ -223,36 +219,36 @@ fun CurrentWeatherDescription(dailyValues: DailyValues?) {
 
 @Composable
 fun DailyWeatherIcon(dailyValues: DailyValues?) {
-    Image(
-        provider = when {
-            (dailyValues?.precipitationProbabilityAvg ?: 0.0) >= 50.0 -> ImageProvider(R.drawable.rain)
-            (dailyValues?.cloudCoverAvg ?: 0.0) >= 25.0 -> ImageProvider(R.drawable.cloudy)
-            else -> ImageProvider(R.drawable.sunny)
-        },
-        contentDescription = "",
-        colorFilter = ColorFilter.tint(GlanceTheme.colors.tertiary),
-        modifier = GlanceModifier.size(
-            width = 48.dp,
-            height = 48.dp
-        )
-    )
+//    Image(
+//        provider = when {
+//            (dailyValues?.precipitationProbabilityAvg ?: 0.0) >= 50.0 -> ImageProvider(R.drawable.rain)
+//            (dailyValues?.cloudCoverAvg ?: 0.0) >= 25.0 -> ImageProvider(R.drawable.cloudy)
+//            else -> ImageProvider(R.drawable.sunny)
+//        },
+//        contentDescription = "",
+//        colorFilter = ColorFilter.tint(GlanceTheme.colors.tertiary),
+//        modifier = GlanceModifier.size(
+//            width = 48.dp,
+//            height = 48.dp
+//        )
+//    )
 }
 
 @Composable
 fun HourlyWeatherIcon(hourlyValues: HourlyValues?) {
-    Image(
-        provider = when {
-            (hourlyValues?.precipitationProbability ?: 0.0) >= 50.0 -> ImageProvider(R.drawable.rain)
-            (hourlyValues?.cloudCover ?: 0.0) >= 25.0 -> ImageProvider(R.drawable.cloudy)
-            else -> ImageProvider(R.drawable.sunny)
-        },
-        contentDescription = "",
-        colorFilter = ColorFilter.tint(GlanceTheme.colors.tertiary),
-        modifier = GlanceModifier.size(
-            width = 18.dp,
-            height = 18.dp
-        )
-    )
+//    Image(
+//        provider = when {
+//            (hourlyValues?.precipitationProbability ?: 0.0) >= 50.0 -> ImageProvider(R.drawable.rain)
+//            (hourlyValues?.cloudCover ?: 0.0) >= 25.0 -> ImageProvider(R.drawable.cloudy)
+//            else -> ImageProvider(R.drawable.sunny)
+//        },
+//        contentDescription = "",
+//        colorFilter = ColorFilter.tint(GlanceTheme.colors.tertiary),
+//        modifier = GlanceModifier.size(
+//            width = 18.dp,
+//            height = 18.dp
+//        )
+//    )
 }
 
 class WeatherWidgetReceiver : GlanceAppWidgetReceiver() {

@@ -3,23 +3,17 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.jetbrainsCompose)
-    alias(libs.plugins.google.secrets)
-    alias(libs.plugins.google.services)
     alias(libs.plugins.multiplatformResources)
     alias(libs.plugins.ksp)
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
+multiplatformResources {
+    multiplatformResourcesPackage = "com.br.kmmdemo.compose.resources"
+    multiplatformResourcesClassName = "SharedRes"
 }
 
-@OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-    targetHierarchy.default()
-
+    applyDefaultHierarchyTemplate()
     androidTarget()
     jvmToolchain(17)
 
@@ -27,10 +21,9 @@ kotlin {
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "shared"
-            binaryOption("bundleId", "com.br.kmmdemo.shared")
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "compose"
             export(libs.moko.resources)
         }
     }
@@ -38,9 +31,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(mapOf("path" to ":domain")))
-                implementation(project(mapOf("path" to ":shared")))
-                // Put your multiplatform dependencies here
+                implementation(project(":domain"))
 
                 // Jetpack Compose
                 implementation(compose.runtime)
@@ -62,27 +53,35 @@ kotlin {
                 implementation(libs.kermit.logger)
             }
         }
-        val commonTest by getting {
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
+        }
+        val androidMain by getting {
             dependsOn(commonMain)
             dependencies {
-                implementation(libs.koin.test)
-                implementation(libs.moko.resources.test)
+                implementation(libs.ui.tooling.preview.android)
+                implementation(libs.play.services.coroutines)
+                implementation(libs.play.services.maps)
+                implementation(libs.google.maps.utils)
+
+                // Preview Utils need to be implemented in platform code as they use platform renderers
+                implementation(compose.preview)
+                implementation(compose.uiTooling)
             }
         }
     }
 }
 
-multiplatformResources {
-    multiplatformResourcesPackage = "com.br.kmmdemo.resources"
-    multiplatformResourcesClassName = "SharedRes"
-}
 
 android {
-    namespace = "com.br.kmmdemo"
-    compileSdk = libs.versions.compile.sdk.get().toInt()
-    defaultConfig {
-        minSdk = libs.versions.min.sdk.get().toInt()
+    with(libs.versions) {
+        namespace = "${application.id.get()}.compose"
+        compileSdk = compile.sdk.get().toInt()
+        defaultConfig {
+            minSdk = min.sdk.get().toInt()
+        }
     }
+
 
     // Needed for Preview Pane in IDE
     buildFeatures {

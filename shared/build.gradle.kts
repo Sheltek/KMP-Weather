@@ -1,36 +1,30 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.kotlinSerialization)
+//    alias(libs.plugins.buildKonfig)
     alias(libs.plugins.jetbrainsCompose)
-    alias(libs.plugins.google.secrets)
-    alias(libs.plugins.google.services)
+    alias(libs.plugins.ktLint)
     alias(libs.plugins.multiplatformResources)
+    alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
+multiplatformResources {
+    multiplatformResourcesPackage = "com.br.kmmdemo.resources"
+    multiplatformResourcesClassName = "SharedRes"
 }
 
-@OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-    targetHierarchy.default()
-
+    applyDefaultHierarchyTemplate()
     androidTarget()
-    jvmToolchain(17)
 
     listOf(
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
             baseName = "shared"
-            binaryOption("bundleId", "com.br.kmmdemo.shared")
             export(libs.moko.resources)
         }
     }
@@ -38,7 +32,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(mapOf("path" to ":domain")))
+                implementation(project(":domain"))
+                implementation(project(":compose"))
                 // Put your multiplatform dependencies here
 
                 // Jetpack Compose
@@ -66,13 +61,18 @@ kotlin {
                 // Logger
                 implementation(libs.kermit.logger)
 
-                // Launchpad
+                // KMP
                 implementation(libs.kmp.launchpad.compose)
+                implementation(libs.kmp.launchpad.domain)
+                implementation(libs.kmp.launchpad.utils)
             }
         }
         val androidMain by getting {
             dependsOn(commonMain)
             dependencies {
+                api(libs.activity.compose)
+                api(libs.androidx.appcompat)
+                api(libs.androidx.core.ktx)
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.ktor.client.android)
                 implementation(libs.koin.android)
@@ -89,34 +89,37 @@ kotlin {
                 implementation(compose.uiTooling)
             }
         }
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
         val iosMain by getting {
             dependsOn(commonMain)
             dependencies {
                 implementation(libs.ktor.client.darwin)
             }
         }
-        val commonTest by getting {
-            dependsOn(commonMain)
-            dependencies {
+        commonTest.dependencies {
 //                implementation(kotlin("test"))
-                implementation(libs.koin.test)
-                implementation(libs.moko.resources.test)
-            }
+            implementation(libs.koin.test)
+            implementation(libs.moko.resources.test)
         }
     }
 }
 
-multiplatformResources {
-    multiplatformResourcesPackage = "com.br.kmmdemo.resources"
-    multiplatformResourcesClassName = "SharedRes"
-}
-
 android {
-    namespace = "com.br.kmmdemo"
-    compileSdk = libs.versions.compile.sdk.get().toInt()
-    defaultConfig {
-        minSdk = libs.versions.min.sdk.get().toInt()
+    with(libs.versions) {
+        compileSdk = compile.sdk.get().toInt()
+        namespace = "${application.id.get()}.shared"
+        defaultConfig {
+            minSdk = min.sdk.get().toInt()
+        }
     }
+
+
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    sourceSets["main"].res.srcDirs("src/androidMain/res")
+    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
+
 
     // Needed for Preview Pane in IDE
     buildFeatures {
@@ -124,5 +127,12 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.4"
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlin {
+        jvmToolchain(17)
     }
 }

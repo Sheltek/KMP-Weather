@@ -11,10 +11,8 @@ dependencyResolutionManagement {
         maven {
             url = uri("https://maven.pkg.github.com/BottleRocketStudios/kmp-demo")
             credentials {
-                username = System.getenv("REPO_READ_WRITE_USER")
-                println(System.getenv("REPO_READ_USER"))
-                password = System.getenv("REPO_READ_WRITE_TOKEN")
-                println(System.getenv("REPO_READ_TOKEN"))
+                username = System.getenv("REPO_READ_USER")
+                password = System.getenv("REPO_READ_TOKEN")
             }
         }
         google()
