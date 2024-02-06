@@ -15,6 +15,25 @@ kotlin {
                 implementation(libs.activity.compose)
                 implementation(libs.koin.android)
 
+                api(compose.foundation)
+                api(compose.animation)
+                api(libs.precompose)
+                api(libs.precompose.viewmodel)
+                api(libs.precompose.koin)
+                api(libs.moko.resources)
+                api(libs.moko.resources.compose)
+
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                implementation(compose.materialIconsExtended)
+                implementation(compose.runtime)
+                implementation(compose.ui)
+
+                // KMP
+                implementation(libs.kmp.launchpad.compose)
+                implementation(libs.kmp.launchpad.domain)
+                implementation(libs.kmp.launchpad.utils)
+
                 // Utility
                 implementation(libs.google.maps)
                 implementation(libs.google.maps.utils)
@@ -29,22 +48,25 @@ kotlin {
 }
 
 android {
-    namespace = "com.br.kmmdemo.android"
-    compileSdk = libs.versions.compile.sdk.get().toInt()
+    with(libs.versions) {
+        namespace = application.id.get()
+        compileSdk = compile.sdk.get().toInt()
 
-    sourceSets["main"].apply {
-        res.srcDirs("src/androidMain/res", "src/commonMain/resources")
-        manifest.srcFile("src/androidMain/AndroidManifest.xml")
+        sourceSets["main"].apply {
+            res.srcDirs("src/androidMain/res", "src/commonMain/resources")
+            manifest.srcFile("src/androidMain/AndroidManifest.xml")
+        }
+
+        defaultConfig {
+            applicationId = application.id.get()
+            minSdk = min.sdk.get().toInt()
+            targetSdk = target.sdk.get().toInt()
+            versionCode = version.code.get().toInt()
+            versionName = version.name.get()
+            manifestPlaceholders["MAPS_API_KEY"] = "MAPS_API_KEY"
+        }
     }
 
-    defaultConfig {
-        applicationId = "com.br.kmmdemo.android"
-        minSdk = libs.versions.min.sdk.get().toInt()
-        targetSdk = (findProperty("android.targetSdk") as String).toInt()
-        versionCode = 1
-        versionName = "1.0"
-        manifestPlaceholders["MAPS_API_KEY"] = "MAPS_API_KEY"
-    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"

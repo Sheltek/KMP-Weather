@@ -11,7 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.br.kmmdemo.resources.SharedRes
+import com.br.kmmdemo.compose.resources.SharedRes
 import dev.icerock.moko.resources.compose.fontFamilyResource
 import dev.icerock.moko.resources.compose.stringResource
 

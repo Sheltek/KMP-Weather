@@ -22,9 +22,9 @@ fun ktorClient(): HttpClient = HttpClient {
     defaultRequest {
         url {
             protocol = URLProtocol.HTTPS
-            host = Routes.BASE_HOST
+            host = NetworkRoutes.BASE_HOST
             headers {
-                appendIfNameAbsent("apikey", Routes.API_KEY)
+                appendIfNameAbsent("apikey", NetworkRoutes.API_KEY)
             }
         }
     }
