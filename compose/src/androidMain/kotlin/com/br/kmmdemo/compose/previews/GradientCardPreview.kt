@@ -11,7 +11,7 @@ import com.br.kmmdemo.compose.ui.shared.GradientCard
 fun GradientCardPreview() {
     KMMTheme {
         Surface {
-            GradientCard {
+            GradientCard(isExpanded = true) {
                 ForecastTabsPreview()
             }
         }

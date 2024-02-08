@@ -14,7 +14,7 @@ import com.br.kmmdemo.compose.ui.home.HomeScreen
 @Preview(showSystemUi = true)
 fun HomeScreenPreview() {
     KMMTheme {
-        HomeScreen(MockData.getMockHomeState())
+        HomeScreen(MockData.getMockHomeState(), true)
     }
 }
 
@@ -22,7 +22,7 @@ fun HomeScreenPreview() {
 @Composable
 private fun BottomSheetPreview() {
     KMMTheme {
-        HomeBottomSheet(state = MockData.getMockHomeState())
+        HomeBottomSheet(state = MockData.getMockHomeState(), true)
     }
 }
 
@@ -39,7 +39,7 @@ fun NavBarPreview() {
 fun HomeCurrentWeatherPreview() {
     KMMTheme {
         Surface {
-            HomeCurrentWeather(MockData.getMockHomeState())
+            HomeCurrentWeather(MockData.getMockHomeState(), true)
         }
     }
 }
@@ -49,7 +49,7 @@ fun HomeCurrentWeatherPreview() {
 fun HomeCurrentWeatherERRORPreview() {
     KMMTheme {
         Surface {
-            HomeCurrentWeather(MockData.getMockHomeState(isError = true))
+            HomeCurrentWeather(MockData.getMockHomeState(isError = true), true)
         }
     }
 }

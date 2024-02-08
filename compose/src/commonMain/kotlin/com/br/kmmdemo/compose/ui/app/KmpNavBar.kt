@@ -19,13 +19,12 @@ import androidx.compose.ui.unit.dp
 import com.br.kmmdemo.compose.resources.SharedRes
 import com.br.kmmdemo.compose.resources.theme.Colors
 import com.br.kmmdemo.compose.resources.theme.Dimens
+import com.br.kmmdemo.compose.ui.utils.NAV_ALT_BTN_SIZE
+import com.br.kmmdemo.compose.ui.utils.NAV_FAB_BG_HEIGHT
+import com.br.kmmdemo.compose.ui.utils.NAV_FAB_BG_WIDTH
+import com.br.kmmdemo.compose.ui.utils.NAV_FAB_BTN_SIZE
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
-
-const val FAB_BTN_SIZE = 102
-const val FAB_BG_WIDTH = 258
-const val FAB_BG_HEIGHT = 100
-const val ALT_BTN_SIZE = 48
 
 @Composable
 fun KmpNavBar(
@@ -36,7 +35,7 @@ fun KmpNavBar(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Colors.primaryContainer),
+            .background(Colors.secondary),
         contentAlignment = Alignment.BottomCenter,
         content = {
             Image(
@@ -49,14 +48,14 @@ fun KmpNavBar(
             Image(
                 painter = painterResource(SharedRes.images.nav_bar_button_bg),
                 contentDescription = stringResource(SharedRes.strings.nav_bar_button_bg),
-                modifier = Modifier.width(FAB_BG_WIDTH.dp).height(FAB_BG_HEIGHT.dp),
+                modifier = Modifier.width(NAV_FAB_BG_WIDTH.dp).height(NAV_FAB_BG_HEIGHT.dp),
                 alignment = Alignment.BottomCenter
             )
             Image(
                 painter = painterResource(SharedRes.images.nav_bar_button),
                 contentDescription = stringResource(SharedRes.strings.nav_bar_button),
                 modifier = Modifier
-                    .size(FAB_BTN_SIZE.dp)
+                    .size(NAV_FAB_BTN_SIZE.dp)
                     .clickable { onAddClick() },
                 alignment = Alignment.Center
             )
@@ -75,7 +74,7 @@ fun KmpNavBar(
                         painter = painterResource(SharedRes.images.nav_bar_pin_button),
                         contentDescription = stringResource(SharedRes.strings.nav_bar_pin_button),
                         modifier = Modifier
-                            .size(ALT_BTN_SIZE.dp)
+                            .size(NAV_ALT_BTN_SIZE.dp)
                             .clickable { onMapPinClick() },
                         alignment = Alignment.CenterStart,
                     )
@@ -83,7 +82,7 @@ fun KmpNavBar(
                         painter = painterResource(SharedRes.images.nav_bar_list_button),
                         contentDescription = stringResource(SharedRes.strings.nav_bar_list_button),
                         modifier = Modifier
-                            .size(ALT_BTN_SIZE.dp)
+                            .size(NAV_ALT_BTN_SIZE.dp)
                             .clickable { onListClick() },
                         alignment = Alignment.CenterEnd
                     )

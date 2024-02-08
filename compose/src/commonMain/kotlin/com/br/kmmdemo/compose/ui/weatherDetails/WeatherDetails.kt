@@ -1,4 +1,5 @@
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
@@ -16,6 +17,7 @@ import com.br.kmmdemo.compose.ui.weatherDetails.sunrise_sunset.SunriseSunsetWidg
 import com.br.kmmdemo.compose.ui.weatherDetails.uvIndex.UvIndexWidget
 import com.br.kmmdemo.compose.ui.weatherDetails.wind.WindWidget
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun WeatherDetails(state: WeatherDetailsState) {
     with(state) {
