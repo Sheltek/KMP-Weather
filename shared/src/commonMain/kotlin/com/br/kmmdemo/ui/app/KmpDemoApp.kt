@@ -8,7 +8,6 @@ import com.bottlerocketstudios.launchpad.compose.navigation.utils.DevicePosture
 import com.bottlerocketstudios.launchpad.compose.navigation.utils.WindowWidthSizeClass
 import com.br.kmmdemo.MainWindowControlsImplementation
 import com.br.kmmdemo.NavRoutes
-import com.br.kmmdemo.compose.ui.app.KmpNavBar
 import com.br.kmmdemo.mainNavGraph
 import com.br.kmmdemo.viewmodels.MainActivityViewModel
 import moe.tlaster.precompose.navigation.NavHost
@@ -29,11 +28,9 @@ fun KMPDemoApp(
     val windowControls by lazy { MainWindowControlsImplementation(activityViewModel) }
 
     Scaffold(
-        topBar = {
-//        KmpTopBar(stringResource(activityViewModel.toState().appTitle))
-        },
+        topBar = {},
         bottomBar = {
-            if (!windowControls.hideNavBar && navigator != null) KmpNavBar()
+            if (!windowControls.hideNavBar && navigator != null) bottomBar()
         },
     ) {
         navigator?.let { navController ->

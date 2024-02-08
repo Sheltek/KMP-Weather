@@ -14,10 +14,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.br.kmmdemo.compose.resources.SharedRes
+import com.br.kmmdemo.compose.resources.theme.Colors
 import com.br.kmmdemo.compose.resources.theme.Dimens
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
@@ -36,7 +36,7 @@ fun KmpNavBar(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.Transparent),
+            .background(Colors.primaryContainer),
         contentAlignment = Alignment.BottomCenter,
         content = {
             Image(
