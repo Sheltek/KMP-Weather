@@ -2,7 +2,9 @@ package com.br.kmmdemo.compose.ui.home
 
 import WeatherDetails
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import com.br.kmmdemo.compose.resources.SharedRes
 import com.br.kmmdemo.compose.ui.forecasts.ForecastTabState
 import com.br.kmmdemo.compose.ui.forecasts.ForecastTabs
@@ -12,10 +14,11 @@ import com.br.kmmdemo.compose.ui.shared.GradientCard
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
-fun HomeBottomSheet(state: HomeState) {
+fun HomeBottomSheet(state: HomeState, sheetState: Boolean) {
     with(state) {
-        GradientCard {
+        GradientCard(sheetState) {
             Column(
+                modifier = Modifier.fillMaxHeight(),
                 content = {
                     ForecastTabs(
                         listOf(

@@ -19,14 +19,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.br.kmmdemo.compose.ui.shared.KMMDemoSlider
-import com.br.kmmdemo.compose.ui.weatherDetails.DETAILS_WIDGET_SIZE
-import com.br.kmmdemo.compose.ui.weatherDetails.DetailsWidgetLabel
 import com.br.kmmdemo.compose.resources.SharedRes
 import com.br.kmmdemo.compose.resources.theme.Colors
 import com.br.kmmdemo.compose.resources.theme.Dimens
 import com.br.kmmdemo.compose.resources.theme.bold
 import com.br.kmmdemo.compose.resources.theme.letterSpacing
+import com.br.kmmdemo.compose.ui.shared.KMMDemoSlider
+import com.br.kmmdemo.compose.ui.weatherDetails.DETAILS_WIDGET_SIZE
+import com.br.kmmdemo.compose.ui.weatherDetails.DetailsWidgetLabel
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 
@@ -34,7 +34,6 @@ import dev.icerock.moko.resources.compose.stringResource
 fun AirQualityWidget(risk: AirQualityEnum = AirQualityEnum.UNKNOWN) {
     Surface(
         modifier = Modifier
-            .padding(horizontal = Dimens.grid_0_5)
             .fillMaxWidth()
             .height(DETAILS_WIDGET_SIZE),
         color = Colors.primaryContainer,

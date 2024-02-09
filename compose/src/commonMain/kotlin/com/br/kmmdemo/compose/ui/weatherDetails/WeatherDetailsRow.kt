@@ -13,11 +13,7 @@ fun WeatherDetailsRow(content: @Composable () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(
-                start = Dimens.grid_0_5,
-                end = Dimens.grid_0_5,
-                top = Dimens.grid_1_5
-            ),
+            .padding(top = Dimens.grid_2_5),
         horizontalArrangement = Arrangement.SpaceBetween,
         content = { content() }
     )
