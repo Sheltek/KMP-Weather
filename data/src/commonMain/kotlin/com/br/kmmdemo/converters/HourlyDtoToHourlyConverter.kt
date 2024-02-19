@@ -1,4 +1,4 @@
-package com.br.kmmdemo.models.converters
+package com.br.kmmdemo.converters
 
 import com.br.kmmdemo.models.Hourly
 import com.br.kmmdemo.network.dtos.HourlyDto
