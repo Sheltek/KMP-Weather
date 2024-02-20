@@ -34,6 +34,7 @@ kotlin {
             dependencies {
                 implementation(project(":domain"))
                 implementation(project(":compose"))
+                implementation(project(":data"))
                 // Put your multiplatform dependencies here
 
                 // Jetpack Compose

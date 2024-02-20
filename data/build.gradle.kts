@@ -15,16 +15,17 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "domain"
+            baseName = "data"
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(project(":domain"))
                 //put your multiplatform dependencies here
-//                implementation(libs.ktor.client.core)
-//                implementation(libs.ktor.client.content.negotiation)
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.content.negotiation)
                 implementation(libs.ktor.serialization.kotlinx.json)
                 implementation(libs.koin.core)
             }
@@ -40,7 +41,7 @@ kotlin {
 
 android {
     with(libs.versions) {
-        namespace = "${application.id.get()}.domain"
+        namespace = "${application.id.get()}.data"
         compileSdk = compile.sdk.get().toInt()
         defaultConfig {
             minSdk = min.sdk.get().toInt()

@@ -1,11 +1,11 @@
 package com.br.kmmdemo.di
 
-import com.br.kmmdemo.network.TomorrowIoService
-import com.br.kmmdemo.network.TomorrowIoServiceImpl
+import ForecastForCityInteractor
+import com.br.kmmdemo.TomorrowIoService
+import com.br.kmmdemo.TomorrowIoServiceImpl
 import com.br.kmmdemo.network.ktorClient
-import com.br.kmmdemo.repositories.WeatherRepoImplementation
 import com.br.kmmdemo.repositories.WeatherRepository
-import com.br.kmmdemo.usecases.forecastusecase.ForecastForCityInteractor
+import com.br.kmmdemo.repository.WeatherRepoImplementation
 import com.br.kmmdemo.usecases.forecastusecase.ForecastForCityUseCase
 import com.br.kmmdemo.viewmodels.ForecastViewModel
 import com.br.kmmdemo.viewmodels.HomeViewModel

@@ -1,6 +1,6 @@
-package com.br.kmmdemo.network
+package com.br.kmmdemo
 
-import com.br.kmmdemo.network.dtos.ForecastDto
+import com.br.kmmdemo.models.Forecast
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -17,6 +17,6 @@ class TomorrowIoServiceImpl : TomorrowIoService, KoinComponent {
                 url(path = "/forecast") {
                     parameters["location"] = city
                 }
-            }.body<ForecastDto>()
+            }.body<Forecast>()
         }
 }

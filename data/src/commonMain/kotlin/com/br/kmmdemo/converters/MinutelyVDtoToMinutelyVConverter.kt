@@ -1,30 +1,20 @@
-package com.br.kmmdemo.models.converters
+package com.br.kmmdemo.converters
 
-import com.br.kmmdemo.models.HourlyValues
-import com.br.kmmdemo.network.dtos.HourlyDataPointValuesDto
+import com.br.kmmdemo.models.MinutelyValues
+import com.br.kmmdemo.network.dtos.MinutelyDataPointValuesDto
 
-fun HourlyDataPointValuesDto?.toHourlyValuesModel(): HourlyValues {
-    return HourlyValues(
+fun MinutelyDataPointValuesDto?.toMinutelyValuesModel(): MinutelyValues {
+    return MinutelyValues(
         cloudBase = this?.cloudBase,
         cloudCeiling = this?.cloudCeiling,
         cloudCover = this?.cloudCover,
         dewPoint = this?.dewPoint,
-        evapotranspiration = this?.evapotranspiration,
         freezingRainIntensity = this?.freezingRainIntensity,
         humidity = this?.humidity,
-        iceAccumulation = this?.iceAccumulation,
-        iceAccumulationLwe = this?.iceAccumulationLwe,
         precipitationProbability = this?.precipitationProbability,
         pressureSurfaceLevel = this?.pressureSurfaceLevel,
-        rainAccumulation = this?.rainAccumulation,
-        rainAccumulationLwe = this?.rainAccumulationLwe,
         rainIntensity = this?.rainIntensity,
-        sleetAccumulation = this?.sleetAccumulation,
-        sleetAccumulationLwe = this?.sleetAccumulationLwe,
         sleetIntensity = this?.sleetIntensity,
-        snowAccumulation = this?.snowAccumulation,
-        snowAccumulationLwe = this?.snowAccumulationLwe,
-        snowDepth = this?.snowDepth,
         snowIntensity = this?.snowIntensity,
         temperature = this?.temperature,
         temperatureApparent = this?.temperatureApparent,
