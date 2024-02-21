@@ -1,7 +1,7 @@
 package com.br.kmmdemo.converters
 
 import com.br.kmmdemo.models.Location
-import com.br.kmmdemo.network.dtos.LocationDto
+import com.br.kmmdemo.dtos.LocationDto
 
 fun LocationDto?.toLocationModel(): Location {
     return Location(

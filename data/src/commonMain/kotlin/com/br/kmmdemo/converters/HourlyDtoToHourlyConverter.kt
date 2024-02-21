@@ -1,7 +1,7 @@
 package com.br.kmmdemo.converters
 
 import com.br.kmmdemo.models.Hourly
-import com.br.kmmdemo.network.dtos.HourlyDto
+import com.br.kmmdemo.dtos.HourlyDto
 
 fun HourlyDto?.toHourlyModel(): Hourly {
     return Hourly(

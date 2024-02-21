@@ -1,7 +1,7 @@
 package com.br.kmmdemo.converters
 
 import com.br.kmmdemo.models.Timelines
-import com.br.kmmdemo.network.dtos.TimelinesDto
+import com.br.kmmdemo.dtos.TimelinesDto
 
 fun TimelinesDto?.toTimelinesModel(): Timelines {
     return Timelines(
