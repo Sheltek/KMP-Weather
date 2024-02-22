@@ -1,7 +1,7 @@
 package com.br.kmpdemo.converters
 
 import com.br.kmpdemo.models.Minutely
-import com.br.kmpdemo.network.dtos.MinutelyDto
+import com.br.kmpdemo.dtos.MinutelyDto
 
 fun MinutelyDto?.toMinutelyModel(): Minutely {
     return Minutely(

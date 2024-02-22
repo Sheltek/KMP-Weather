@@ -1,7 +1,8 @@
 package com.br.kmpdemo.converters
 
+import com.br.kmmdemo.converters.toHourlyModel
 import com.br.kmpdemo.models.Timelines
-import com.br.kmpdemo.network.dtos.TimelinesDto
+import com.br.kmpdemo.dtos.TimelinesDto
 
 fun TimelinesDto?.toTimelinesModel(): Timelines {
     return Timelines(

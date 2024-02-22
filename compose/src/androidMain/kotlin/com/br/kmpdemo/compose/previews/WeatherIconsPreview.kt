@@ -70,7 +70,7 @@ fun NightWeatherIconsPreview() {
 fun OtherWeatherIconsPreview() {
     val icons = listOf(
         WeatherEnum.WINDY,
-        WeatherEnum.OVERCAST_CLOUDY,
+        WeatherEnum.DAY_CLOUDY,
         WeatherEnum.LIGHT_RAIN,
         WeatherEnum.HEAVY_RAIN,
         WeatherEnum.HAIL,

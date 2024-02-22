@@ -1,5 +1,6 @@
-package com.br.kmpdemo.converters
+package com.br.kmmdemo.converters
 
+import com.br.kmpdemo.converters.toHourlyValuesModel
 import com.br.kmpdemo.models.Hourly
 import com.br.kmpdemo.network.dtos.HourlyDto
 
