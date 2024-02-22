@@ -31,4 +31,3 @@ enum class WeatherEnum(val weather: StringResource, val icon: ImageResource) {
     LIGHTENING(SharedRes.strings.lightening, SharedRes.images.lightening),
     WINDY(SharedRes.strings.windy, SharedRes.images.windy),
 }
-

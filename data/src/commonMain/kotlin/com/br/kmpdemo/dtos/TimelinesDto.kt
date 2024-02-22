@@ -1,6 +1,7 @@
 package com.br.kmpdemo.dtos
 
 import com.br.kmpdemo.network.dtos.Dto
+import com.br.kmpdemo.network.dtos.HourlyDto
 import kotlinx.serialization.Serializable
 
 @Serializable

@@ -1,9 +1,10 @@
 
 import androidx.compose.runtime.Composable
+import com.br.kmpdemo.compose.resources.SharedRes
 import com.br.kmpdemo.compose.ui.weatherDetails.DetailsWidgetLabel
 import com.br.kmpdemo.compose.ui.weatherDetails.WeatherDetailsSurface
 import com.br.kmpdemo.compose.ui.weatherDetails.pressure.BarometricPressureState
-import com.br.kmpdemo.compose.resources.SharedRes
+
 
 @Composable
 fun BarometricPressureWidget(state: BarometricPressureState) {

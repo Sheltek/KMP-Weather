@@ -1,7 +1,7 @@
 package com.br.kmpdemo.converters
 
 import com.br.kmpdemo.models.HourlyValues
-import com.br.kmpdemo.dtos.HourlyDataPointValuesDto
+import com.br.kmpdemo.network.dtos.HourlyDataPointValuesDto
 
 fun HourlyDataPointValuesDto?.toHourlyValuesModel(): HourlyValues {
     return HourlyValues(
