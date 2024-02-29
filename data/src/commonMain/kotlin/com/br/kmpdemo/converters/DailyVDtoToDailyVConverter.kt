@@ -1,7 +1,7 @@
 package com.br.kmpdemo.converters
 
+import com.br.kmpdemo.dtos.DailyDataPointValuesDto
 import com.br.kmpdemo.models.DailyValues
-import com.br.kmpdemo.network.dtos.DailyDataPointValuesDto
 
 fun DailyDataPointValuesDto?.toDailyValuesModel(): DailyValues {
     return DailyValues(
@@ -84,6 +84,7 @@ fun DailyDataPointValuesDto?.toDailyValuesModel(): DailyValues {
         temperatureApparentMin = this?.temperatureApparentMin,
         temperatureAvg = this?.temperatureAvg,
         temperatureMax = this?.temperatureMax,
+        temperatureMin = this?.temperatureMin,
         uvHealthConcernAvg = this?.uvHealthConcernAvg,
         uvHealthConcernMax = this?.uvHealthConcernMax,
         uvHealthConcernMin = this?.uvHealthConcernMin,

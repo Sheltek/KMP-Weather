@@ -1,15 +1,19 @@
 package com.br.kmpdemo.network
 
+import com.br.kmpdemo.models.ApiException
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.plugins.HttpResponseValidator
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
-import io.ktor.client.request.headers
 import io.ktor.http.URLProtocol
+import io.ktor.http.isSuccess
 import io.ktor.serialization.kotlinx.json.json
-import io.ktor.util.appendIfNameAbsent
 import kotlinx.serialization.json.Json
 
 fun ktorClient(): HttpClient = HttpClient {
+    expectSuccess = true
+
     install(ContentNegotiation) {
         json(Json {
             prettyPrint = true
@@ -19,13 +23,28 @@ fun ktorClient(): HttpClient = HttpClient {
         })
     }
 
+    HttpResponseValidator {
+        validateResponse { response ->
+            if (!response.status.isSuccess()) {
+                val error: Error = response.body()
+                throw ApiException(
+                    code = response.status.value,
+                    message = error.message.toString(),
+                    subCode = 0,
+                    subMessage = "",
+                    errorNumber = 0
+                )
+            }
+        }
+    }
+
     defaultRequest {
         url {
             protocol = URLProtocol.HTTPS
-            host = NetworkRoutes.BASE_HOST
-            headers {
-                appendIfNameAbsent("apikey", NetworkRoutes.API_KEY)
-            }
+//            host = NetworkRoutes.BASE_HOST
+//            headers {
+//                appendIfNameAbsent("apikey", NetworkRoutes.API_KEY)
+//            }
         }
     }
 }

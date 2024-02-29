@@ -6,12 +6,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
-import com.br.kmpdemo.compose.ui.weatherDetails.DetailsWidgetLabel
-import com.br.kmpdemo.compose.ui.weatherDetails.WeatherDetailsSurface
 import com.br.kmpdemo.compose.resources.SharedRes
 import com.br.kmpdemo.compose.resources.theme.Dimens
 import com.br.kmpdemo.compose.resources.theme.bold
 import com.br.kmpdemo.compose.resources.theme.letterSpacing
+import com.br.kmpdemo.compose.ui.weatherDetails.DetailsWidgetLabel
+import com.br.kmpdemo.compose.ui.weatherDetails.WeatherDetailsSurface
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
@@ -24,9 +24,11 @@ fun RainFallWidget(rainFallState: RainFallState) {
                 label = SharedRes.strings.rainfall,
             )
 
+            /// TODO: Create conditional for Metric/Imperial setting
             Text(
-                rainFallState.currentAccumulation
-                    ?: stringResource(SharedRes.strings.empty_digits_error),
+                rainFallState.currentAccumulation?.let { rain ->
+                    stringResource(SharedRes.strings.input_rainfall_in, rain.toString())
+                } ?: stringResource(SharedRes.strings.empty_digits_error),
                 modifier = Modifier.padding(top = Dimens.grid_1_5),
                 style = MaterialTheme.typography.titleMedium.letterSpacing(0.96.sp)
             )

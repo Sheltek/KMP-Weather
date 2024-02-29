@@ -1,30 +1,21 @@
 package com.br.kmpdemo.converters
 
-import com.br.kmpdemo.models.HourlyValues
-import com.br.kmpdemo.dtos.HourlyDataPointValuesDto
+import com.br.kmpdemo.dtos.RealTimeValuesDto
+import com.br.kmpdemo.models.RealTimeValues
 
-fun HourlyDataPointValuesDto?.toHourlyValuesModel(): HourlyValues {
-    return HourlyValues(
+
+fun RealTimeValuesDto?.toRealTimeValuesModel(): RealTimeValues {
+    return RealTimeValues(
         cloudBase = this?.cloudBase,
         cloudCeiling = this?.cloudCeiling,
         cloudCover = this?.cloudCover,
         dewPoint = this?.dewPoint,
-        evapotranspiration = this?.evapotranspiration,
         freezingRainIntensity = this?.freezingRainIntensity,
         humidity = this?.humidity,
-        iceAccumulation = this?.iceAccumulation,
-        iceAccumulationLwe = this?.iceAccumulationLwe,
         precipitationProbability = this?.precipitationProbability,
         pressureSurfaceLevel = this?.pressureSurfaceLevel,
-        rainAccumulation = this?.rainAccumulation,
-        rainAccumulationLwe = this?.rainAccumulationLwe,
         rainIntensity = this?.rainIntensity,
-        sleetAccumulation = this?.sleetAccumulation,
-        sleetAccumulationLwe = this?.sleetAccumulationLwe,
         sleetIntensity = this?.sleetIntensity,
-        snowAccumulation = this?.snowAccumulation,
-        snowAccumulationLwe = this?.snowAccumulationLwe,
-        snowDepth = this?.snowDepth,
         snowIntensity = this?.snowIntensity,
         temperature = this?.temperature,
         temperatureApparent = this?.temperatureApparent,
@@ -34,6 +25,6 @@ fun HourlyDataPointValuesDto?.toHourlyValuesModel(): HourlyValues {
         weatherCode = this?.weatherCode,
         windDirection = this?.windDirection,
         windGust = this?.windGust,
-        windSpeed = this?.windSpeed
+        windSpeed = this?.windSpeed,
     )
 }
