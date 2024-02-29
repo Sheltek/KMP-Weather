@@ -1,6 +1,5 @@
 package com.br.kmpdemo.converters
 
-import com.br.kmmdemo.converters.toHourlyModel
 import com.br.kmpdemo.dtos.TimelinesDto
 import com.br.kmpdemo.models.Timelines
 
