@@ -12,10 +12,10 @@ import org.koin.core.component.inject
 class WeatherRepoImplementation : WeatherRepository, KoinComponent {
     private val tomorrowIoService: TomorrowIoService by inject()
 
-    override suspend fun getForecastForCity(city: String): Result<Forecast> =
-        tomorrowIoService
-            .getForecastByCity(city)
-            .map { it.toForecastModel() }
+//    override suspend fun getForecastForCity(city: String): Result<Forecast> =
+//        tomorrowIoService
+//            .getForecastByCity(city)
+//            .map { it.toForecastModel() }
 
     override suspend fun getDailyForecast(location: String, units: String): Result<Forecast?> =
         tomorrowIoService

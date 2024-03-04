@@ -17,7 +17,7 @@ enum class UVIndexEnum(
 }
 
 fun Double?.getUvIndex() =
-    when (this ?: -1.0) {
+    when (this ?: Double.MIN_VALUE) {
         in 0.0..2.9 -> UVIndexEnum.LOW
         in 3.0..5.9 -> UVIndexEnum.MODERATE
         in 6.0..7.9 -> UVIndexEnum.HIGH

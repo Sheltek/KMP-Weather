@@ -25,10 +25,8 @@ import com.br.kmpdemo.viewmodels.HomeViewModelUtils.getPressureFloat
 import com.br.kmpdemo.viewmodels.HomeViewModelUtils.toDailyForecastState
 import com.br.kmpdemo.viewmodels.HomeViewModelUtils.toHourlyForecastState
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 import moe.tlaster.precompose.viewmodel.viewModelScope
@@ -37,47 +35,35 @@ import org.koin.core.component.inject
 class HomeViewModel : BaseViewModel() {
     private val weatherRepo: WeatherRepository by inject()
 
-    /** Forecast Responses */
+    /**region Forecast Responses */
     val initForecasts = List(10) { ForecastState(weatherIcon = WeatherEnum.SUNNY) }
     private val hourlyResponse = MutableStateFlow<Forecast?>(null)
     private val dailyResponse = MutableStateFlow<Forecast?>(null)
     val realTimeResponse = MutableStateFlow<RealTime?>(null)
+    //endregion
 
-    /** UI Forecasts */
+    /**region UI Forecasts */
     val hourlyForecasts = hourlyResponse
         .map { it?.timelines?.hourly?.toHourlyForecastState() ?: initForecasts }
-        .stateIn(viewModelScope, SharingStarted.Lazily, null)
     val dailyForecasts = dailyResponse
         .map { it?.timelines?.daily?.toDailyForecastState() ?: initForecasts }
-        .stateIn(viewModelScope, SharingStarted.Lazily, null)
+    //endregion
 
-
-    /** Home Screen Weather Overlay, Location, Temperature (current & hi/low), Weather Description */
+    /**region Home Screen Weather Overlay */
     val location = realTimeResponse
         .map { it?.location?.name?.extractCityName() }
-        .stateIn(viewModelScope, SharingStarted.Lazily, null)
-
     val currentTemp = realTimeResponse
         .map { it?.data?.realTimeValues?.temperature?.toInt() }
-        .stateIn(viewModelScope, SharingStarted.Lazily, null)
-
     val weatherDescription = realTimeResponse
         .map { it?.data?.realTimeValues?.weatherCode?.getWeatherFromCode() }
-        .stateIn(viewModelScope, SharingStarted.Lazily, null)
-
     val currentTempHi = dailyForecasts
-        .map { daily -> daily?.find { it.isNow }?.temperatureMax }
-        .stateIn(viewModelScope, SharingStarted.Lazily, null)
-
+        .map { daily -> daily.find { it.isNow }?.temperatureMax }
     val currentTempLow = dailyForecasts
-        .map { daily -> daily?.find { it.isNow }?.temperatureMin }
-        .stateIn(viewModelScope, SharingStarted.Lazily, null)
+        .map { daily -> daily.find { it.isNow }?.temperatureMin } //endregion
 
-
-    /** Weather Details (Data for BottomSheet widgets) */
+    /**region Weather Details (Data for BottomSheet widgets) */
     // TODO: ASAA-176 Air Quality Data, Requires a separate call with a different key
     val airQuality = MutableStateFlow<AirQualityEnum?>(null)
-
     val feelsLikeState = realTimeResponse.map { realTime ->
         with(realTime?.data?.realTimeValues) {
             FeelsLikeState(
@@ -85,40 +71,35 @@ class HomeViewModel : BaseViewModel() {
                 this?.temperature
             )
         }
-    }.stateIn(viewModelScope, SharingStarted.Lazily, null)
-
+    }
     val humidityState = realTimeResponse.map { realTime ->
-        with(realTime?.data?.realTimeValues) { HumidityState(this?.dewPoint, this?.humidity) }
-    }.stateIn(viewModelScope, SharingStarted.Lazily, null)
-
+        with(realTime?.data?.realTimeValues) {
+            HumidityState(this?.dewPoint, this?.humidity)
+        }
+    }
     val pressureState = realTimeResponse.map { realTime ->
         BarometricPressureState(realTime?.data?.realTimeValues?.pressureSurfaceLevel?.getPressureFloat())
-    }.stateIn(viewModelScope, SharingStarted.Lazily, null)
-
+    }
     val rainFallState = combine(hourlyForecasts, dailyForecasts) { hourly, daily ->
         RainFallState(
-            currentAccumulation = hourly?.find { it.isNow }?.currentRainAccumulation,
-            expectedAccumulation = daily?.find { it.isNow }?.expectedRainAccumulation,
+            currentAccumulation = hourly.find { it.isNow }?.currentRainAccumulation,
+            expectedAccumulation = daily.find { it.isNow }?.expectedRainAccumulation,
         )
-    }.stateIn(viewModelScope, SharingStarted.Lazily, null)
-
+    }
     val sunriseSunsetState = dailyForecasts.map { daily ->
-        val today = daily?.find { it.isNow }
+        val today = daily.find { it.isNow }
         SunriseSunsetState(
             localTime = Clock.System.now().toString().convertUtcTimeForSunriseSunset(),
             sunriseTime = today?.sunriseTime?.convertUtcTimeForSunriseSunset(),
             sunsetTime = today?.sunsetTime?.convertUtcTimeForSunriseSunset(),
         )
-    }.stateIn(viewModelScope, SharingStarted.Lazily, null)
-
+    }
     val uvIndexState = realTimeResponse.map { realTime ->
         realTime?.data?.realTimeValues?.uvIndex?.getUvIndex()
-    }.stateIn(viewModelScope, SharingStarted.Lazily, null)
-
+    }
     val visibilityState = realTimeResponse.map { realTime ->
         VisibilityState(realTime?.data?.realTimeValues?.visibility?.toInt()?.toString())
-    }.stateIn(viewModelScope, SharingStarted.Lazily, null)
-
+    }
     val windState = realTimeResponse.map { realTime ->
         with(realTime?.data?.realTimeValues) {
             WindState(
@@ -127,7 +108,8 @@ class HomeViewModel : BaseViewModel() {
                 windSpeed = this?.windSpeed?.toString(),
             )
         }
-    }.stateIn(viewModelScope, SharingStarted.Lazily, null)
+    }
+    //endregion
 
     init {
         // TODO: ASAA-189 Get Current Location and remove hardcoded values
@@ -137,7 +119,7 @@ class HomeViewModel : BaseViewModel() {
     }
 
 
-    /** Network calls */
+    /**region Network calls */
     private fun getDailyForecasts(location: String, units: String = NetworkRoutes.IMPERIAL) =
         viewModelScope.launch {
             weatherRepo.getDailyForecast(location = location, units = units)
@@ -158,4 +140,5 @@ class HomeViewModel : BaseViewModel() {
                 .onSuccess { realTimeResponse.value = it }
                 .onFailure { Logger.e("[getRealTimeForecasts]") { "Failure: ${it.message}" } }
         }
+    //endregion
 }

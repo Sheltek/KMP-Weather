@@ -13,23 +13,14 @@ package com.br.kmpdemo.network
  * - For UNITS (optional), use [METRIC] or [IMPERIAL]
  **/
 object NetworkRoutes {
-    private const val BASE_URL = "https://api.tomorrow.io/v4/weather"
-    private const val BASE_HOST = "api.tomorrow.io/v4/weather"
-    private const val FORECAST_URL = "${BASE_URL}/forecast"
-    private const val REALTIME_URL = "${BASE_URL}/realtime"
-    const val API_KEY = "64JPsK8f3qpZkvaqAlToKoi0HMIv3ydf"
-    private const val DAILY_FORECAST = "1d"
-    private const val HOURLY_FORECAST = "1h"
-    private const val REALTIME_FORECAST = "current"
+    const val BASE_URL = "https://api.tomorrow.io/v4/weather"
+    const val BASE_HOST = "api.tomorrow.io/v4/weather"
+    const val FORECAST_URL = "/forecast"
+    const val REALTIME_URL = "/realtime"
+    const val KEY = "64JPsK8f3qpZkvaqAlToKoi0HMIv3ydf"
+    const val DAILY_FORECAST = "1d"
+    const val HOURLY_FORECAST = "1h"
+    const val REALTIME_FORECAST = "current"
     const val METRIC = "metric"
     const val IMPERIAL = "imperial" // TODO: Default to imperial until metric is available
-
-    fun getHourlyForecast(location: String, units: String) =
-        "${FORECAST_URL}?location=${location}&timesteps=${HOURLY_FORECAST}&units=${units}&apikey=${API_KEY}"
-
-    fun getDailyForecast(location: String, units: String) =
-        "${FORECAST_URL}?location=${location}&timesteps=${DAILY_FORECAST}&units=${units}&apikey=${API_KEY}"
-
-    fun getRealTimeForecast(location: String, units: String) =
-        "${REALTIME_URL}?location=${location}&units=${units}&apikey=${API_KEY}"
 }

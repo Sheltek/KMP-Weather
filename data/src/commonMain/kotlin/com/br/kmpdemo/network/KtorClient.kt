@@ -1,6 +1,7 @@
 package com.br.kmpdemo.network
 
 import com.br.kmpdemo.models.ApiException
+import com.br.kmpdemo.network.service.TomorrowIoService
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.HttpResponseValidator
@@ -41,10 +42,8 @@ fun ktorClient(): HttpClient = HttpClient {
     defaultRequest {
         url {
             protocol = URLProtocol.HTTPS
-//            host = NetworkRoutes.BASE_HOST
-//            headers {
-//                appendIfNameAbsent("apikey", NetworkRoutes.API_KEY)
-//            }
+            host = NetworkRoutes.BASE_HOST
+            parameters.append(TomorrowIoService.API_KEY, NetworkRoutes.KEY)
         }
     }
 }

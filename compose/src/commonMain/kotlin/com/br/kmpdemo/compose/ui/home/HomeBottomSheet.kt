@@ -27,8 +27,8 @@ fun HomeBottomSheet(state: HomeState, sheetState: Boolean) {
                             ForecastTabState(
                                 itemTitle = stringResource(SharedRes.strings.hourly_forecast),
                                 content = {
-                                    if (hourlyForecasts != null) {
-                                        HourlyChipList(hourlyForecasts)
+                                    if (hourlyForecasts.value != null) {
+                                        HourlyChipList(hourlyForecasts.value!!)
                                     } else {
                                         Text(
                                             text = stringResource(SharedRes.strings.forecasts_unavailable),
@@ -40,8 +40,8 @@ fun HomeBottomSheet(state: HomeState, sheetState: Boolean) {
                             ForecastTabState(
                                 itemTitle = stringResource(SharedRes.strings.weekly_forecast),
                                 content = {
-                                    if (dailyForecasts != null) {
-                                        WeeklyChipList(dailyForecasts)
+                                    if (dailyForecasts.value != null) {
+                                        WeeklyChipList(dailyForecasts.value!!)
                                     } else {
                                         Text(
                                             text = stringResource(SharedRes.strings.forecasts_unavailable),

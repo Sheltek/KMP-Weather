@@ -64,6 +64,23 @@
     <string name="wind">WIND</string>
     <string name="wind_kmh">km/h</string>
     <string name="wind_mph">mp/h</string>
+    <string name="direction_n">North</string>
+    <string name="direction_nne">North-Northeast</string>
+    <string name="direction_ne">Northeast</string>
+    <string name="direction_ene">East-Northeast</string>
+    <string name="direction_e">East</string>
+    <string name="direction_ese">East-Southeast</string>
+    <string name="direction_se">Southeast</string>
+    <string name="direction_sse">South-Southeast</string>
+    <string name="direction_s">South</string>
+    <string name="direction_ssw">South-Southwest</string>
+    <string name="direction_sw">Southwest</string>
+    <string name="direction_wsw">West-Southwest</string>
+    <string name="direction_w">West</string>
+    <string name="direction_wnw">West-Northwest</string>
+    <string name="direction_nw">Northwest</string>
+    <string name="direction_nnw">North-Northwest</string>
+    <string name="direction_unknown"> </string>
 
     <string name="rainfall">RAINFALL</string>
     <string name="input_rainfall_mm">%s mm</string>

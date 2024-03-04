@@ -38,26 +38,26 @@ fun WeatherDetails(state: HomeState) {
                     end = Dimens.grid_2_5,
                 ),
         ) {
-            AirQualityWidget(airQuality ?: AirQualityEnum.UNKNOWN) /// TODO: ASAA-177
+            AirQualityWidget(airQuality.value ?: AirQualityEnum.UNKNOWN) /// TODO: ASAA-177
 
             WeatherDetailsRow {
-                UvIndexWidget(uvIndexState ?: UVIndexEnum.UNKNOWN)
-                SunriseSunsetWidget(sunriseSunsetState ?: SunriseSunsetState())
+                UvIndexWidget(uvIndexState.value ?: UVIndexEnum.UNKNOWN)
+                SunriseSunsetWidget(sunriseSunsetState.value ?: SunriseSunsetState())
             }
 
             WeatherDetailsRow {
-                WindWidget(windState ?: WindState())
-                RainFallWidget(rainFallState ?: RainFallState())
+                WindWidget(windState.value ?: WindState())
+                RainFallWidget(rainFallState.value ?: RainFallState())
             }
 
             WeatherDetailsRow {
-                FeelsLikeWidget(feelsLikeState ?: FeelsLikeState())
-                HumidityWidget(humidityState ?: HumidityState())
+                FeelsLikeWidget(feelsLikeState.value ?: FeelsLikeState())
+                HumidityWidget(humidityState.value ?: HumidityState())
             }
 
             WeatherDetailsRow {
-                VisibilityWidget(visibilityState ?: VisibilityState())
-                BarometricPressureWidget(pressureState ?: BarometricPressureState())
+                VisibilityWidget(visibilityState.value ?: VisibilityState())
+                BarometricPressureWidget(pressureState.value ?: BarometricPressureState())
             }
         }
     }

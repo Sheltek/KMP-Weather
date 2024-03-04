@@ -1,5 +1,7 @@
 package com.br.kmpdemo.compose.ui.home
 
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import com.br.kmpdemo.compose.ui.forecasts.ForecastState
 import com.br.kmpdemo.compose.ui.forecasts.WeatherEnum
 import com.br.kmpdemo.compose.ui.weatherDetails.airQuality.AirQualityEnum
@@ -15,23 +17,23 @@ import com.br.kmpdemo.models.RealTime
 
 data class HomeState(
     /// Forecasts
-    val hourlyForecasts: List<ForecastState>?,
-    val dailyForecasts: List<ForecastState>?,
-    val realTimeWeather: RealTime?,
+    val hourlyForecasts: State<List<ForecastState>?>,
+    val dailyForecasts: State<List<ForecastState>?>,
+    val realTimeWeather: State<RealTime?>,
 
     /// Weather Details
-    val location: String? = null,
-    val temperature: Int? = null,
-    val temperatureHi: Int? = null,
-    val temperatureLow: Int? = null,
-    val weatherDescription: WeatherEnum? = null,
-    val airQuality: AirQualityEnum? = null,
-    val feelsLikeState: FeelsLikeState? = null,
-    val humidityState: HumidityState? = null,
-    val pressureState: BarometricPressureState? = null,
-    val rainFallState: RainFallState? = null,
-    val sunriseSunsetState: SunriseSunsetState? = null,
-    val uvIndexState: UVIndexEnum? = null,
-    val visibilityState: VisibilityState? = null,
-    val windState: WindState? = null
+    val location: State<String?> = mutableStateOf(null),
+    val temperature: State<Int?> = mutableStateOf(null),
+    val temperatureHi: State<Int?> = mutableStateOf(null),
+    val temperatureLow: State<Int?> = mutableStateOf(null),
+    val weatherDescription: State<WeatherEnum?> = mutableStateOf(null),
+    val airQuality: State<AirQualityEnum?> = mutableStateOf(null),
+    val feelsLikeState: State<FeelsLikeState?> = mutableStateOf(null),
+    val humidityState: State<HumidityState?> = mutableStateOf(null),
+    val pressureState: State<BarometricPressureState?> = mutableStateOf(null),
+    val rainFallState: State<RainFallState?> = mutableStateOf(null),
+    val sunriseSunsetState: State<SunriseSunsetState?> = mutableStateOf(null),
+    val uvIndexState: State<UVIndexEnum?> = mutableStateOf(null),
+    val visibilityState: State<VisibilityState?> = mutableStateOf(null),
+    val windState: State<WindState?> = mutableStateOf(null)
 )

@@ -34,7 +34,10 @@ fun DailyForecastChip(state: ForecastState) {
                     contentDescription = stringResource(SharedRes.strings.weatherIcon),
                 )
                 Text(
-                    stringResource(SharedRes.strings.input_percentage, precipProbability ?: "--"),
+                    stringResource(
+                        SharedRes.strings.input_percentage, precipProbability ?:
+                        SharedRes.strings.number_error
+                    ),
                     color = Colors.inverseOnSurface,
                     style = MaterialTheme.typography.labelLarge.semiBold()
                 )

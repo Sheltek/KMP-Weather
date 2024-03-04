@@ -1,5 +1,6 @@
 package com.br.kmpdemo.compose.previews.utils
 
+import androidx.compose.runtime.mutableStateOf
 import com.br.kmpdemo.compose.ui.forecasts.ForecastState
 import com.br.kmpdemo.compose.ui.forecasts.WeatherEnum
 import com.br.kmpdemo.compose.ui.home.HomeState
@@ -58,48 +59,59 @@ object MockData {
 
     fun getMockHomeState(isError: Boolean = false): HomeState {
         if (isError) return HomeState(
-            hourlyForecasts = getMockHourlyForecast(),
-            dailyForecasts = getMockWeeklyForecast(),
-            realTimeWeather = null,
-            airQuality = AirQualityEnum.UNKNOWN,
-            temperature = 76,
-            temperatureHi = 80,
-            temperatureLow = 68,
-            feelsLikeState = FeelsLikeState(null, 65.0),
-            humidityState = HumidityState(null, null),
-            pressureState = BarometricPressureState(pressure = 0.0F),
-            rainFallState = RainFallState(),
-            sunriseSunsetState = SunriseSunsetState(
-                localTime = null,
-                sunriseTime = null,
-                sunsetTime = null
+            hourlyForecasts = mutableStateOf(getMockHourlyForecast()),
+            dailyForecasts = mutableStateOf(getMockWeeklyForecast()),
+            realTimeWeather = mutableStateOf(null),
+            airQuality = mutableStateOf(AirQualityEnum.UNKNOWN),
+            temperature = mutableStateOf(76),
+            temperatureHi = mutableStateOf(80),
+            temperatureLow = mutableStateOf(68),
+            feelsLikeState = mutableStateOf(FeelsLikeState(null, 65.0)),
+            humidityState = mutableStateOf(HumidityState(null, null)),
+            pressureState = mutableStateOf(BarometricPressureState(pressure = 0.0F)),
+            rainFallState = mutableStateOf(RainFallState()),
+            sunriseSunsetState = mutableStateOf(
+                SunriseSunsetState(
+                    localTime = null,
+                    sunriseTime = null,
+                    sunsetTime = null
+                )
             ),
-            uvIndexState = UVIndexEnum.UNKNOWN,
-            visibilityState = VisibilityState(),
-            windState = WindState(windDirection = WindDirectionEnum.N)
+            uvIndexState = mutableStateOf(UVIndexEnum.UNKNOWN),
+            visibilityState = mutableStateOf(VisibilityState()),
+            windState = mutableStateOf(
+                WindState(windDirection = WindDirectionEnum.N)
+            )
         )
 
         return HomeState(
-            hourlyForecasts = getMockHourlyForecast(),
-            dailyForecasts = getMockWeeklyForecast(),
-            realTimeWeather = null,
-            airQuality = AirQualityEnum.YELLOW,
-            temperature = 76,
-            temperatureHi = 80,
-            temperatureLow = 68,
-            weatherDescription = WeatherEnum.SUNNY,
-            feelsLikeState = FeelsLikeState(75.0, 65.0),
-            humidityState = HumidityState(90.0, 17.0),
-            pressureState = BarometricPressureState(pressure = 0.2F),
-            rainFallState = RainFallState(1.8, 1.2),
-            sunriseSunsetState = SunriseSunsetState(
-                localTime = "13:00",
-                sunriseTime = "4:58",
-                sunsetTime = "17:35"
+            hourlyForecasts = mutableStateOf(getMockHourlyForecast()),
+            dailyForecasts = mutableStateOf(getMockWeeklyForecast()),
+            realTimeWeather = mutableStateOf(null),
+            airQuality = mutableStateOf(AirQualityEnum.YELLOW),
+            temperature = mutableStateOf(76),
+            temperatureHi = mutableStateOf(80),
+            temperatureLow = mutableStateOf(68),
+            weatherDescription = mutableStateOf(WeatherEnum.SUNNY),
+            feelsLikeState = mutableStateOf(FeelsLikeState(null, 65.0)),
+            humidityState = mutableStateOf(HumidityState(90.0, 17.0)),
+            pressureState = mutableStateOf(BarometricPressureState(pressure = 0.2F)),
+            rainFallState = mutableStateOf(RainFallState(1.8, 1.2)),
+            sunriseSunsetState = mutableStateOf(
+                SunriseSunsetState(
+                    localTime = "13:00",
+                    sunriseTime = "4:58",
+                    sunsetTime = "17:35"
+                )
             ),
-            uvIndexState = UVIndexEnum.MODERATE,
-            visibilityState = VisibilityState("8 km"),
-            windState = WindState(windDirection = WindDirectionEnum.N, windSpeed = "9.7"),
+            uvIndexState = mutableStateOf(UVIndexEnum.MODERATE),
+            visibilityState = mutableStateOf(VisibilityState("8 km")),
+            windState = mutableStateOf(
+                WindState(
+                    windDirection = WindDirectionEnum.N,
+                    windSpeed = "9.7"
+                )
+            ),
         )
     }
 

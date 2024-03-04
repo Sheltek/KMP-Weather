@@ -27,7 +27,7 @@ fun HomeCurrentWeather(state: HomeState, isExpanded: Boolean) {
             content = {
                 // Location Name
                 Text(
-                    location ?: stringResource(SharedRes.strings.locationError),
+                    location.value ?: stringResource(SharedRes.strings.locationError),
                     style = MaterialTheme.typography.titleLarge,
                     color = Colors.onPrimary,
                     textAlign = TextAlign.Center,
@@ -36,8 +36,8 @@ fun HomeCurrentWeather(state: HomeState, isExpanded: Boolean) {
                 AnimatedVisibility(visible = !isExpanded) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Text(
-                            temperature?.let {
-                                stringResource(SharedRes.strings.input_degrees, temperature)
+                            temperature.value?.let {
+                                stringResource(SharedRes.strings.input_degrees, it)
                             } ?: stringResource(SharedRes.strings.tempError),
                             color = Colors.onPrimary,
                             style = MaterialTheme.typography.displayLarge.size(84.sp).light(),
@@ -46,7 +46,7 @@ fun HomeCurrentWeather(state: HomeState, isExpanded: Boolean) {
                         // Weather Description
                         Text(
                             stringResource(
-                                weatherDescription?.weather
+                                weatherDescription.value?.weather
                                     ?: SharedRes.strings.description_error
                             ),
                             style = MaterialTheme.typography.titleMedium,
@@ -58,8 +58,8 @@ fun HomeCurrentWeather(state: HomeState, isExpanded: Boolean) {
                 // Location, temp, and description when sheet is expanded
                 AnimatedVisibility(visible = isExpanded) {
                     Text(
-                        temperature?.let { temp ->
-                            weatherDescription?.let { desc ->
+                        temperature.value?.let { temp ->
+                            weatherDescription.value?.let { desc ->
                                 stringResource(
                                     SharedRes.strings.input_collapsed_details,
                                     temp,
@@ -76,8 +76,8 @@ fun HomeCurrentWeather(state: HomeState, isExpanded: Boolean) {
                 // Temp high and Low
                 AnimatedVisibility(visible = !isExpanded) {
                     Text(
-                        temperatureHi?.let { max ->
-                            temperatureLow?.let { min ->
+                        temperatureHi.value?.let { max ->
+                            temperatureLow.value?.let { min ->
                                 stringResource(SharedRes.strings.temp_high_low, max, min)
                             }
                         } ?: stringResource(SharedRes.strings.highLowTempError),

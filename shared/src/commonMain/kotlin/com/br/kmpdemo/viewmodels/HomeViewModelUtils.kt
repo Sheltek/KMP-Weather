@@ -19,21 +19,15 @@ object HomeViewModelUtils {
     }
 
     /// Use the next to functions to find the forecast for today or this hour
-    fun String.isToday(): Boolean {
-        val today = Clock.System.now()
+    fun String.isToday() = toReformattedDate() == Clock.System.now()
             .toLocalDateTime(TimeZone.currentSystemDefault())
             .toString()
             .toReformattedDate()
-        return this.toReformattedDate() == today
-    }
 
-    fun String.isThisHour(): Boolean {
-        val currentHour = Clock.System.now()
+    fun String.isThisHour(): Boolean = this.toForecastTimeFormat() == Clock.System.now()
             .toLocalDateTime(TimeZone.currentSystemDefault())
             .toString()
             .toForecastTimeFormat()
-        return this.toForecastTimeFormat() == currentHour
-    }
 
     /// Reformats the UTC DateTime to the correct display format for forecasts
     fun String.toForecastTimeFormat(): String? =
@@ -45,7 +39,7 @@ object HomeViewModelUtils {
         }
 
     /// Reformats the UTC DateTime to the user's time zone
-    fun String?.convertUtcTimeForSunriseSunset(): String {
+    fun String?.convertUtcTimeForSunriseSunset(): String =
         this?.let {
             val localDateTime = Instant.parse(this).toLocalDateTime(TimeZone.currentSystemDefault())
 
@@ -55,8 +49,7 @@ object HomeViewModelUtils {
 
             val formattedMinute = if (minute < 10) "0$minute" else minute
             return "$hour:$formattedMinute"
-        } ?: return ""
-    }
+        } ?: ""
 
     /// Reformats hour to 12-Hour format
     private fun Int.reformatHour() = when (this) {
@@ -66,7 +59,7 @@ object HomeViewModelUtils {
     }
 
     /// Gets the date only from the DateTime returned from the API
-    fun String.toReformattedDate(): String? = this.split("T").getOrNull(0)
+    fun String.toReformattedDate(): String? = split("T").getOrNull(0)
 
     /// Gets the day of the week from the DateTime returned from the API
     fun String.toDayOfWeek(): String? =
@@ -77,8 +70,7 @@ object HomeViewModelUtils {
         }
 
     /// Returns ONLY the city name from the location string
-    fun String.extractCityName(): String? =
-        this.split(",").firstOrNull()?.trim()
+    fun String.extractCityName(): String = split(",")[1].trim()
 
     /// Transforms the API return to a list of ForecastState
     fun List<Daily?>?.toDailyForecastState(): List<ForecastState> {
