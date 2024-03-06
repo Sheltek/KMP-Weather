@@ -10,43 +10,50 @@ import com.br.kmpdemo.compose.resources.SharedRes
 import com.br.kmpdemo.compose.resources.theme.Dimens
 import com.br.kmpdemo.compose.resources.theme.bold
 import com.br.kmpdemo.compose.resources.theme.letterSpacing
+import com.br.kmpdemo.compose.ui.home.HomeState
 import com.br.kmpdemo.compose.ui.weatherDetails.DetailsWidgetLabel
 import com.br.kmpdemo.compose.ui.weatherDetails.WeatherDetailsSurface
+import com.br.kmpdemo.utils.MeasurementType
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
-fun RainFallWidget(rainFallState: RainFallState) {
-    WeatherDetailsSurface(
-        content = {
-            DetailsWidgetLabel(
-                icon = SharedRes.images.raindrop,
-                iconDesc = SharedRes.strings.rainfall,
-                label = SharedRes.strings.rainfall,
-            )
+fun RainFallWidget(state: HomeState) {
+    val isMetric = state.measurementPref.value == MeasurementType.METRIC
+    val rainFallUnit = if (isMetric) SharedRes.strings.input_rainfall_mm else SharedRes.strings.input_rainfall_in
 
-            /// TODO: Create conditional for Metric/Imperial setting
-            Text(
-                rainFallState.currentAccumulation?.let { rain ->
-                    stringResource(SharedRes.strings.input_rainfall_in, rain.toString())
-                } ?: stringResource(SharedRes.strings.empty_digits_error),
-                modifier = Modifier.padding(top = Dimens.grid_1_5),
-                style = MaterialTheme.typography.titleMedium.letterSpacing(0.96.sp)
-            )
+    with(state.rainFallState) {
+        WeatherDetailsSurface(
+            content = {
+                DetailsWidgetLabel(
+                    icon = SharedRes.images.raindrop,
+                    iconDesc = SharedRes.strings.rainfall,
+                    label = SharedRes.strings.rainfall,
+                )
 
-            Text(
-                stringResource(SharedRes.strings.in_last_hour),
-                style = MaterialTheme.typography.bodyMedium.bold()
-            )
+                Text(
+                    value?.currentAccumulation?.let { rain ->
+                        stringResource(rainFallUnit, rain.toString())
+                    } ?: stringResource(SharedRes.strings.empty_digits_error),
+                    modifier = Modifier.padding(top = Dimens.grid_1_5),
+                    style = MaterialTheme.typography.titleMedium.letterSpacing(0.96.sp)
+                )
 
-            Text(
-                stringResource(
-                    SharedRes.strings.input_expected_rainfall,
-                    rainFallState.expectedAccumulation
-                        ?: stringResource(SharedRes.strings.empty_digits_error)
-                ),
-                modifier = Modifier.padding(top = Dimens.grid_2_5),
-                style = MaterialTheme.typography.labelLarge
-            )
-        }
-    )
+                Text(
+                    stringResource(SharedRes.strings.in_last_hour),
+                    style = MaterialTheme.typography.bodyMedium.bold()
+                )
+
+                Text(
+                    stringResource(
+                        SharedRes.strings.input_expected_rainfall,
+                        value?.expectedAccumulation
+                            ?: stringResource(SharedRes.strings.empty_digits_error)
+                    ),
+                    modifier = Modifier.padding(top = Dimens.grid_2_5),
+                    style = MaterialTheme.typography.labelLarge
+                )
+            }
+        )
+    }
+
 }

@@ -14,6 +14,7 @@ import com.br.kmpdemo.compose.ui.weatherDetails.uvIndex.UVIndexEnum
 import com.br.kmpdemo.compose.ui.weatherDetails.visibility.VisibilityState
 import com.br.kmpdemo.compose.ui.weatherDetails.wind.WindDirectionEnum
 import com.br.kmpdemo.compose.ui.weatherDetails.wind.WindState
+import com.br.kmpdemo.utils.MeasurementType
 import kotlin.random.Random
 
 object MockData {
@@ -81,7 +82,8 @@ object MockData {
             visibilityState = mutableStateOf(VisibilityState()),
             windState = mutableStateOf(
                 WindState(windDirection = WindDirectionEnum.N)
-            )
+            ),
+            measurementPref = mutableStateOf(MeasurementType.IMPERIAL)
         )
 
         return HomeState(
@@ -112,6 +114,7 @@ object MockData {
                     windSpeed = "9.7"
                 )
             ),
+            measurementPref = mutableStateOf(MeasurementType.IMPERIAL)
         )
     }
 

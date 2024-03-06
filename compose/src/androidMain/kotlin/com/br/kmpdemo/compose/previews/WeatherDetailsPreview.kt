@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.br.kmpdemo.compose.previews.utils.MockData
 import com.br.kmpdemo.compose.resources.theme.KmpDemoTheme
 import com.br.kmpdemo.compose.ui.weatherDetails.airQuality.AirQualityEnum
 import com.br.kmpdemo.compose.ui.weatherDetails.airQuality.AirQualityWidget
@@ -14,15 +15,11 @@ import com.br.kmpdemo.compose.ui.weatherDetails.feelsLike.FeelsLikeState
 import com.br.kmpdemo.compose.ui.weatherDetails.humidity.HumidityState
 import com.br.kmpdemo.compose.ui.weatherDetails.humidity.HumidityWidget
 import com.br.kmpdemo.compose.ui.weatherDetails.pressure.BarometricPressureState
-import com.br.kmpdemo.compose.ui.weatherDetails.rainFall.RainFallState
 import com.br.kmpdemo.compose.ui.weatherDetails.rainFall.RainFallWidget
 import com.br.kmpdemo.compose.ui.weatherDetails.sunrise_sunset.SunriseSunsetState
 import com.br.kmpdemo.compose.ui.weatherDetails.sunrise_sunset.SunriseSunsetWidget
 import com.br.kmpdemo.compose.ui.weatherDetails.uvIndex.UVIndexEnum
 import com.br.kmpdemo.compose.ui.weatherDetails.uvIndex.UvIndexWidget
-import com.br.kmpdemo.compose.ui.weatherDetails.visibility.VisibilityState
-import com.br.kmpdemo.compose.ui.weatherDetails.wind.WindDirectionEnum
-import com.br.kmpdemo.compose.ui.weatherDetails.wind.WindState
 import com.br.kmpdemo.compose.ui.weatherDetails.wind.WindWidget
 
 @Composable
@@ -75,8 +72,8 @@ fun HumidityPreview() {
 fun RainFallPreview() {
     KmpDemoTheme {
         Row {
-            RainFallWidget(RainFallState(1.8, 1.2))
-            RainFallWidget(RainFallState())
+            RainFallWidget(MockData.getMockHomeState())
+            RainFallWidget(MockData.getMockHomeState(isError = true))
         }
     }
 }
@@ -86,8 +83,8 @@ fun RainFallPreview() {
 fun VisibilityPreview() {
     KmpDemoTheme {
         Row {
-            VisibilityWidget(VisibilityState("8 km"))
-            VisibilityWidget(VisibilityState())
+            VisibilityWidget(MockData.getMockHomeState())
+            VisibilityWidget(MockData.getMockHomeState(isError = true))
         }
     }
 }
@@ -141,16 +138,8 @@ fun WindPreview() {
     KmpDemoTheme {
         Column {
             Row {
-                WindWidget(WindState(windDirection = WindDirectionEnum.N, windSpeed = "9.7"))
-                WindWidget(WindState(windDirection = WindDirectionEnum.ESE, windSpeed = "3.2"))
-            }
-            Row {
-                WindWidget(WindState(windDirection = WindDirectionEnum.W, windSpeed = "9.7"))
-                WindWidget(WindState(windDirection = WindDirectionEnum.WNW, windSpeed = "3.2"))
-            }
-            Row {
-                WindWidget(WindState(windDirection = WindDirectionEnum.SSE, windSpeed = "9.7"))
-                WindWidget(WindState(windDirection = WindDirectionEnum.N))
+                WindWidget(MockData.getMockHomeState(isError = true))
+                WindWidget(MockData.getMockHomeState())
             }
         }
     }

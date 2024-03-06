@@ -12,6 +12,7 @@ import com.br.kmpdemo.compose.resources.SharedRes
 import com.br.kmpdemo.compose.resources.theme.Colors
 import com.br.kmpdemo.compose.resources.theme.Dimens
 import com.br.kmpdemo.compose.resources.theme.bold
+import com.br.kmpdemo.compose.ui.home.HomeState
 import com.br.kmpdemo.compose.ui.utils.drawCardinalLabels
 import com.br.kmpdemo.compose.ui.utils.drawCardinalLines
 import com.br.kmpdemo.compose.ui.utils.drawCompassGauge
@@ -20,20 +21,23 @@ import com.br.kmpdemo.compose.ui.utils.drawNorthArrow
 import com.br.kmpdemo.compose.ui.utils.drawWindSpeedText
 import com.br.kmpdemo.compose.ui.weatherDetails.DetailsWidgetLabel
 import com.br.kmpdemo.compose.ui.weatherDetails.WeatherDetailsSurface
+import com.br.kmpdemo.utils.MeasurementType
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
-fun WindWidget(state: WindState) {
+fun WindWidget(state: HomeState) {
     val themeTertiary = Colors.onTertiary
     val cardinalStyle = MaterialTheme.typography.labelLarge.copy(color = Colors.onPrimary).bold()
     val windSpeedStyle = MaterialTheme.typography.titleSmall.copy(color = Colors.onPrimary).bold()
-    val perHourStyle = MaterialTheme.typography.bodySmall.copy(color = Colors.onPrimary.copy(alpha = 0.5F)).bold()
+    val perHourStyle =
+        MaterialTheme.typography.bodySmall.copy(color = Colors.onPrimary.copy(alpha = 0.5F)).bold()
     val errorString = stringResource(SharedRes.strings.empty_digits_error)
     val textMeasurer = rememberTextMeasurer()
 
     // Use LocalDensity to convert dp units to pixel units
     val density = LocalDensity.current
-    val windMph = stringResource(SharedRes.strings.wind_mph)
+    val isMetric = state.measurementPref.value == MeasurementType.METRIC
+    val windSpeedUnit = stringResource(if (isMetric) SharedRes.strings.wind_kmh else SharedRes.strings.wind_mph)
     WeatherDetailsSurface(
         content = {
             DetailsWidgetLabel(
@@ -42,7 +46,7 @@ fun WindWidget(state: WindState) {
                 label = SharedRes.strings.wind,
             )
 
-            with(state) {
+            with(state.windState) {
                 Canvas(
                     modifier = Modifier
                         .fillMaxSize()
@@ -56,15 +60,15 @@ fun WindWidget(state: WindState) {
                         drawNorthArrow()
                         drawCardinalLabels(textMeasurer, cardinalStyle)
                         drawWindSpeedText(
-                            windSpeed ?: errorString,
+                            value?.windSpeed ?: errorString,
                             windSpeedStyle,
                             textMeasurer,
                             perHourStyle,
-                            windMph, // TODO: Add metric/imperial conditional
+                            windSpeedUnit,
                         )
                         // If wind speed or direction is null, do not draw needle
-                        windSpeed?.let {
-                            windDirection?.let { direction ->
+                        value?.windSpeed?.let {
+                            value?.windDirection?.let { direction ->
                                 drawCompassNeedle(windDirection = direction, density = density)
                             }
                         }

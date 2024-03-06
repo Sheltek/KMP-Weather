@@ -15,14 +15,11 @@ import com.br.kmpdemo.compose.ui.weatherDetails.feelsLike.FeelsLikeState
 import com.br.kmpdemo.compose.ui.weatherDetails.humidity.HumidityState
 import com.br.kmpdemo.compose.ui.weatherDetails.humidity.HumidityWidget
 import com.br.kmpdemo.compose.ui.weatherDetails.pressure.BarometricPressureState
-import com.br.kmpdemo.compose.ui.weatherDetails.rainFall.RainFallState
 import com.br.kmpdemo.compose.ui.weatherDetails.rainFall.RainFallWidget
 import com.br.kmpdemo.compose.ui.weatherDetails.sunrise_sunset.SunriseSunsetState
 import com.br.kmpdemo.compose.ui.weatherDetails.sunrise_sunset.SunriseSunsetWidget
 import com.br.kmpdemo.compose.ui.weatherDetails.uvIndex.UVIndexEnum
 import com.br.kmpdemo.compose.ui.weatherDetails.uvIndex.UvIndexWidget
-import com.br.kmpdemo.compose.ui.weatherDetails.visibility.VisibilityState
-import com.br.kmpdemo.compose.ui.weatherDetails.wind.WindState
 import com.br.kmpdemo.compose.ui.weatherDetails.wind.WindWidget
 
 @Composable
@@ -46,8 +43,8 @@ fun WeatherDetails(state: HomeState) {
             }
 
             WeatherDetailsRow {
-                WindWidget(windState.value ?: WindState())
-                RainFallWidget(rainFallState.value ?: RainFallState())
+                WindWidget(state)
+                RainFallWidget(state)
             }
 
             WeatherDetailsRow {
@@ -56,7 +53,7 @@ fun WeatherDetails(state: HomeState) {
             }
 
             WeatherDetailsRow {
-                VisibilityWidget(visibilityState.value ?: VisibilityState())
+                VisibilityWidget(state)
                 BarometricPressureWidget(pressureState.value ?: BarometricPressureState())
             }
         }
