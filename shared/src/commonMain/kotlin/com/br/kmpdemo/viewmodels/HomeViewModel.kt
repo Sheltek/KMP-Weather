@@ -1,6 +1,7 @@
 package com.br.kmpdemo.viewmodels
 
 import BaseViewModel
+import MeasurementPreference
 import co.touchlab.kermit.Logger
 import com.br.kmpdemo.compose.ui.forecasts.ForecastState
 import com.br.kmpdemo.compose.ui.forecasts.WeatherEnum
@@ -17,7 +18,6 @@ import com.br.kmpdemo.compose.ui.weatherDetails.wind.WindState
 import com.br.kmpdemo.compose.ui.weatherDetails.wind.getWindDirection
 import com.br.kmpdemo.models.Forecast
 import com.br.kmpdemo.models.RealTime
-import com.br.kmpdemo.network.NetworkRoutes
 import com.br.kmpdemo.repositories.WeatherRepository
 import com.br.kmpdemo.viewmodels.HomeViewModelUtils.convertUtcTimeForSunriseSunset
 import com.br.kmpdemo.viewmodels.HomeViewModelUtils.extractCityName
@@ -34,6 +34,7 @@ import org.koin.core.component.inject
 
 class HomeViewModel : BaseViewModel() {
     private val weatherRepo: WeatherRepository by inject()
+    val measurementPref = MutableStateFlow(MeasurementPreference.preference)
 
     /**region Forecast Responses */
     val initForecasts = List(10) { ForecastState(weatherIcon = WeatherEnum.SUNNY) }
@@ -120,23 +121,23 @@ class HomeViewModel : BaseViewModel() {
 
 
     /**region Network calls */
-    private fun getDailyForecasts(location: String, units: String = NetworkRoutes.IMPERIAL) =
+    private fun getDailyForecasts(location: String) =
         viewModelScope.launch {
-            weatherRepo.getDailyForecast(location = location, units = units)
+            weatherRepo.getDailyForecast(location = location, units = measurementPref.value.type)
                 .onSuccess { dailyResponse.value = it }
                 .onFailure { Logger.e("[getDailyForecasts]") { "Failure: ${it.message}" } }
         }
 
-    private fun getHourlyForecasts(location: String, units: String = NetworkRoutes.IMPERIAL) =
+    private fun getHourlyForecasts(location: String) =
         viewModelScope.launch {
-            weatherRepo.getHourlyForecast(location = location, units = units)
+            weatherRepo.getHourlyForecast(location = location, units = measurementPref.value.type)
                 .onSuccess { hourlyResponse.value = it }
                 .onFailure { Logger.e("[getHourlyForecasts]") { "Failure: ${it.message}" } }
         }
 
-    private fun getRealTimeForecasts(location: String, units: String = NetworkRoutes.IMPERIAL) =
+    private fun getRealTimeForecasts(location: String) =
         viewModelScope.launch {
-            weatherRepo.getRealTimeForecast(location, units = units)
+            weatherRepo.getRealTimeForecast(location, units = measurementPref.value.type)
                 .onSuccess { realTimeResponse.value = it }
                 .onFailure { Logger.e("[getRealTimeForecasts]") { "Failure: ${it.message}" } }
         }

@@ -3,6 +3,7 @@ package com.br.kmpdemo.viewmodels.converters
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import com.br.kmpdemo.compose.ui.home.HomeState
+import com.br.kmpdemo.utils.MeasurementType
 import com.br.kmpdemo.viewmodels.HomeViewModel
 
 @Composable
@@ -27,4 +28,7 @@ fun HomeViewModel.toState() = HomeState(
     uvIndexState = uvIndexState.collectAsState(null),
     visibilityState = visibilityState.collectAsState(null),
     windState = windState.collectAsState(null),
+
+    // Units
+    measurementPref = measurementPref.collectAsState(MeasurementType.IMPERIAL),
 )

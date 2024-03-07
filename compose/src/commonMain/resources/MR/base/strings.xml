@@ -13,6 +13,8 @@
     <string name="temp_high_low">H:%1s°   L:%2s°</string>
     <string name="hourly_forecast">Hourly Forecast</string>
     <string name="weekly_forecast">Weekly Forecast</string>
+    <string name="pref_metric">metric</string>
+    <string name="pref_imperial">imperial</string>
 
     <!-- Weather Enum Icon Descriptions -->
     <string name="fog">Fog</string>

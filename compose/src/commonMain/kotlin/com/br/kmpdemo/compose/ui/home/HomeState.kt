@@ -14,6 +14,7 @@ import com.br.kmpdemo.compose.ui.weatherDetails.uvIndex.UVIndexEnum
 import com.br.kmpdemo.compose.ui.weatherDetails.visibility.VisibilityState
 import com.br.kmpdemo.compose.ui.weatherDetails.wind.WindState
 import com.br.kmpdemo.models.RealTime
+import com.br.kmpdemo.utils.MeasurementType
 
 data class HomeState(
     /// Forecasts
@@ -35,5 +36,8 @@ data class HomeState(
     val sunriseSunsetState: State<SunriseSunsetState?> = mutableStateOf(null),
     val uvIndexState: State<UVIndexEnum?> = mutableStateOf(null),
     val visibilityState: State<VisibilityState?> = mutableStateOf(null),
-    val windState: State<WindState?> = mutableStateOf(null)
+    val windState: State<WindState?> = mutableStateOf(null),
+
+    // Units
+    val measurementPref: State<MeasurementType?> = mutableStateOf(null)
 )
