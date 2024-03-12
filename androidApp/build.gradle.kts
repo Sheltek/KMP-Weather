@@ -42,6 +42,7 @@ kotlin {
                 implementation(libs.glance)
                 implementation(libs.glance.appwidget)
                 implementation(libs.glance.material3)
+                implementation(libs.kermit.logger)
             }
         }
     }

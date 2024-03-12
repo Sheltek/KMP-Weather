@@ -1,6 +1,10 @@
+
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.Looper
 import androidx.compose.material3.ColorScheme
+import co.touchlab.kermit.Logger
 import com.br.kmpdemo.compose.resources.theme.Dimensions
 import com.br.kmpdemo.compose.resources.theme.kmpDarkColors
 import com.br.kmpdemo.compose.resources.theme.kmpLightColors
@@ -8,6 +12,10 @@ import com.br.kmpdemo.compose.resources.theme.sw360Dimensions
 import com.br.kmpdemo.utils.Constants.IS_METRIC
 import com.br.kmpdemo.utils.Constants.MEASUREMENT_PREFS
 import com.br.kmpdemo.utils.MeasurementType
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
 
 actual fun getSystemDimensions(): Dimensions {
     // Return iOS-specific dimensions
@@ -35,4 +43,40 @@ actual object MeasurementPreference {
         set(value) {
             preferences.edit().putBoolean(IS_METRIC, value == MeasurementType.METRIC).apply()
         }
+}
+
+actual class KmpLocationProvider {
+    private var locationClient: FusedLocationProviderClient? = null
+
+    fun init(providerClient: FusedLocationProviderClient) {
+        locationClient = providerClient
+    }
+
+    // Cancel updates once the location is returned and set in the LastKnownLocation object
+    private val locationCallback = object : LocationCallback() {
+        override fun onLocationResult(locationResult: LocationResult) {
+            if (locationResult.locations.isNotEmpty()) {
+                val location = locationResult.locations.firstOrNull()
+                location?.latitude?.let { lat ->
+                    location.longitude.let { lon ->
+                        LastKnownLocation.setLocation(UserLocation(lat, lon, "${lat}, $lon"))
+                    }
+                }
+                locationClient?.removeLocationUpdates(this)
+            }
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    actual suspend fun getUsersLocation() {
+        try {
+            locationClient?.requestLocationUpdates(
+                LocationRequest.create(),
+                locationCallback,
+                Looper.getMainLooper()
+            )
+        } catch (e: Exception) {
+            Logger.e("[getLastKnownLocation]") { "Last Location Failure: ${e.message}" }
+        }
+    }
 }

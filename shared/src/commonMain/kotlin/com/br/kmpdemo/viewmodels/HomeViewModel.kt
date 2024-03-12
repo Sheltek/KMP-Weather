@@ -1,6 +1,7 @@
 package com.br.kmpdemo.viewmodels
 
 import BaseViewModel
+import LastKnownLocation
 import MeasurementPreference
 import co.touchlab.kermit.Logger
 import com.br.kmpdemo.compose.ui.forecasts.ForecastState
@@ -113,10 +114,15 @@ class HomeViewModel : BaseViewModel() {
     //endregion
 
     init {
-        // TODO: ASAA-189 Get Current Location and remove hardcoded values
-        getDailyForecasts(location = "75254")
-        getHourlyForecasts(location = "75254")
-        getRealTimeForecasts(location = "75254")
+        viewModelScope.launch {
+            LastKnownLocation.userLocation.collect { location ->
+                location?.let {
+                    getDailyForecasts(it.locationString)
+                    getHourlyForecasts(it.locationString)
+                    getRealTimeForecasts(it.locationString)
+                }
+            }
+        }
     }
 
 

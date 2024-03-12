@@ -32,3 +32,9 @@ actual object MeasurementPreference {
             userDefaults.synchronize()
         }
 }
+
+actual class KmpLocationProvider {
+    actual suspend fun getUsersLocation() {
+        // TODO: Implement using CLLocationManager
+    }
+}
