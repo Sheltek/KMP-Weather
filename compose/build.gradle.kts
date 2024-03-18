@@ -33,6 +33,10 @@ kotlin {
             dependencies {
                 implementation(project(":domain"))
 
+                // Moko permissions
+                api(libs.moko.permissions)
+                api(libs.moko.permissions.compose)
+
                 // Jetpack Compose
                 implementation(compose.runtime)
                 implementation(compose.ui)

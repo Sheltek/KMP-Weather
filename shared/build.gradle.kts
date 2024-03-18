@@ -52,6 +52,8 @@ kotlin {
                 api(libs.precompose.koin)
                 api(libs.moko.resources)
                 api(libs.moko.resources.compose)
+                api(libs.moko.permissions)
+                api(libs.moko.permissions.compose)
 
                 // KTOR Networking and Serialization
                 implementation(libs.ktor.client.core)

@@ -6,6 +6,7 @@ import com.br.kmpdemo.compose.resources.theme.kmpLightColors
 import com.br.kmpdemo.compose.resources.theme.sw360Dimensions
 import com.br.kmpdemo.utils.Constants.IS_METRIC
 import com.br.kmpdemo.utils.MeasurementType
+import org.koin.core.component.KoinComponent
 import platform.Foundation.NSUserDefaults
 
 actual fun getSystemDimensions(): Dimensions {
@@ -33,7 +34,7 @@ actual object MeasurementPreference {
         }
 }
 
-actual class KmpLocationProvider {
+actual class KmpLocationProvider: KoinComponent {
     actual suspend fun getUsersLocation() {
         // TODO: Implement using CLLocationManager
     }

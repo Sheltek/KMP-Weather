@@ -1,5 +1,6 @@
 package com.br.kmpdemo.viewmodels
 
+import UserLocation
 import com.br.kmpdemo.compose.ui.forecasts.ForecastState
 import com.br.kmpdemo.compose.ui.forecasts.WeatherEnum
 import com.br.kmpdemo.compose.ui.utils.WeatherCodes.getWeatherFromCode
@@ -69,8 +70,7 @@ object HomeViewModelUtils {
             null
         }
 
-    /// Returns ONLY the city name from the location string
-    fun String.extractCityName(): String = split(",")[1].trim()
+    fun UserLocation.toCoordinates() = "$latitude, $longitude"
 
     /// Transforms the API return to a list of ForecastState
     fun List<Daily?>?.toDailyForecastState(): List<ForecastState> {
