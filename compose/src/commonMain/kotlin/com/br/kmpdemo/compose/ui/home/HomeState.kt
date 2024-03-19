@@ -13,6 +13,7 @@ import com.br.kmpdemo.compose.ui.weatherDetails.sunrise_sunset.SunriseSunsetStat
 import com.br.kmpdemo.compose.ui.weatherDetails.uvIndex.UVIndexEnum
 import com.br.kmpdemo.compose.ui.weatherDetails.visibility.VisibilityState
 import com.br.kmpdemo.compose.ui.weatherDetails.wind.WindState
+import com.br.kmpdemo.models.PermissionsDialogState
 import com.br.kmpdemo.models.RealTime
 import com.br.kmpdemo.utils.MeasurementType
 
@@ -39,5 +40,9 @@ data class HomeState(
     val windState: State<WindState?> = mutableStateOf(null),
 
     // Units
-    val measurementPref: State<MeasurementType?> = mutableStateOf(null)
+    val measurementPref: State<MeasurementType?> = mutableStateOf(null),
+
+    // Permissions
+    val shouldShowPermissionsDialog: State<Boolean> = mutableStateOf(true),
+    val locationPermissionsDialog: PermissionsDialogState,
 )

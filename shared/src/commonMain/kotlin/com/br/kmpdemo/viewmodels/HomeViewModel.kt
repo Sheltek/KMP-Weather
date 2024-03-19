@@ -1,6 +1,8 @@
 package com.br.kmpdemo.viewmodels
 
 import BaseViewModel
+import KmpLocationProvider
+import LastKnownLocation
 import MeasurementPreference
 import co.touchlab.kermit.Logger
 import com.br.kmpdemo.compose.ui.forecasts.ForecastState
@@ -20,8 +22,8 @@ import com.br.kmpdemo.models.Forecast
 import com.br.kmpdemo.models.RealTime
 import com.br.kmpdemo.repositories.WeatherRepository
 import com.br.kmpdemo.viewmodels.HomeViewModelUtils.convertUtcTimeForSunriseSunset
-import com.br.kmpdemo.viewmodels.HomeViewModelUtils.extractCityName
 import com.br.kmpdemo.viewmodels.HomeViewModelUtils.getPressureFloat
+import com.br.kmpdemo.viewmodels.HomeViewModelUtils.toCoordinates
 import com.br.kmpdemo.viewmodels.HomeViewModelUtils.toDailyForecastState
 import com.br.kmpdemo.viewmodels.HomeViewModelUtils.toHourlyForecastState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -34,7 +36,9 @@ import org.koin.core.component.inject
 
 class HomeViewModel : BaseViewModel() {
     private val weatherRepo: WeatherRepository by inject()
+    private val locationProvider: KmpLocationProvider by inject()
     val measurementPref = MutableStateFlow(MeasurementPreference.preference)
+    val shouldShowPermissionsDialog = MutableStateFlow(true)
 
     /**region Forecast Responses */
     val initForecasts = List(10) { ForecastState(weatherIcon = WeatherEnum.SUNNY) }
@@ -51,8 +55,7 @@ class HomeViewModel : BaseViewModel() {
     //endregion
 
     /**region Home Screen Weather Overlay */
-    val location = realTimeResponse
-        .map { it?.location?.name?.extractCityName() }
+    val userLocation = MutableStateFlow<String>("")
     val currentTemp = realTimeResponse
         .map { it?.data?.realTimeValues?.temperature?.toInt() }
     val weatherDescription = realTimeResponse
@@ -63,7 +66,7 @@ class HomeViewModel : BaseViewModel() {
         .map { daily -> daily.find { it.isNow }?.temperatureMin } //endregion
 
     /**region Weather Details (Data for BottomSheet widgets) */
-    // TODO: ASAA-176 Air Quality Data, Requires a separate call with a different key
+    // TODO: ASAA-176 Air Quality Data: will require using maps function
     val airQuality = MutableStateFlow<AirQualityEnum?>(null)
     val feelsLikeState = realTimeResponse.map { realTime ->
         with(realTime?.data?.realTimeValues) {
@@ -113,12 +116,8 @@ class HomeViewModel : BaseViewModel() {
     //endregion
 
     init {
-        // TODO: ASAA-189 Get Current Location and remove hardcoded values
-        getDailyForecasts(location = "75254")
-        getHourlyForecasts(location = "75254")
-        getRealTimeForecasts(location = "75254")
-    }
 
+    }
 
     /**region Network calls */
     private fun getDailyForecasts(location: String) =
@@ -142,4 +141,26 @@ class HomeViewModel : BaseViewModel() {
                 .onFailure { Logger.e("[getRealTimeForecasts]") { "Failure: ${it.message}" } }
         }
     //endregion
+
+    /**region Permissions Utils */
+    fun onDismissLocationPermissionDialog(permissionGranted: Boolean = false) {
+        if (permissionGranted) {
+            shouldShowPermissionsDialog.value = false
+            onLocationPermissionsGranted()
+        }
+    }
+
+    private fun onLocationPermissionsGranted() {
+        viewModelScope.launch {
+            locationProvider.getUsersLocation()
+            LastKnownLocation.userLocation.collect { location ->
+                location?.let {
+                    getDailyForecasts(location.toCoordinates())
+                    getHourlyForecasts(location.toCoordinates())
+                    getRealTimeForecasts(location.toCoordinates())
+                    userLocation.value = location.cityName
+                }
+            }
+        }
+    }
 }

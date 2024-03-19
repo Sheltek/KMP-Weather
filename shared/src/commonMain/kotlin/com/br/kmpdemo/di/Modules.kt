@@ -1,6 +1,7 @@
 package com.br.kmpdemo.di
 
 import ForecastForCityInteractor
+import KmpLocationProvider
 import com.br.kmpdemo.network.ktorClient
 import com.br.kmpdemo.network.service.TomorrowIoService
 import com.br.kmpdemo.repositories.WeatherRepository
@@ -31,6 +32,7 @@ val viewModelModule = module {
     single { ForecastViewModel() }
     single { HomeViewModel() }
     single { MainActivityViewModel() }
+    single { KmpLocationProvider() }
 }
 
 val repositoryModule = module {

@@ -3,6 +3,7 @@ package com.br.kmpdemo.viewmodels.converters
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import com.br.kmpdemo.compose.ui.home.HomeState
+import com.br.kmpdemo.models.PermissionsDialogState
 import com.br.kmpdemo.utils.MeasurementType
 import com.br.kmpdemo.viewmodels.HomeViewModel
 
@@ -14,7 +15,7 @@ fun HomeViewModel.toState() = HomeState(
     realTimeWeather = realTimeResponse.collectAsState(null),
 
     // Weather Details
-    location = location.collectAsState(null),
+    location = userLocation.collectAsState(null),
     temperature = currentTemp.collectAsState(null),
     temperatureHi = currentTempHi.collectAsState(null),
     temperatureLow = currentTempLow.collectAsState(null),
@@ -31,4 +32,13 @@ fun HomeViewModel.toState() = HomeState(
 
     // Units
     measurementPref = measurementPref.collectAsState(MeasurementType.IMPERIAL),
+
+    // Permissions
+    shouldShowPermissionsDialog = shouldShowPermissionsDialog.collectAsState(true),
+    locationPermissionsDialog = toLocationPermissionsDialogState()
+)
+
+fun HomeViewModel.toLocationPermissionsDialogState() = PermissionsDialogState(
+    permissionText = "Please enable your location permission for local weather information",
+    onDismiss = ::onDismissLocationPermissionDialog,
 )

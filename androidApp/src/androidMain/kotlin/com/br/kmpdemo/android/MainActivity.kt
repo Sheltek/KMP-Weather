@@ -1,5 +1,6 @@
 package com.br.kmpdemo.android
 
+import KmpLocationProvider
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.collectAsState
@@ -15,11 +16,16 @@ import com.br.kmpdemo.ui.app.kmpDemoAppNavItems
 import kotlinx.coroutines.flow.StateFlow
 import moe.tlaster.precompose.PreComposeApp
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+
 
 class MainActivity : FragmentActivity(), KoinComponent {
     private val devicePostureFlow: StateFlow<DevicePosture> = createDevicePostureFlow()
+    private val locationProvider: KmpLocationProvider by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        locationProvider.init()
         setContent {
             PreComposeApp {
                 KmpDemoTheme {
