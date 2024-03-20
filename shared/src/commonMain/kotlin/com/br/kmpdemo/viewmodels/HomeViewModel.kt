@@ -4,11 +4,14 @@ import BaseViewModel
 import KmpLocationProvider
 import LastKnownLocation
 import MeasurementPreference
+import UserLocation
 import co.touchlab.kermit.Logger
+import com.bottlerocketstudios.launchpad.google.utils.network.service.airquality.AirQualityApiService
 import com.br.kmpdemo.compose.ui.forecasts.ForecastState
 import com.br.kmpdemo.compose.ui.forecasts.WeatherEnum
 import com.br.kmpdemo.compose.ui.utils.WeatherCodes.getWeatherFromCode
 import com.br.kmpdemo.compose.ui.weatherDetails.airQuality.AirQualityEnum
+import com.br.kmpdemo.compose.ui.weatherDetails.airQuality.getAirQualityEnum
 import com.br.kmpdemo.compose.ui.weatherDetails.feelsLike.FeelsLikeState
 import com.br.kmpdemo.compose.ui.weatherDetails.humidity.HumidityState
 import com.br.kmpdemo.compose.ui.weatherDetails.pressure.BarometricPressureState
@@ -37,6 +40,8 @@ import org.koin.core.component.inject
 class HomeViewModel : BaseViewModel() {
     private val weatherRepo: WeatherRepository by inject()
     private val locationProvider: KmpLocationProvider by inject()
+    private val airQualityApiService: AirQualityApiService by inject()
+
     val measurementPref = MutableStateFlow(MeasurementPreference.preference)
     val shouldShowPermissionsDialog = MutableStateFlow(true)
 
@@ -115,10 +120,6 @@ class HomeViewModel : BaseViewModel() {
     }
     //endregion
 
-    init {
-
-    }
-
     /**region Network calls */
     private fun getDailyForecasts(location: String) =
         viewModelScope.launch {
@@ -140,6 +141,19 @@ class HomeViewModel : BaseViewModel() {
                 .onSuccess { realTimeResponse.value = it }
                 .onFailure { Logger.e("[getRealTimeForecasts]") { "Failure: ${it.message}" } }
         }
+
+    // TODO: ASAA-196 Add details for AirQualityWidget "See More" navigation
+    private fun getAirQualityDetails(location: UserLocation) =
+        viewModelScope.launch {
+            try {
+                airQuality.value = airQualityApiService
+                    .getCurrentAqiConditions(location.latitude, location.longitude)
+                    .aqiConditions?.find { it.code == "usa_epa" }
+                    ?.aqi?.getAirQualityEnum()
+            } catch (e: Exception) {
+                Logger.e("[onLocationPermissionsGranted]") { "Failure: ${e.message}" }
+            }
+        }
     //endregion
 
     /**region Permissions Utils */
@@ -159,6 +173,7 @@ class HomeViewModel : BaseViewModel() {
                     getHourlyForecasts(location.toCoordinates())
                     getRealTimeForecasts(location.toCoordinates())
                     userLocation.value = location.cityName
+                    getAirQualityDetails(location)
                 }
             }
         }

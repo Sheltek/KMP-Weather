@@ -12,3 +12,14 @@ enum class AirQualityEnum(val level: Float, val quality: StringResource) {
     MAROON(0.6f, SharedRes.strings.aqi_6), // Over 300
     UNKNOWN(0.0f, SharedRes.strings.unknown_aqi)
 }
+
+fun Int.getAirQualityEnum(): AirQualityEnum {
+    return when (this) {
+        in Int.MIN_VALUE..50 -> AirQualityEnum.GREEN
+        in 51..100 -> AirQualityEnum.YELLOW
+        in 101..150 -> AirQualityEnum.ORANGE
+        in 151..200 -> AirQualityEnum.RED
+        in 201..300 -> AirQualityEnum.PURPLE
+        else -> AirQualityEnum.UNKNOWN
+    }
+}

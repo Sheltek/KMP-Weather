@@ -71,6 +71,7 @@ kotlin {
                 implementation(libs.kmp.launchpad.compose)
                 implementation(libs.kmp.launchpad.domain)
                 implementation(libs.kmp.launchpad.utils)
+                implementation(libs.kmp.launchpad.google.utils)
             }
         }
         val androidMain by getting {

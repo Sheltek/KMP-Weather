@@ -2,6 +2,7 @@ package com.br.kmpdemo.di
 
 import ForecastForCityInteractor
 import KmpLocationProvider
+import com.bottlerocketstudios.launchpad.google.utils.network.service.airquality.AirQualityApiService
 import com.br.kmpdemo.network.ktorClient
 import com.br.kmpdemo.network.service.TomorrowIoService
 import com.br.kmpdemo.repositories.WeatherRepository
@@ -37,4 +38,5 @@ val viewModelModule = module {
 
 val repositoryModule = module {
     single<WeatherRepository> { WeatherRepoImplementation() }
+    single<AirQualityApiService> { AirQualityApiService("AIzaSyAmrvwsp5e0OsXUtwMZrh1u4TD8PbOqe0o") }
 }
