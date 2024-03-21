@@ -22,6 +22,8 @@ class TomorrowIoService : KoinComponent {
         const val UNITS = "units"
         const val TIME_STEPS = "timesteps"
         const val API_KEY = "apikey"
+        /// FIXME: Extract
+        const val GOOGLE_MAPS_API_KEY = "AIzaSyAmrvwsp5e0OsXUtwMZrh1u4TD8PbOqe0o"
     }
 
 //    suspend fun getForecastByCity(city: String) =

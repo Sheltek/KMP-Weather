@@ -32,9 +32,7 @@ import com.br.kmpdemo.viewmodels.HomeViewModelUtils.toHourlyForecastState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
-import moe.tlaster.precompose.viewmodel.viewModelScope
 import org.koin.core.component.inject
 
 class HomeViewModel : BaseViewModel() {
@@ -122,21 +120,21 @@ class HomeViewModel : BaseViewModel() {
 
     /**region Network calls */
     private fun getDailyForecasts(location: String) =
-        viewModelScope.launch {
+       launchIO {
             weatherRepo.getDailyForecast(location = location, units = measurementPref.value.type)
                 .onSuccess { dailyResponse.value = it }
                 .onFailure { Logger.e("[getDailyForecasts]") { "Failure: ${it.message}" } }
         }
 
     private fun getHourlyForecasts(location: String) =
-        viewModelScope.launch {
+        launchIO {
             weatherRepo.getHourlyForecast(location = location, units = measurementPref.value.type)
                 .onSuccess { hourlyResponse.value = it }
                 .onFailure { Logger.e("[getHourlyForecasts]") { "Failure: ${it.message}" } }
         }
 
     private fun getRealTimeForecasts(location: String) =
-        viewModelScope.launch {
+        launchIO {
             weatherRepo.getRealTimeForecast(location, units = measurementPref.value.type)
                 .onSuccess { realTimeResponse.value = it }
                 .onFailure { Logger.e("[getRealTimeForecasts]") { "Failure: ${it.message}" } }
@@ -144,7 +142,7 @@ class HomeViewModel : BaseViewModel() {
 
     // TODO: ASAA-196 Add details for AirQualityWidget "See More" navigation
     private fun getAirQualityDetails(location: UserLocation) =
-        viewModelScope.launch {
+        launchIO {
             try {
                 airQuality.value = airQualityApiService
                     .getCurrentAqiConditions(location.latitude, location.longitude)
@@ -165,7 +163,7 @@ class HomeViewModel : BaseViewModel() {
     }
 
     private fun onLocationPermissionsGranted() {
-        viewModelScope.launch {
+        launchIO {
             locationProvider.getUsersLocation()
             LastKnownLocation.userLocation.collect { location ->
                 location?.let {

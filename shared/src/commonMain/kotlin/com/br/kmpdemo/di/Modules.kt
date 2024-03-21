@@ -5,6 +5,7 @@ import KmpLocationProvider
 import com.bottlerocketstudios.launchpad.google.utils.network.service.airquality.AirQualityApiService
 import com.br.kmpdemo.network.ktorClient
 import com.br.kmpdemo.network.service.TomorrowIoService
+import com.br.kmpdemo.network.service.TomorrowIoService.Companion.GOOGLE_MAPS_API_KEY
 import com.br.kmpdemo.repositories.WeatherRepository
 import com.br.kmpdemo.repository.WeatherRepoImplementation
 import com.br.kmpdemo.usecases.forecastusecase.ForecastForCityUseCase
@@ -38,5 +39,5 @@ val viewModelModule = module {
 
 val repositoryModule = module {
     single<WeatherRepository> { WeatherRepoImplementation() }
-    single<AirQualityApiService> { AirQualityApiService("AIzaSyAmrvwsp5e0OsXUtwMZrh1u4TD8PbOqe0o") }
+    single<AirQualityApiService> { AirQualityApiService(GOOGLE_MAPS_API_KEY) }
 }
