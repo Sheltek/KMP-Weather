@@ -4,11 +4,14 @@ import BaseViewModel
 import KmpLocationProvider
 import LastKnownLocation
 import MeasurementPreference
+import UserLocation
 import co.touchlab.kermit.Logger
+import com.bottlerocketstudios.launchpad.google.utils.network.service.airquality.AirQualityApiService
 import com.br.kmpdemo.compose.ui.forecasts.ForecastState
 import com.br.kmpdemo.compose.ui.forecasts.WeatherEnum
 import com.br.kmpdemo.compose.ui.utils.WeatherCodes.getWeatherFromCode
 import com.br.kmpdemo.compose.ui.weatherDetails.airQuality.AirQualityEnum
+import com.br.kmpdemo.compose.ui.weatherDetails.airQuality.getAirQualityEnum
 import com.br.kmpdemo.compose.ui.weatherDetails.feelsLike.FeelsLikeState
 import com.br.kmpdemo.compose.ui.weatherDetails.humidity.HumidityState
 import com.br.kmpdemo.compose.ui.weatherDetails.pressure.BarometricPressureState
@@ -29,14 +32,14 @@ import com.br.kmpdemo.viewmodels.HomeViewModelUtils.toHourlyForecastState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
-import moe.tlaster.precompose.viewmodel.viewModelScope
 import org.koin.core.component.inject
 
 class HomeViewModel : BaseViewModel() {
     private val weatherRepo: WeatherRepository by inject()
     private val locationProvider: KmpLocationProvider by inject()
+    private val airQualityApiService: AirQualityApiService by inject()
+
     val measurementPref = MutableStateFlow(MeasurementPreference.preference)
     val shouldShowPermissionsDialog = MutableStateFlow(true)
 
@@ -115,30 +118,39 @@ class HomeViewModel : BaseViewModel() {
     }
     //endregion
 
-    init {
-
-    }
-
     /**region Network calls */
     private fun getDailyForecasts(location: String) =
-        viewModelScope.launch {
+       launchIO {
             weatherRepo.getDailyForecast(location = location, units = measurementPref.value.type)
                 .onSuccess { dailyResponse.value = it }
                 .onFailure { Logger.e("[getDailyForecasts]") { "Failure: ${it.message}" } }
         }
 
     private fun getHourlyForecasts(location: String) =
-        viewModelScope.launch {
+        launchIO {
             weatherRepo.getHourlyForecast(location = location, units = measurementPref.value.type)
                 .onSuccess { hourlyResponse.value = it }
                 .onFailure { Logger.e("[getHourlyForecasts]") { "Failure: ${it.message}" } }
         }
 
     private fun getRealTimeForecasts(location: String) =
-        viewModelScope.launch {
+        launchIO {
             weatherRepo.getRealTimeForecast(location, units = measurementPref.value.type)
                 .onSuccess { realTimeResponse.value = it }
                 .onFailure { Logger.e("[getRealTimeForecasts]") { "Failure: ${it.message}" } }
+        }
+
+    // TODO: ASAA-196 Add details for AirQualityWidget "See More" navigation
+    private fun getAirQualityDetails(location: UserLocation) =
+        launchIO {
+            try {
+                airQuality.value = airQualityApiService
+                    .getCurrentAqiConditions(location.latitude, location.longitude)
+                    .aqiConditions?.find { it.code == "usa_epa" }
+                    ?.aqi?.getAirQualityEnum()
+            } catch (e: Exception) {
+                Logger.e("[onLocationPermissionsGranted]") { "Failure: ${e.message}" }
+            }
         }
     //endregion
 
@@ -151,7 +163,7 @@ class HomeViewModel : BaseViewModel() {
     }
 
     private fun onLocationPermissionsGranted() {
-        viewModelScope.launch {
+        launchIO {
             locationProvider.getUsersLocation()
             LastKnownLocation.userLocation.collect { location ->
                 location?.let {
@@ -159,6 +171,7 @@ class HomeViewModel : BaseViewModel() {
                     getHourlyForecasts(location.toCoordinates())
                     getRealTimeForecasts(location.toCoordinates())
                     userLocation.value = location.cityName
+                    getAirQualityDetails(location)
                 }
             }
         }
