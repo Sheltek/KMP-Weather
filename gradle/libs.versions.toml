@@ -12,10 +12,10 @@ google-places = "3.3.0"
 google-secrets = "2.0.1"
 google-services = "4.4.0"
 kermit-logger = "2.0.2"
-kmp-launchpad-compose = "0.0.3"
-kmp-launchpad-domain = "0.0.3"
+kwikstart-compose = "0.1.0"
+kwikstart-core = "0.1.0"
 kmp-launchpad-google-utils = "0.0.2"
-kmp-launchpad-utils = "0.0.2"
+kwikstart-utils = "0.1.0"
 koin = "3.5.3"
 koin-compose = "3.5.3"
 kotlin = "1.9.21"
@@ -50,10 +50,10 @@ google-maps = { group = "com.google.maps.android", name = "maps-compose", versio
 google-maps-utils = { group = "com.google.maps.android", name = "maps-compose-utils", version.ref = "google-maps-utils" }
 google-places = { group = "com.google.android.libraries.places", name = "places", version.ref = "google-places" }
 kermit-logger = { group = "co.touchlab", name = "kermit", version.ref = "kermit-logger" }
-kmp-launchpad-compose = { group = "com.github.bottlerocketstudios", name = "kmp-launchpad-compose", version.ref = "kmp-launchpad-compose" }
-kmp-launchpad-domain = { group = "com.github.bottlerocketstudios", name = "kmp-launchpad-utils-domain", version.ref = "kmp-launchpad-domain" }
-kmp-launchpad-google-utils = { group = "com.github.bottlerocketstudios", name = "kmp-launchpad-google-utils", version.ref = "kmp-launchpad-google-utils" }
-kmp-launchpad-utils = { group = "com.github.bottlerocketstudios", name = "kmp-launchpad-utils", version.ref = "kmp-launchpad-utils" }
+kwikstart-compose = { group = "com.github.sheltek", name = "kwikstart-compose", version.ref = "kwikstart-compose" }
+kwikstart-core = { group = "com.github.sheltek", name = "kwikstart-core", version.ref = "kwikstart-core" }
+#kmp-launchpad-google-utils = { group = "com.github.bottlerocketstudios", name = "kmp-launchpad-google-utils", version.ref = "kmp-launchpad-google-utils" }
+kwikstart-utils = { group = "com.github.sheltek", name = "kwikstart-utils", version.ref = "kwikstart-utils" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin-compose" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }

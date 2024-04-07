@@ -15,6 +15,7 @@ dependencyResolutionManagement {
                 password = System.getenv("REPO_READ_TOKEN")
             }
         }
+        mavenLocal()
         google()
         mavenCentral()
     }

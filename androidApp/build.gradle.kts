@@ -30,9 +30,9 @@ kotlin {
                 implementation(compose.ui)
 
                 // KMP
-                implementation(libs.kmp.launchpad.compose)
-                implementation(libs.kmp.launchpad.domain)
-                implementation(libs.kmp.launchpad.utils)
+                implementation(libs.kwikstart.compose)
+                implementation(libs.kwikstart.core)
+                implementation(libs.kwikstart.utils)
 
                 // Utility
                 implementation(libs.google.maps)

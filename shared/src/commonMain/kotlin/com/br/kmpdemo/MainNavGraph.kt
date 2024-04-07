@@ -1,9 +1,9 @@
 package com.br.kmpdemo
 
 import androidx.compose.runtime.Composable
-import com.bottlerocketstudios.launchpad.compose.navigation.utils.DevicePosture
-import com.bottlerocketstudios.launchpad.compose.navigation.utils.WindowWidthSizeClass
 import com.br.kmpdemo.ui.home.homeComposable
+import com.sheltek.kwikstart.compose.navigation.utils.DevicePosture
+import com.sheltek.kwikstart.compose.navigation.utils.WindowWidthSizeClass
 import moe.tlaster.precompose.navigation.Navigator
 import moe.tlaster.precompose.navigation.RouteBuilder
 

@@ -8,11 +8,11 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-class KmpDemoApplication: Application() {
+class KmpWeatherApplication: Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
-            androidContext(this@KmpDemoApplication)
+            androidContext(this@KmpWeatherApplication)
             androidLogger()
             modules(appModule() + androidModule)
         }
