@@ -1,9 +1,9 @@
 package com.br.kmpdemo.viewmodels
 
 import UserLocation
-import com.br.kmpdemo.compose.ui.forecasts.ForecastState
-import com.br.kmpdemo.compose.ui.forecasts.WeatherEnum
-import com.br.kmpdemo.compose.ui.utils.WeatherCodes.getWeatherFromCode
+import com.sheltek.kmpweather.compose.ui.forecasts.ForecastState
+import com.sheltek.kmpweather.compose.ui.forecasts.WeatherEnum
+import com.sheltek.kmpweather.compose.ui.utils.WeatherCodes.getWeatherFromCode
 import com.br.kmpdemo.models.Daily
 import com.br.kmpdemo.models.Hourly
 import kotlinx.datetime.Clock

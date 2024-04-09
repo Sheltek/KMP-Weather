@@ -1,9 +1,7 @@
 
 import androidx.compose.material3.ColorScheme
-import com.br.kmpdemo.compose.resources.theme.Dimensions
-import com.br.kmpdemo.compose.resources.theme.kmpDarkColors
-import com.br.kmpdemo.compose.resources.theme.kmpLightColors
-import com.br.kmpdemo.compose.resources.theme.sw360Dimensions
+import com.sheltek.kmpweather.compose.resources.theme.Dimensions
+import com.sheltek.kmpweather.compose.resources.theme.sw360Dimensions
 import com.br.kmpdemo.utils.Constants.IS_METRIC
 import com.br.kmpdemo.utils.MeasurementType
 import org.koin.core.component.KoinComponent
@@ -17,9 +15,9 @@ actual fun getSystemDimensions(): Dimensions {
 actual fun getSystemColorScheme(darkTheme: Boolean): ColorScheme {
     // Return iOS-specific color scheme
     return if (darkTheme) {
-        kmpDarkColors
+        com.sheltek.kmpweather.compose.resources.theme.kmpDarkColors
     } else {
-        kmpLightColors
+        com.sheltek.kmpweather.compose.resources.theme.kmpLightColors
     }
 }
 

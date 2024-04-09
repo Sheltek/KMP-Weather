@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.collectAsState
 import androidx.fragment.app.FragmentActivity
-import com.br.kmpdemo.compose.resources.theme.KmpDemoTheme
-import com.br.kmpdemo.compose.ui.app.KmpNavBar
+import com.sheltek.kmpweather.compose.resources.theme.KmpDemoTheme
+import com.sheltek.kmpweather.compose.ui.app.KmpNavBar
 import com.br.kmpdemo.ui.app.KmpWeatherApp
 import com.br.kmpdemo.ui.app.kmpDemoAppNavItems
 import com.sheltek.kwikstart.compose.navigation.NavigationWrapper

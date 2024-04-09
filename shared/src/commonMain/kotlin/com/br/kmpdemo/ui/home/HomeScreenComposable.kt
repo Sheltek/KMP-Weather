@@ -1,8 +1,8 @@
 package com.br.kmpdemo.ui.home
 
 import com.br.kmpdemo.NavRoutes
-import com.br.kmpdemo.compose.ui.home.HomeBottomSheetScaffold
-import com.br.kmpdemo.compose.ui.home.HomeState
+import com.sheltek.kmpweather.compose.ui.home.HomeBottomSheetScaffold
+import com.sheltek.kmpweather.compose.ui.home.HomeState
 import com.br.kmpdemo.viewmodels.HomeViewModel
 import com.br.kmpdemo.viewmodels.converters.toState
 import moe.tlaster.precompose.navigation.Navigator

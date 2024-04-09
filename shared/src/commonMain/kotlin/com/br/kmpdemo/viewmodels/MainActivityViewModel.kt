@@ -1,8 +1,8 @@
 package com.br.kmpdemo.viewmodels
 
 import BaseViewModel
-import com.br.kmpdemo.compose.resources.SharedRes
 import kotlinx.coroutines.flow.MutableStateFlow
+import com.sheltek.kmpweather.compose.SharedRes
 
 class MainActivityViewModel: BaseViewModel() {
     val appTitle = MutableStateFlow(SharedRes.strings.appName)

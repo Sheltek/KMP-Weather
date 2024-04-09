@@ -8,7 +8,7 @@ plugins {
 }
 
 multiplatformResources {
-    multiplatformResourcesPackage = "com.br.kmpdemo.compose.resources"
+    multiplatformResourcesPackage = "com.sheltek.kmpweather.compose"
     multiplatformResourcesClassName = "SharedRes"
 }
 
