@@ -7,8 +7,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.fragment.app.FragmentActivity
 import com.sheltek.kmpweather.compose.resources.theme.KmpDemoTheme
 import com.sheltek.kmpweather.compose.ui.app.KmpNavBar
-import com.br.kmpdemo.ui.app.KmpWeatherApp
-import com.br.kmpdemo.ui.app.kmpDemoAppNavItems
+import com.sheltek.kmpweather.ui.app.KmpWeatherApp
+import com.sheltek.kmpweather.ui.app.kmpDemoAppNavItems
 import com.sheltek.kwikstart.compose.navigation.NavigationWrapper
 import com.sheltek.kwikstart.compose.navigation.util.createDevicePostureFlow
 import com.sheltek.kwikstart.compose.navigation.util.getWindowWidthSize

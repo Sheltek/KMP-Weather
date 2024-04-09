@@ -6,16 +6,16 @@ import android.location.Geocoder
 import android.os.Looper
 import androidx.compose.material3.ColorScheme
 import co.touchlab.kermit.Logger
-import com.sheltek.kmpweather.compose.resources.theme.Dimensions
-import com.sheltek.kmpweather.compose.resources.theme.sw360Dimensions
-import com.br.kmpdemo.utils.Constants.IS_METRIC
-import com.br.kmpdemo.utils.Constants.MEASUREMENT_PREFS
 import com.br.kmpdemo.utils.MeasurementType
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import com.sheltek.kmpweather.compose.resources.theme.Dimensions
+import com.sheltek.kmpweather.compose.resources.theme.sw360Dimensions
+import com.sheltek.kmpweather.utils.Constants.IS_METRIC
+import com.sheltek.kmpweather.utils.Constants.MEASUREMENT_PREFS
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
