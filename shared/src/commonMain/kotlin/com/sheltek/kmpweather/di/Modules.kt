@@ -2,11 +2,11 @@ package com.sheltek.kmpweather.di
 
 import ForecastForCityInteractor
 import KmpLocationProvider
-import com.br.kmpdemo.network.ktorClient
-import com.br.kmpdemo.network.service.TomorrowIoService
-import com.br.kmpdemo.repositories.WeatherRepository
-import com.br.kmpdemo.repository.WeatherRepoImplementation
-import com.br.kmpdemo.usecases.forecastusecase.ForecastForCityUseCase
+import com.sheltek.kmpweather.network.ktorClient
+import com.sheltek.kmpweather.network.service.TomorrowIoService
+import com.sheltek.kmpweather.repositories.WeatherRepository
+import com.sheltek.kmpweather.repository.WeatherRepoImplementation
+import com.sheltek.kmpweather.usecases.forecastusecase.ForecastForCityUseCase
 import com.sheltek.kmpweather.viewmodels.ForecastViewModel
 import com.sheltek.kmpweather.viewmodels.HomeViewModel
 import com.sheltek.kmpweather.viewmodels.MainActivityViewModel
@@ -18,9 +18,6 @@ import org.koin.dsl.module
 val domainModule = module {
     // Injection from utils lib
     single<DispatcherProvider> { DispatcherProviderImpl() }
-
-    // Repositories
-    single<WeatherRepository> { WeatherRepoImplementation() }
 
     // Services
     single<TomorrowIoService> { TomorrowIoService() }

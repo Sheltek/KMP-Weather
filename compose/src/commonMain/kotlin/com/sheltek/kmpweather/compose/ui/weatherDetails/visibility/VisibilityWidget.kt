@@ -1,3 +1,4 @@
+
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -10,7 +11,7 @@ import com.sheltek.kmpweather.compose.resources.theme.letterSpacing
 import com.sheltek.kmpweather.compose.ui.home.HomeState
 import com.sheltek.kmpweather.compose.ui.weatherDetails.DetailsWidgetLabel
 import com.sheltek.kmpweather.compose.ui.weatherDetails.WeatherDetailsSurface
-import com.br.kmpdemo.utils.MeasurementType
+import com.sheltek.kmpweather.utils.MeasurementType
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.sheltek.kmpweather.compose.previews.utils.MockData
-import com.sheltek.kmpweather.compose.resources.theme.KmpDemoTheme
+import com.sheltek.kmpweather.compose.resources.theme.KmpWeatherTheme
 import com.sheltek.kmpweather.compose.ui.weatherDetails.airQuality.AirQualityEnum
 import com.sheltek.kmpweather.compose.ui.weatherDetails.airQuality.AirQualityWidget
 import com.sheltek.kmpweather.compose.ui.weatherDetails.feelsLike.FeelsLikeState
@@ -25,7 +25,7 @@ import com.sheltek.kmpweather.compose.ui.weatherDetails.wind.WindWidget
 @Composable
 @Preview
 fun AirQualityPreview() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         Column {
             AirQualityWidget(AirQualityEnum.YELLOW)
             // No Air Quality Info Returned
@@ -37,7 +37,7 @@ fun AirQualityPreview() {
 @Composable
 @Preview
 fun UVIndexPreview() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         Row {
             UvIndexWidget(UVIndexEnum.MODERATE)
             UvIndexWidget(UVIndexEnum.UNKNOWN)
@@ -48,7 +48,7 @@ fun UVIndexPreview() {
 @Composable
 @Preview
 fun FeelsLikePreview() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         Row {
             FeelsLikeWidget(FeelsLikeState(75.0, 65.0))
             FeelsLikeWidget(FeelsLikeState(null, 59.0))
@@ -59,7 +59,7 @@ fun FeelsLikePreview() {
 @Composable
 @Preview
 fun HumidityPreview() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         Row {
             HumidityWidget(HumidityState(90.0, 17.0))
             HumidityWidget(HumidityState(null, null))
@@ -70,7 +70,7 @@ fun HumidityPreview() {
 @Composable
 @Preview
 fun RainFallPreview() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         Row {
             RainFallWidget(MockData.getMockHomeState())
             RainFallWidget(MockData.getMockHomeState(isError = true))
@@ -81,7 +81,7 @@ fun RainFallPreview() {
 @Composable
 @Preview
 fun VisibilityPreview() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         Row {
             VisibilityWidget(MockData.getMockHomeState())
             VisibilityWidget(MockData.getMockHomeState(isError = true))
@@ -92,7 +92,7 @@ fun VisibilityPreview() {
 @Composable
 @Preview
 fun SunriseSunsetPreview() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         Column {
             Row {
                 SunriseSunsetWidget(SunriseSunsetState(localTime = "13:00", sunriseTime = "4:58", sunsetTime = "17:35"))
@@ -113,7 +113,7 @@ fun SunriseSunsetPreview() {
 @Composable
 @Preview
 fun BarometricPressurePreview() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         Column {
             Row {
                 BarometricPressureWidget(state = BarometricPressureState(pressure = 0.2F))
@@ -135,7 +135,7 @@ fun BarometricPressurePreview() {
 @Composable
 @Preview
 fun WindPreview() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         Column {
             Row {
                 WindWidget(MockData.getMockHomeState(isError = true))

@@ -1,8 +1,6 @@
 package com.sheltek.kmpweather.compose.previews.utils
 
 import androidx.compose.runtime.mutableStateOf
-import com.br.kmpdemo.models.PermissionsDialogState
-import com.br.kmpdemo.utils.MeasurementType
 import com.sheltek.kmpweather.compose.ui.forecasts.ForecastState
 import com.sheltek.kmpweather.compose.ui.forecasts.WeatherEnum
 import com.sheltek.kmpweather.compose.ui.home.HomeState
@@ -16,6 +14,7 @@ import com.sheltek.kmpweather.compose.ui.weatherDetails.uvIndex.UVIndexEnum
 import com.sheltek.kmpweather.compose.ui.weatherDetails.visibility.VisibilityState
 import com.sheltek.kmpweather.compose.ui.weatherDetails.wind.WindDirectionEnum
 import com.sheltek.kmpweather.compose.ui.weatherDetails.wind.WindState
+import com.sheltek.kmpweather.utils.MeasurementType
 import kotlin.random.Random
 
 object MockData {
@@ -85,7 +84,7 @@ object MockData {
                 WindState(windDirection = WindDirectionEnum.N)
             ),
             measurementPref = mutableStateOf(MeasurementType.IMPERIAL),
-            locationPermissionsDialog = PermissionsDialogState("", {})
+            locationPermissionsDialog = com.sheltek.kmpweather.models.PermissionsDialogState("", {})
         )
 
         return HomeState(
@@ -117,7 +116,7 @@ object MockData {
                 )
             ),
             measurementPref = mutableStateOf(MeasurementType.IMPERIAL),
-            locationPermissionsDialog = PermissionsDialogState("", {})
+            locationPermissionsDialog = com.sheltek.kmpweather.models.PermissionsDialogState("", {})
         )
     }
 

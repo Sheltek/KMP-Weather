@@ -4,8 +4,8 @@ import UserLocation
 import com.sheltek.kmpweather.compose.ui.forecasts.ForecastState
 import com.sheltek.kmpweather.compose.ui.forecasts.WeatherEnum
 import com.sheltek.kmpweather.compose.ui.utils.WeatherCodes.getWeatherFromCode
-import com.br.kmpdemo.models.Daily
-import com.br.kmpdemo.models.Hourly
+import com.sheltek.kmpweather.models.Daily
+import com.sheltek.kmpweather.models.Hourly
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
@@ -73,7 +73,7 @@ object HomeViewModelUtils {
     fun UserLocation.toCoordinates() = "$latitude, $longitude"
 
     /// Transforms the API return to a list of ForecastState
-    fun List<Daily?>?.toDailyForecastState(): List<ForecastState> {
+    fun List<com.sheltek.kmpweather.models.Daily?>?.toDailyForecastState(): List<ForecastState> {
         val dailyForecasts = arrayListOf<ForecastState>()
         this?.forEach { daily ->
             with(daily?.dailyValues) {
@@ -97,7 +97,7 @@ object HomeViewModelUtils {
         return dailyForecasts
     }
 
-    fun List<Hourly?>?.toHourlyForecastState(): List<ForecastState> {
+    fun List<com.sheltek.kmpweather.models.Hourly?>?.toHourlyForecastState(): List<ForecastState> {
         val dailyForecasts = arrayListOf<ForecastState>()
         this?.forEach { hourly ->
             with(hourly?.hourlyValues) {

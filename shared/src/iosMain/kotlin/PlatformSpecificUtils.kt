@@ -2,8 +2,8 @@
 import androidx.compose.material3.ColorScheme
 import com.sheltek.kmpweather.compose.resources.theme.Dimensions
 import com.sheltek.kmpweather.compose.resources.theme.sw360Dimensions
-import com.br.kmpdemo.utils.Constants.IS_METRIC
-import com.br.kmpdemo.utils.MeasurementType
+import com.sheltek.kmpweather.utils.Constants.IS_METRIC
+import com.sheltek.kmpweather.utils.MeasurementType
 import org.koin.core.component.KoinComponent
 import platform.Foundation.NSUserDefaults
 

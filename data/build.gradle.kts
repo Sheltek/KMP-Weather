@@ -30,12 +30,12 @@ kotlin {
                 implementation(libs.koin.core)
             }
         }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-                implementation(libs.koin.test)
-            }
-        }
+//        val commonTest by getting {
+//            dependencies {
+//                implementation(kotlin("test"))
+//                implementation(libs.koin.test)
+//            }
+//        }
     }
 }
 

@@ -3,7 +3,7 @@ package com.sheltek.kmpweather.compose.previews
 import ForecastChip
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.sheltek.kmpweather.compose.resources.theme.KmpDemoTheme
+import com.sheltek.kmpweather.compose.resources.theme.KmpWeatherTheme
 import com.sheltek.kmpweather.compose.ui.forecasts.ForecastState
 import com.sheltek.kmpweather.compose.ui.forecasts.HourlyForecastChip
 import com.sheltek.kmpweather.compose.ui.forecasts.WeatherEnum
@@ -18,7 +18,7 @@ val hourlyForecast = ForecastState(
 @Composable
 @Preview
 fun PreviewNowHourlyForecast() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         ForecastChip(state = hourlyForecast.copy(isNow = true)) { state ->
             HourlyForecastChip(state)
         }
@@ -28,7 +28,7 @@ fun PreviewNowHourlyForecast() {
 @Composable
 @Preview
 fun PreviewHourlyForecast() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         ForecastChip(state = hourlyForecast) { state ->
             HourlyForecastChip(state)
         }
@@ -39,7 +39,7 @@ fun PreviewHourlyForecast() {
 @Preview
 fun PreviewHourlyForecastERROR() {
     val errorForecast = ForecastState(weatherIcon = WeatherEnum.WINDY)
-    KmpDemoTheme {
+    KmpWeatherTheme {
         ForecastChip(state = errorForecast) { state ->
             HourlyForecastChip(state)
         }

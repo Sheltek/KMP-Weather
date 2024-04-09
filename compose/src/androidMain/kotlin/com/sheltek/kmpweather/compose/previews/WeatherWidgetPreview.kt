@@ -1,14 +1,14 @@
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.sheltek.kmpweather.compose.resources.theme.KmpDemoTheme
+import com.sheltek.kmpweather.compose.resources.theme.KmpWeatherTheme
 import com.sheltek.kmpweather.compose.ui.forecasts.WeatherEnum
 import com.sheltek.kmpweather.compose.ui.forecasts.WeatherWidgetState
 
 @Composable
 @Preview
 fun PreviewWeatherWidget() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         WeatherWidget(
             state = WeatherWidgetState(
                 tempCurrent = "63\u00B0",
@@ -23,7 +23,7 @@ fun PreviewWeatherWidget() {
 @Composable
 @Preview
 fun PreviewWeatherWidgetERROR() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         WeatherWidget(
             state = WeatherWidgetState(
                 weatherIcon = WeatherEnum.DAY_RAIN

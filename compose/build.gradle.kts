@@ -57,9 +57,9 @@ kotlin {
                 implementation(libs.kermit.logger)
             }
         }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
-        }
+//        commonTest.dependencies {
+//            implementation(libs.kotlin.test)
+//        }
         val androidMain by getting {
             dependsOn(commonMain)
             dependencies {

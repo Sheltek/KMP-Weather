@@ -13,15 +13,13 @@ import com.sheltek.kmpweather.compose.ui.weatherDetails.sunrise_sunset.SunriseSu
 import com.sheltek.kmpweather.compose.ui.weatherDetails.uvIndex.UVIndexEnum
 import com.sheltek.kmpweather.compose.ui.weatherDetails.visibility.VisibilityState
 import com.sheltek.kmpweather.compose.ui.weatherDetails.wind.WindState
-import com.br.kmpdemo.models.PermissionsDialogState
-import com.br.kmpdemo.models.RealTime
-import com.br.kmpdemo.utils.MeasurementType
+import com.sheltek.kmpweather.utils.MeasurementType
 
 data class HomeState(
     /// Forecasts
     val hourlyForecasts: State<List<ForecastState>?>,
     val dailyForecasts: State<List<ForecastState>?>,
-    val realTimeWeather: State<RealTime?>,
+    val realTimeWeather: State<com.sheltek.kmpweather.models.RealTime?>,
 
     /// Weather Details
     val location: State<String?> = mutableStateOf(null),
@@ -44,5 +42,5 @@ data class HomeState(
 
     // Permissions
     val shouldShowPermissionsDialog: State<Boolean> = mutableStateOf(true),
-    val locationPermissionsDialog: PermissionsDialogState,
+    val locationPermissionsDialog: com.sheltek.kmpweather.models.PermissionsDialogState,
 )

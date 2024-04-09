@@ -14,9 +14,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.sheltek.kmpweather.compose.SharedRes
-import com.sheltek.kmpweather.compose.resources.theme.KmpDemoTheme.dimens
+import com.sheltek.kmpweather.compose.resources.theme.KmpWeatherTheme.dimens
 import com.sheltek.kmpweather.compose.resources.theme.bold
-import com.br.kmpdemo.models.PermissionsDialogState
 import dev.icerock.moko.permissions.Permission
 import dev.icerock.moko.permissions.PermissionsController
 import dev.icerock.moko.permissions.compose.BindEffect
@@ -25,7 +24,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun PermissionsDialog(
-    permissionDialogState: PermissionsDialogState,
+    permissionDialogState: com.sheltek.kmpweather.models.PermissionsDialogState,
     permissionsController: PermissionsController,
     permissionTypes: List<Permission>
 ) {

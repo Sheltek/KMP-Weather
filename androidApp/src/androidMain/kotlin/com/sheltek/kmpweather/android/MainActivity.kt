@@ -1,0 +1,48 @@
+package com.sheltek.kmpweather.android
+
+import KmpLocationProvider
+import android.os.Bundle
+import androidx.activity.compose.setContent
+import androidx.compose.runtime.collectAsState
+import androidx.fragment.app.FragmentActivity
+import com.sheltek.kmpweather.compose.resources.theme.KmpWeatherTheme
+import com.sheltek.kmpweather.compose.ui.app.KmpNavBar
+import com.sheltek.kmpweather.ui.app.KmpWeatherApp
+import com.sheltek.kmpweather.ui.app.kmpWeatherAppNavItems
+import com.sheltek.kwikstart.compose.navigation.NavigationWrapper
+import com.sheltek.kwikstart.compose.navigation.util.createDevicePostureFlow
+import com.sheltek.kwikstart.compose.navigation.util.getWindowWidthSize
+import com.sheltek.kwikstart.compose.navigation.utils.DevicePosture
+import kotlinx.coroutines.flow.StateFlow
+import moe.tlaster.precompose.PreComposeApp
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+
+
+class MainActivity : FragmentActivity(), KoinComponent {
+    private val devicePostureFlow: StateFlow<DevicePosture> = createDevicePostureFlow()
+    private val locationProvider: KmpLocationProvider by inject()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        locationProvider.init()
+        setContent {
+            PreComposeApp {
+                KmpWeatherTheme {
+                    NavigationWrapper(
+                        widthSize = getWindowWidthSize(this@MainActivity),
+                        devicePosture = devicePostureFlow.collectAsState().value,
+                        navigationItems = kmpWeatherAppNavItems,
+                    ) { navigator, _ ->
+                        KmpWeatherApp(
+                            widthSize = getWindowWidthSize(this),
+                            navigator = navigator,
+                            devicePosture = devicePostureFlow.collectAsState().value,
+                            bottomBar = { KmpNavBar() }
+                        )
+                    }
+                }
+            }
+        }
+    }
+}

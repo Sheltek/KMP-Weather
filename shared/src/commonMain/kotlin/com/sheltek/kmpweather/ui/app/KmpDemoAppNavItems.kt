@@ -4,7 +4,7 @@ import androidx.compose.material3.Text
 import com.sheltek.kmpweather.NavRoutes
 import com.sheltek.kwikstart.compose.navigation.utils.NavigationItem
 
-val kmpDemoAppNavItems = listOf<NavigationItem>(
+val kmpWeatherAppNavItems = listOf<NavigationItem>(
     NavigationItem(
         route = NavRoutes.HOME,
         selectedIcon = {},

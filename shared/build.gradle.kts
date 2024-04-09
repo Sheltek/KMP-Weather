@@ -71,7 +71,7 @@ kotlin {
                 implementation(libs.kwikstart.compose)
                 implementation(libs.kwikstart.core)
                 implementation(libs.kwikstart.utils)
-//                implementation(libs.kmp.launchpad.google.utils)
+//                implementation(libs.kwikstart.google.utils)
             }
         }
         val androidMain by getting {

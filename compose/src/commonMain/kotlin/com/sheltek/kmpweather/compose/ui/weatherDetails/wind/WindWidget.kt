@@ -21,7 +21,7 @@ import com.sheltek.kmpweather.compose.ui.utils.drawNorthArrow
 import com.sheltek.kmpweather.compose.ui.utils.drawWindSpeedText
 import com.sheltek.kmpweather.compose.ui.weatherDetails.DetailsWidgetLabel
 import com.sheltek.kmpweather.compose.ui.weatherDetails.WeatherDetailsSurface
-import com.br.kmpdemo.utils.MeasurementType
+import com.sheltek.kmpweather.utils.MeasurementType
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

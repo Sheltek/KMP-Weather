@@ -13,7 +13,7 @@ import com.sheltek.kmpweather.compose.resources.theme.letterSpacing
 import com.sheltek.kmpweather.compose.ui.home.HomeState
 import com.sheltek.kmpweather.compose.ui.weatherDetails.DetailsWidgetLabel
 import com.sheltek.kmpweather.compose.ui.weatherDetails.WeatherDetailsSurface
-import com.br.kmpdemo.utils.MeasurementType
+import com.sheltek.kmpweather.utils.MeasurementType
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

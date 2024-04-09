@@ -1,8 +1,8 @@
 package com.sheltek.kmpweather
 
-import com.br.kmpdemo.utils.MutableStateFlowDelegate
 import com.sheltek.kmpweather.MainWindowControls.Companion.EMPTY_TOOLBAR_TITLE
 import com.sheltek.kmpweather.compose.SharedRes
+import com.sheltek.kmpweather.utils.MutableStateFlowDelegate
 import com.sheltek.kmpweather.viewmodels.MainActivityViewModel
 import dev.icerock.moko.resources.StringResource
 

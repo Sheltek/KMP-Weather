@@ -1,7 +1,7 @@
 
 import androidx.compose.material3.ColorScheme
 import com.sheltek.kmpweather.compose.resources.theme.Dimensions
-import com.br.kmpdemo.utils.MeasurementType
+import com.sheltek.kmpweather.utils.MeasurementType
 import kotlinx.coroutines.flow.MutableStateFlow
 import org.koin.core.component.KoinComponent
 

@@ -2,9 +2,8 @@ package com.sheltek.kmpweather.viewmodels.converters
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import com.br.kmpdemo.models.PermissionsDialogState
-import com.br.kmpdemo.utils.MeasurementType
 import com.sheltek.kmpweather.compose.ui.home.HomeState
+import com.sheltek.kmpweather.utils.MeasurementType
 import com.sheltek.kmpweather.viewmodels.HomeViewModel
 
 @Composable
@@ -38,7 +37,8 @@ fun HomeViewModel.toState() = HomeState(
     locationPermissionsDialog = toLocationPermissionsDialogState()
 )
 
-fun HomeViewModel.toLocationPermissionsDialogState() = PermissionsDialogState(
-    permissionText = "Please enable your location permission for local weather information",
-    onDismiss = ::onDismissLocationPermissionDialog,
-)
+fun HomeViewModel.toLocationPermissionsDialogState() =
+    com.sheltek.kmpweather.models.PermissionsDialogState(
+        permissionText = "Please enable your location permission for local weather information",
+        onDismiss = ::onDismissLocationPermissionDialog,
+    )

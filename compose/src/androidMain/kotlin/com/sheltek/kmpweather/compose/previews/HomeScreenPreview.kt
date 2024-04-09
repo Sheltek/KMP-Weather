@@ -4,7 +4,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.sheltek.kmpweather.compose.previews.utils.MockData
-import com.sheltek.kmpweather.compose.resources.theme.KmpDemoTheme
+import com.sheltek.kmpweather.compose.resources.theme.KmpWeatherTheme
 import com.sheltek.kmpweather.compose.ui.app.KmpNavBar
 import com.sheltek.kmpweather.compose.ui.home.HomeBottomSheet
 import com.sheltek.kmpweather.compose.ui.home.HomeCurrentWeather
@@ -13,7 +13,7 @@ import com.sheltek.kmpweather.compose.ui.home.HomeScreen
 @Composable
 @Preview(showSystemUi = true)
 fun HomeScreenPreview() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         HomeScreen(MockData.getMockHomeState(), true)
     }
 }
@@ -21,7 +21,7 @@ fun HomeScreenPreview() {
 @Preview
 @Composable
 private fun BottomSheetPreview() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         HomeBottomSheet(state = MockData.getMockHomeState(), true)
     }
 }
@@ -29,7 +29,7 @@ private fun BottomSheetPreview() {
 @Composable
 @Preview
 fun NavBarPreview() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         KmpNavBar()
     }
 }
@@ -37,7 +37,7 @@ fun NavBarPreview() {
 @Composable
 @Preview
 fun HomeCurrentWeatherPreview() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         Surface {
             HomeCurrentWeather(MockData.getMockHomeState(), true)
         }
@@ -47,7 +47,7 @@ fun HomeCurrentWeatherPreview() {
 @Composable
 @Preview
 fun HomeCurrentWeatherERRORPreview() {
-    KmpDemoTheme {
+    KmpWeatherTheme {
         Surface {
             HomeCurrentWeather(MockData.getMockHomeState(isError = true), true)
         }

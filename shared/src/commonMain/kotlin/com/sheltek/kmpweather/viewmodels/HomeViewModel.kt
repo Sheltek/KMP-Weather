@@ -6,9 +6,9 @@ import LastKnownLocation
 import MeasurementPreference
 import UserLocation
 import co.touchlab.kermit.Logger
-import com.br.kmpdemo.models.Forecast
-import com.br.kmpdemo.models.RealTime
-import com.br.kmpdemo.repositories.WeatherRepository
+import com.sheltek.kmpweather.models.Forecast
+import com.sheltek.kmpweather.models.RealTime
+import com.sheltek.kmpweather.repositories.WeatherRepository
 import com.sheltek.kmpweather.compose.ui.forecasts.ForecastState
 import com.sheltek.kmpweather.compose.ui.forecasts.WeatherEnum
 import com.sheltek.kmpweather.compose.ui.utils.WeatherCodes.getWeatherFromCode
@@ -34,7 +34,7 @@ import kotlinx.datetime.Clock
 import org.koin.core.component.inject
 
 class HomeViewModel : BaseViewModel() {
-    private val weatherRepo: WeatherRepository by inject()
+    private val weatherRepo: com.sheltek.kmpweather.repositories.WeatherRepository by inject()
     private val locationProvider: KmpLocationProvider by inject()
 //    private val airQualityApiService: AirQualityApiService by inject()
 
@@ -43,9 +43,9 @@ class HomeViewModel : BaseViewModel() {
 
     /**region Forecast Responses */
     val initForecasts = List(10) { ForecastState(weatherIcon = WeatherEnum.SUNNY) }
-    private val hourlyResponse = MutableStateFlow<Forecast?>(null)
-    private val dailyResponse = MutableStateFlow<Forecast?>(null)
-    val realTimeResponse = MutableStateFlow<RealTime?>(null)
+    private val hourlyResponse = MutableStateFlow<com.sheltek.kmpweather.models.Forecast?>(null)
+    private val dailyResponse = MutableStateFlow<com.sheltek.kmpweather.models.Forecast?>(null)
+    val realTimeResponse = MutableStateFlow<com.sheltek.kmpweather.models.RealTime?>(null)
     //endregion
 
     /**region UI Forecasts */
